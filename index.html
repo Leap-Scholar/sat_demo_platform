@@ -284,7 +284,7 @@ html,body{height:100%;background:#FFFFFF;font-family:var(--font-b);color:var(--g
 }
 
 /* ══ PRESENTATION MODE ══ */
-body.pmode .sidebar,.pmode .topbar,.pmode .navfoot,.pmode .notes-bar{display:none!important}
+body.pmode .sidebar,.pmode .topbar,.pmode .navfoot{display:none!important}
 body.pmode .main{position:fixed;inset:0;background:#0E1B5C}
 body.pmode .ca{padding:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#0E1B5C 0%,#1B2B8A 100%)}
 body.pmode .sec.active{background:#fff;border-radius:16px;width:min(1100px,95vw);max-height:90vh;overflow-y:auto;padding:38px 46px;box-shadow:0 40px 100px rgba(0,0,0,.5);position:relative}
@@ -296,84 +296,15 @@ body.pmode .pmode-nav{display:flex!important}
 .pmn-counter{font-size:12px;color:rgba(255,255,255,.7);font-family:var(--font-h);font-weight:600;min-width:60px;text-align:center}
 .pmn-exit{padding:6px 14px;border-radius:20px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:12px;cursor:pointer;font-family:var(--font-h);font-weight:500;white-space:nowrap;transition:var(--tr)}
 .pmn-exit:hover{background:rgba(255,255,255,.28)}
-.pmn-notes{padding:6px 14px;border-radius:20px;background:rgba(249,115,22,.25);border:1px solid rgba(249,115,22,.4);color:#FDBA74;font-size:12px;cursor:pointer;font-family:var(--font-h);font-weight:500;white-space:nowrap;transition:var(--tr)}
-.pmn-notes:hover{background:rgba(249,115,22,.4)}
 
-/* Speaker Notes - Teleprompter Style (floating panel, not captured in screen share) */
-.notes-teleprompter{
-  display:none;
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  width:380px;
-  max-height:200px;
-  background:rgba(14,27,92,0.98);
-  backdrop-filter:blur(30px);
-  border:2px solid rgba(71,71,246,0.4);
-  border-radius:12px;
-  padding:16px 20px;
-  z-index:10002;
-  box-shadow:0 8px 32px rgba(0,0,0,0.6);
-  overflow-y:auto;
-  animation:slideInNotes 0.3s ease;
-}
-body.pmode .notes-teleprompter.active{display:block}
-@keyframes slideInNotes{
-  from{opacity:0;transform:translateY(20px)}
-  to{opacity:1;transform:translateY(0)}
-}
-.notes-teleprompter-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:10px;
-  padding-bottom:10px;
-  border-bottom:1px solid rgba(255,255,255,0.15);
-  cursor:move;
-}
-.notes-teleprompter-title{
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:0.8px;
-  color:rgba(255,255,255,0.5);
-  font-family:var(--font-h);
-  font-weight:600;
-}
-.notes-teleprompter-close{
-  background:rgba(255,255,255,0.1);
-  border:none;
-  color:rgba(255,255,255,0.7);
-  width:20px;
-  height:20px;
-  border-radius:50%;
-  cursor:pointer;
-  font-size:12px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:var(--tr);
-}
-.notes-teleprompter-close:hover{
-  background:rgba(255,255,255,0.2);
-  color:#fff;
-}
-.notes-teleprompter-content{
-  font-size:13px;
-  color:rgba(255,255,255,0.9);
-  line-height:1.7;
-}
-.notes-teleprompter::-webkit-scrollbar{width:4px}
-.notes-teleprompter::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.3);border-radius:4px}
+
+
 
 /* ══ SLIDE HEADER ══ */
 .slide-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--gray100)}
 .slide-header-logo{opacity:.45;flex-shrink:0;margin-left:16px}
 
-/* ══ SPEAKER NOTES BAR ══ */
-.notes-bar{background:#FFFBF0;border-top:1px solid #FEF3C7;padding:8px 22px;flex-shrink:0;display:flex;align-items:flex-start;gap:10px}
-.notes-bar-icon{font-size:13px;margin-top:2px;flex-shrink:0}
-.notes-bar-label{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--orange);font-weight:700;font-family:var(--font-h);flex-shrink:0;margin-top:2px;min-width:90px}
-.notes-bar-text{font-size:12px;color:var(--gray600);line-height:1.55;font-style:italic}
+
 
 /* ══ PRESENT BUTTON IN TOPBAR ══ */
 .tb-present-btn{padding:5px 11px;border-radius:6px;background:var(--blue-light);border:1px solid var(--blue-mid);color:var(--blue);font-size:11px;font-weight:600;cursor:pointer;font-family:var(--font-h);transition:var(--tr)}
@@ -397,6 +328,10 @@ body.pmode .notes-teleprompter.active{display:block}
 .coupon-msg.err{background:#FEF2F2;color:var(--red);display:block}
 .coupon-clear-btn{background:rgba(0,0,0,0.1);border:none;color:var(--green);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;cursor:pointer;margin-left:6px;transition:var(--tr);font-family:var(--font-h)}
 .coupon-clear-btn:hover{background:rgba(0,0,0,0.15);transform:translateY(-1px)}
+/* ══ PLAN SELECT BTNS ══ */
+.psel-btn{padding:7px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--gray200);background:#fff;font-family:var(--font-h);font-size:12px;font-weight:600;cursor:pointer;transition:var(--tr);color:var(--gray600);white-space:nowrap}
+.psel-btn:hover{border-color:var(--blue);color:var(--blue)}
+.psel-btn.active{border-color:var(--blue);background:var(--blue);color:#fff}
 .pricing-fact{background:var(--navy-dark);border-radius:var(--radius);padding:16px 20px;max-width:560px;margin-top:16px;display:flex;gap:12px;align-items:flex-start}
 .pf-fact-icon{font-size:20px;flex-shrink:0;margin-top:2px}
 .pf-fact-txt{font-size:13px;color:rgba(255,255,255,.75);line-height:1.65}
@@ -405,6 +340,31 @@ body.pmode .notes-teleprompter.active{display:block}
 /* ══ PROG CLEAR BTN ══ */
 .prog-clear{padding:10px 16px;background:var(--gray100);color:var(--gray600);border:none;border-radius:var(--radius-sm);font-family:var(--font-h);font-size:14px;font-weight:600;cursor:pointer;transition:var(--tr);white-space:nowrap}
 .prog-clear:hover{background:var(--gray200)}
+
+/* ══ PLAN TABS ══ */
+.plan-tab{padding:8px 16px;border-radius:var(--radius-sm);border:1.5px solid var(--gray200);background:#fff;font-family:var(--font-h);font-size:12.5px;font-weight:600;cursor:pointer;transition:var(--tr);color:var(--gray600)}
+.plan-tab:hover{border-color:var(--blue);color:var(--blue)}
+.plan-tab.active{border-color:var(--blue);background:var(--blue);color:#fff}
+.plan-roadmap{display:none}
+.plan-roadmap.active{display:block}
+
+/* ══ ROADMAP GRID ══ */
+.roadmap-grid{display:flex;flex-direction:column;gap:12px}
+.rm-month{border:1px solid var(--gray200);border-radius:var(--radius);overflow:hidden}
+.rm-month-hdr{background:var(--navy);color:#fff;padding:11px 16px;display:flex;align-items:center;justify-content:space-between}
+.rm-month-title{font-family:var(--font-h);font-size:14px;font-weight:700}
+.rm-month-sub{font-size:11px;color:rgba(255,255,255,.5)}
+.rm-weeks{padding:0}
+.rm-week{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid var(--gray100);position:relative}
+.rm-week:last-child{border-bottom:none}
+.rm-week.locked{background:var(--gray50);filter:none}
+.rm-week-num{font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--blue);min-width:54px;flex-shrink:0;margin-top:2px}
+.rm-week-content{flex:1}
+.rm-week-title{font-family:var(--font-h);font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.rm-week-items{font-size:12px;color:var(--gray600);line-height:1.6}
+.rm-lock-overlay{position:absolute;inset:0;background:rgba(250,251,253,0.88);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;gap:8px;border-radius:0}
+.rm-lock-txt{font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--gray400)}
+.rm-lock-icon{font-size:15px}
 
 
 
@@ -688,9 +648,10 @@ body.pmode .slide-content-logo {
           <label class="fl">Student Name</label>
           <input class="fi" id="inp-name" placeholder="e.g. Aarav Sharma" type="text"/>
           <div class="frow">
-            <div><label class="fl">Target SAT Score</label><input class="fi" id="inp-score" placeholder="e.g. 1450" type="text"/></div>
-            <div><label class="fl">School</label><input class="fi" id="inp-school" placeholder="e.g. DPS Dubai" type="text"/></div>
+            <div><label class="fl">Phone Number</label><input class="fi" id="inp-phone" placeholder="e.g. +971 50 123 4567" type="tel"/></div>
+            <div><label class="fl">Email ID</label><input class="fi" id="inp-email" placeholder="e.g. aarav@gmail.com" type="email"/></div>
           </div>
+          <div id="lead-status" style="display:none;font-size:11.5px;margin-bottom:8px;padding:6px 10px;border-radius:6px"></div>
           <button class="btn btn-n" id="start-btn" style="width:100%;justify-content:center;font-size:14px;padding:11px">Begin Presentation →</button>
         </div>
       </div>
@@ -804,11 +765,28 @@ body.pmode .slide-content-logo {
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSfJg8h51gwHrIickSEHtWCnQ8drTh7Wq2ceX4KAJGUR9sdZAQ/viewform" target="_blank" class="btn btn-p">Open Test ↗</a>
           </div>
         </div>
-        <div class="g4" style="max-width:560px">
-          <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:4px">🆓</div><div style="font-size:12px;font-weight:600;color:var(--navy)">Free</div><div style="font-size:11px;color:var(--gray400)">No cost</div></div>
-          <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:4px">⏱️</div><div style="font-size:12px;font-weight:600;color:var(--navy)">30–40 min</div><div style="font-size:11px;color:var(--gray400)">Duration</div></div>
-          <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:4px">📊</div><div style="font-size:12px;font-weight:600;color:var(--navy)">Score Range</div><div style="font-size:11px;color:var(--gray400)">Estimated</div></div>
-          <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:4px">🗓️</div><div style="font-size:12px;font-weight:600;color:var(--navy)">24h Results</div><div style="font-size:11px;color:var(--gray400)">Turnaround</div></div>
+        <div class="g3" style="max-width:560px">
+          <div class="csm" style="text-align:center;padding:18px 14px">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(16,185,129,.3)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="white"/></svg>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">100% Free</div>
+            <div style="font-size:11px;color:var(--gray400);margin-top:2px">No cost, ever</div>
+          </div>
+          <div class="csm" style="text-align:center;padding:18px 14px">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#5B6EFF,#3B4DB8);display:flex;align-items:center;justify-content:margin:0 auto 10px;box-shadow:0 4px 12px rgba(91,110,255,.3);margin:0 auto 10px">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin:auto"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/><path d="M12 7v5l3 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">30–40 min</div>
+            <div style="font-size:11px;color:var(--gray400);margin-top:2px">Quick & easy</div>
+          </div>
+          <div class="csm" style="text-align:center;padding:18px 14px">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FF8551,#e06208);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(255,133,81,.3)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M7 16l4-4 4 4 4-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:var(--navy)">Real Score Range</div>
+            <div style="font-size:11px;color:var(--gray400);margin-top:2px">Based on Bluebook & SAT data</div>
+          </div>
         </div>
       </div>
     </div>
@@ -837,37 +815,36 @@ body.pmode .slide-content-logo {
       </div>
     </div>
 
-    <!-- ══ 5 · PROGRAM FLOWCHART ══ -->
-    <div class="sec" data-i="5" data-notes="Enter program hours after the plan is selected later. The 75/25 ratio shows we have a proven methodology — not just classes.">
+    <!-- ══ 5 · PROGRAM PLAN ══ -->
+    <div class="sec" data-i="5" data-notes="Type the program code, generate the hour split, then scroll down to show the monthly roadmap. Week 1 & 2 are unlocked as preview — use this to create FOMO.">
       
       <div class="eyebrow"><span class="epip">6</span>Our Approach</div>
-      <h1 class="ptitle">Program Study Plan</h1>
-      <p class="pdesc">Enter your program duration to see a personalised breakdown of how your time will be structured across Reading & Writing and Math.</p>
+      <h1 class="ptitle">Your Program Roadmap</h1>
+      <p class="pdesc">Enter the program code to see how your hours are structured — and a preview of the month-by-month plan.</p>
 
+      <!-- Step 1: Input -->
       <div class="prog-form-wrap">
         <div class="prog-form-title">Generate Your Study Plan</div>
-        <div class="prog-form-sub">Enter the total number of hours in your program to see the time split.</div>
+        <div class="prog-form-sub">Enter the program code to see the hour split and roadmap.</div>
         <div class="prog-input-row">
-          <input type="number" id="prog-hrs" placeholder="e.g. 40" min="1" max="500"/>
-          <span>hours</span>
+          <input type="text" id="prog-code" placeholder="e.g. SGP 40H" style="flex:1;padding:10px 14px;border:1.5px solid var(--gray200);border-radius:var(--radius-sm);font-family:var(--font-b);font-size:14px;color:var(--gray900);outline:none;transition:var(--tr);text-transform:uppercase"/>
           <button class="prog-submit" id="prog-submit-btn">Generate →</button>
           <button class="prog-clear" id="prog-clear-btn">Clear</button>
         </div>
-        <p id="prog-err" style="color:var(--red);font-size:12.5px;margin-top:8px;display:none">Please enter a valid number of hours.</p>
+        <p id="prog-err" style="color:var(--red);font-size:12.5px;margin-top:8px;display:none">Program not found. Please check the code and try again.</p>
       </div>
 
+      <!-- Step 2: Hour bifurcation flowchart (shown after generate) -->
       <div class="flowchart" id="flowchart">
-        <!-- Root -->
         <div style="display:flex;flex-direction:column;align-items:center">
           <div class="fc-node root" style="min-width:260px">
             <div class="fc-label">Total Program Duration</div>
             <div class="fc-mid" id="fc-total">— hrs</div>
           </div>
           <div class="fc-connector-v"></div>
-          <!-- H split line -->
           <div style="width:60%;position:relative;display:flex;justify-content:space-between;align-items:flex-start">
             <div style="position:absolute;top:0;left:15%;right:15%;height:2px;background:var(--blue-mid)"></div>
-            <!-- Left branch: R&W -->
+            <!-- R&W branch -->
             <div style="display:flex;flex-direction:column;align-items:center;flex:1">
               <div class="fc-connector-v"></div>
               <div class="fc-section-label" style="color:var(--navy2)">Reading &amp; Writing</div>
@@ -876,7 +853,6 @@ body.pmode .slide-content-logo {
                 <div class="fc-mid" id="fc-rw">— hrs</div>
               </div>
               <div class="fc-connector-v"></div>
-              <!-- R&W horizontal split line -->
               <div style="width:80%;position:relative;display:flex;justify-content:space-between;align-items:flex-start">
                 <div style="position:absolute;top:0;left:12%;right:12%;height:2px;background:#C7D0FB"></div>
                 <div style="display:flex;flex-direction:column;align-items:center;flex:1">
@@ -895,7 +871,7 @@ body.pmode .slide-content-logo {
                 </div>
               </div>
             </div>
-            <!-- Right branch: Math -->
+            <!-- Math branch -->
             <div style="display:flex;flex-direction:column;align-items:center;flex:1">
               <div class="fc-connector-v"></div>
               <div class="fc-section-label" style="color:#7C2D12">Math</div>
@@ -904,7 +880,6 @@ body.pmode .slide-content-logo {
                 <div class="fc-mid" id="fc-math">— hrs</div>
               </div>
               <div class="fc-connector-v"></div>
-              <!-- Math horizontal split line -->
               <div style="width:80%;position:relative;display:flex;justify-content:space-between;align-items:flex-start">
                 <div style="position:absolute;top:0;left:12%;right:12%;height:2px;background:#FED7AA"></div>
                 <div style="display:flex;flex-direction:column;align-items:center;flex:1">
@@ -925,8 +900,7 @@ body.pmode .slide-content-logo {
             </div>
           </div>
         </div>
-
-        <div style="margin-top:28px">
+        <div style="margin-top:24px">
           <div class="g4">
             <div class="statpill"><div class="spn" id="fc-s-rw-t" style="color:var(--navy2)">—</div><div class="spl">R&W Teaching</div></div>
             <div class="statpill"><div class="spn" id="fc-s-rw-r" style="color:var(--navy2)">—</div><div class="spl">R&W Revision</div></div>
@@ -934,6 +908,27 @@ body.pmode .slide-content-logo {
             <div class="statpill"><div class="spn" id="fc-s-m-r" style="color:var(--orange)">—</div><div class="spl">Math Revision</div></div>
           </div>
         </div>
+
+        <!-- Divider into roadmap -->
+        <div style="margin:28px 0 18px;display:flex;align-items:center;gap:12px">
+          <div style="flex:1;height:1px;background:var(--gray200)"></div>
+          <span style="font-family:var(--font-h);font-size:12px;font-weight:700;color:var(--gray400);text-transform:uppercase;letter-spacing:.6px">Month-by-Month Roadmap</span>
+          <div style="flex:1;height:1px;background:var(--gray200)"></div>
+        </div>
+
+        <!-- Step 3: Roadmap (all hidden, JS shows the right one) -->
+        <div id="roadmap-container">
+          <div class="plan-roadmap" id="roadmap-sgp40h"><div class="roadmap-grid" id="rg-sgp40h"></div></div>
+          <div class="plan-roadmap" id="roadmap-sgp50h"><div class="roadmap-grid" id="rg-sgp50h"></div></div>
+          <div class="plan-roadmap" id="roadmap-sgp60h"><div class="roadmap-grid" id="rg-sgp60h"></div></div>
+          <div class="plan-roadmap" id="roadmap-reg40h"><div class="roadmap-grid" id="rg-reg40h"></div></div>
+          <div class="plan-roadmap" id="roadmap-reg50h"><div class="roadmap-grid" id="rg-reg50h"></div></div>
+          <div class="plan-roadmap" id="roadmap-reg60h"><div class="roadmap-grid" id="rg-reg60h"></div></div>
+          <div class="plan-roadmap" id="roadmap-reg30h"><div class="roadmap-grid" id="rg-reg30h"></div></div>
+          <div class="plan-roadmap" id="roadmap-reg20h"><div class="roadmap-grid" id="rg-reg20h"></div></div>
+        </div>
+
+        <div class="hl or" style="margin-top:16px">🔒 Detailed week-by-week plans are <strong>unlocked on Day 1 of enrollment</strong> — personalised to your diagnostic results.</div>
       </div>
     </div>
 
@@ -1082,38 +1077,60 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 9 · STUDENTS ══ -->
-    <div class="sec" data-i="9" data-notes="Let parents scroll through the table. Find a student from a similar school. The 1500–1590 range shows consistent results, not just outliers.">
+    <div class="sec" data-i="9" data-notes="Lead with the improvement story — before vs after. The prep duration shows even 1–2 months is enough. Find a student from a similar school to make it personal.">
       
       <div class="eyebrow"><span class="epip">10</span>Proof</div>
       <h1 class="ptitle">Our Students This Year</h1>
-      <p class="pdesc">Real students, real schools, real scores — our LeapScholar SAT achievers from this academic year.</p>
+      <p class="pdesc">Real students, real schools, real scores — and the journey it took to get there.</p>
       <div class="g4" style="margin-bottom:18px">
-        <div class="statpill"><div class="spn" style="color:var(--blue)">1560</div><div class="spl">Top score this year</div></div>
+        <div class="statpill"><div class="spn" style="color:var(--blue)">1590</div><div class="spl">Top score this year</div></div>
         <div class="statpill"><div class="spn" style="color:var(--green)">1500+</div><div class="spl">Scores by multiple students</div></div>
-        <div class="statpill"><div class="spn">UAE+</div><div class="spl">India · Doha · Muscat</div></div>
-        <div class="statpill"><div class="spn" style="color:var(--orange)">30+</div><div class="spl">Featured achievers</div></div>
+        <div class="statpill"><div class="spn">UAE+</div><div class="spl">India · Doha · Qatar · KSA</div></div>
+        <div class="statpill"><div class="spn" style="color:var(--orange)">25+</div><div class="spl">Featured achievers</div></div>
       </div>
       <div style="border:1px solid var(--gray200);border-radius:var(--radius);overflow:hidden">
         <table class="dtable">
-          <thead><tr><th>Student Name</th><th>School</th><th class="tc">Score</th><th>Student Name</th><th>School</th><th class="tc">Score</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Student Name</th>
+              <th>School</th>
+              <th class="tc" style="color:var(--orange)">Before</th>
+              <th class="tc" style="color:var(--green)">After ✓</th>
+              <th class="tc" style="color:var(--blue)">Jump</th>
+              <th class="tc">Prep Time</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td>Kashyap Jalali</td><td>Edify School</td><td class="tc"><span class="tag tb">1510</span></td><td>Keshav Harish Anand</td><td>DIA, Emirates Hills</td><td class="tc"><span class="tag tb">1550</span></td></tr>
-            <tr><td>Vedika Vijay Anand</td><td>Harvest International Sarjapur</td><td class="tc"><span class="tag tb">1510</span></td><td>Zaara</td><td>Indian School Muscat</td><td class="tc"><span class="tag tb">1590</span></td></tr>
-            <tr><td>Ansh Jain</td><td>Ajyal Almaarefah International</td><td class="tc"><span class="tag tb">1500</span></td><td>Pratyush Sisodia</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag tb">1510</span></td></tr>
-            <tr><td>Naya Houmsie</td><td>ISC Dubai – Al Suffouh</td><td class="tc"><span class="tag tb">1520</span></td><td>Sneh Kashyap</td><td>DPS Greater Faridabad</td><td class="tc"><span class="tag tb">1500</span></td></tr>
-            <tr><td>Yasmin</td><td>British International School, Tabuk</td><td class="tc"><span class="tag tb">1540</span></td><td>Sadhil Aggarwal</td><td>Repton School Abu Dhabi</td><td class="tc"><span class="tag tb">1500</span></td></tr>
-            <tr><td>Sami Samar Ahmed</td><td>Manarat Al Riyadh International</td><td class="tc"><span class="tag tb">1520</span></td><td>Srinivasa Adithya Basani</td><td>The Peepal Grove School</td><td class="tc"><span class="tag tb">1590</span></td></tr>
-            <tr><td>Ishant Datta</td><td>DPS Modern Indian School Doha</td><td class="tc"><span class="tag tb">1540</span></td><td>Nikkii Dcruz</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag tb">1510</span></td></tr>
-            <tr><td>Arun Karthikeya</td><td>International Indian School Jubail</td><td class="tc"><span class="tag tb">1560</span></td><td>Kauthik Basangi</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag tb">1500</span></td></tr>
-            <tr><td>Jana</td><td>The Modern American School</td><td class="tc"><span class="tag tb">1500</span></td><td>Shaanvi Verma</td><td>Bhavans Abu Dhabi</td><td class="tc"><span class="tag tb">1510</span></td></tr>
-            <tr><td>Shri Adhilthya Ganesu</td><td>DPS – Modern Indian School Doha</td><td class="tc"><span class="tag tb">1530</span></td><td>Vincent Brantl</td><td>Repton Abu Dhabi</td><td class="tc"><span class="tag tb">1510</span></td></tr>
-            <tr><td>Mahimaa Gigy Karunan</td><td>Gems Modern Academy</td><td class="tc"><span class="tag tb">1520</span></td><td>Vihaan Shantanu</td><td>Pace Jr College</td><td class="tc"><span class="tag tb">1510</span></td></tr>
-            <tr><td>Prajit</td><td>Doha College</td><td class="tc"><span class="tag tb">1520</span></td><td>Mukul Agarwal</td><td>GEMS Modern Academy</td><td class="tc"><span class="tag tb">1530</span></td></tr>
-            <tr><td>Mahimaa Gigy Karunan</td><td>Aditya English Medium School</td><td class="tc"><span class="tag tb">1500</span></td><td>Prisha Agarwal</td><td>Chirec International School</td><td class="tc"><span class="tag tb">1530</span></td></tr>
-            <tr><td>Kashyap Jalali</td><td>DIA, Emirates Hills</td><td class="tc"><span class="tag tb">1510</span></td><td>Aanya Kumar</td><td>Sishya Adyar</td><td class="tc"><span class="tag tb">1520</span></td></tr>
+            <tr><td>Kashyap Jalali</td><td>Edify School</td><td class="tc"><span class="tag to">1160</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+350</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Vedika Vijay Anand</td><td>Harvest International Sarjapur</td><td class="tc"><span class="tag to">1460</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+50</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
+            <tr><td>Ansh Jain</td><td>Ajyal Almaarefah International</td><td class="tc"><span class="tag to">1310</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+190</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Naya Houmsie</td><td>ISC Dubai – Al Suffouh</td><td class="tc"><span class="tag to">1370</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+150</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Yasmin</td><td>British International School, Tabuk, KSA</td><td class="tc"><span class="tag to">1260</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+280</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Ishant Datta</td><td>DPS Modern Indian School Doha</td><td class="tc"><span class="tag to">1420</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+120</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Arun Karthikeya</td><td>International Indian School Jubail</td><td class="tc"><span class="tag to">1560</span></td><td class="tc"><span class="tag tg">1560</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">—</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Jana</td><td>The Modern American School</td><td class="tc"><span class="tag to">1170</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+330</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Mahimaa Gigy Karunan</td><td>Gems Modern Academy</td><td class="tc"><span class="tag to">1350</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+170</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Prajit</td><td>Doha College</td><td class="tc"><span class="tag to">1450</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+70</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Keshav Harish Anand</td><td>DIA, Emirates Hills</td><td class="tc"><span class="tag to">1440</span></td><td class="tc"><span class="tag tg">1550</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+110</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Zaara</td><td>Indian School Muscat</td><td class="tc"><span class="tag to">1160</span></td><td class="tc"><span class="tag tg">1590</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+430</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Pratyush Sisodia</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1180</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+330</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Sneh Kashyap</td><td>DPS Greater Faridabad</td><td class="tc"><span class="tag to">1410</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+90</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Sadhil Aggarwal</td><td>Repton School Abu Dhabi</td><td class="tc"><span class="tag to">1320</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+180</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Srinivasa Adithya Basan</td><td>The Peepal Grove School</td><td class="tc"><span class="tag to">1240</span></td><td class="tc"><span class="tag tg">1590</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+350</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Nikkil Dcruz</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1330</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+180</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Kauthik Basangi</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1250</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+250</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Shaanvi Verma</td><td>Bhavans Abu Dhabi</td><td class="tc"><span class="tag to">1390</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+120</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Mukul Agarwal</td><td>GEMS Modern Academy</td><td class="tc"><span class="tag to">1400</span></td><td class="tc"><span class="tag tg">1530</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+130</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Prisha Agarwal</td><td>Chirec International School</td><td class="tc"><span class="tag to">1530</span></td><td class="tc"><span class="tag tg">1530</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">—</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Aanya Kumar</td><td>Sishya Adyar</td><td class="tc"><span class="tag to">1490</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+30</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Shaurrya</td><td>DIA Emirates Hills</td><td class="tc"><span class="tag to">1170</span></td><td class="tc"><span class="tag tg">1480</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+310</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Pratishtha</td><td>Birla Public School, Doha, Qatar</td><td class="tc"><span class="tag to">1120</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+420</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Fahid</td><td>ADNOC Schools</td><td class="tc"><span class="tag to">810</span></td><td class="tc"><span class="tag tg">1410</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+600</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
+            <tr><td>Madhav</td><td>Star International School</td><td class="tc"><span class="tag to">900</span></td><td class="tc"><span class="tag tg">1490</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+590</td><td class="tc" style="font-size:12px;color:var(--gray600)">5 mo</td></tr>
           </tbody>
         </table>
       </div>
+      <div class="hl gr" style="margin-top:14px">⚡ <strong>Average improvement: 250+ points</strong> — achieved in just 1–5 months of focused prep with LeapScholar.</div>
     </div>
 
     <!-- ══ 10 · COMPARISON ══ -->
@@ -1290,216 +1307,44 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 14 · PRICING ══ -->
-    <div class="sec" data-i="14" data-notes="Don't open with price — open with value. By now parents know the guarantee, teachers, and results. Use TUTOR10 for walk-in discounts. The bottom fact is a powerful closer.">
+    <div class="sec" data-i="14">
       
       <div class="eyebrow"><span class="epip">15</span>Close</div>
       <h1 class="ptitle">Program Pricing</h1>
-      <p class="pdesc">Select a program below to view the price and full benefits included.</p>
+      <p class="pdesc">Select your currency and program to view the full pricing and benefits.</p>
 
-      <div class="price-form-wrap">
-        <div class="pf-title">Enter Program Name</div>
-        <div class="pf-sub">Type your program code to view pricing and full benefits.</div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <input id="pf-input" placeholder="e.g. SGP 40H" type="text" style="flex:1;padding:9px 13px;border:1.5px solid var(--gray200);border-radius:var(--radius-sm);font-family:var(--font-b);font-size:13.5px;color:var(--gray900);outline:none;transition:var(--tr);text-transform:uppercase"/>
-          <button id="pf-submit-btn" style="padding:9px 18px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);font-family:var(--font-h);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">Show Plan →</button>
+      <!-- Currency + Program input row -->
+      <div style="display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:20px">
+        <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-top:2px">
+          <label style="font-size:12px;font-weight:600;color:var(--gray600);text-transform:uppercase;letter-spacing:.4px">Currency</label>
+          <select id="currency-select" onchange="onCurrencyChange()" style="padding:8px 14px;border:1.5px solid var(--gray200);border-radius:var(--radius-sm);font-family:var(--font-b);font-size:13px;color:var(--gray900);background:#fff;cursor:pointer;outline:none;transition:var(--tr)">
+            <option value="AED">🇦🇪 AED</option>
+            <option value="SAR">🇸🇦 SAR</option>
+            <option value="QAR">🇶🇦 QAR</option>
+            <option value="INR">🇮🇳 INR</option>
+          </select>
         </div>
-        <div style="margin-top:6px;font-size:11px;color:var(--gray400)" id="pf-hint">Options: SGP 40H · REG 40H · REG 30H · REG 20H</div>
-        <p id="pf-err" style="color:var(--red);font-size:12px;margin-top:6px;display:none">Program not found. Please check the code and try again.</p>
-      </div>
-
-      <!-- SGP 40H -->
-      <div class="plan-display" id="plan-SGP40H">
-        <div class="coupon-section">
-          <div class="coupon-title">🏷️ Apply Discount Coupons</div>
-          <div class="g2" style="margin-bottom:0">
-            <div class="coupon-row">
-              <label class="coupon-label">🎓 Scholarship Coupon</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c1-SGP40H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c1-SGP40H','cm1-SGP40H','SGP40H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm1-SGP40H"></div>
-            </div>
-            <div class="coupon-row">
-              <label class="coupon-label">⚡ Special Discount for You</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c2-SGP40H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c2-SGP40H','cm2-SGP40H','SGP40H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm2-SGP40H"></div>
-            </div>
+        <div style="flex:1;min-width:260px">
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="pricing-code-input" placeholder="Enter program code e.g. SGP 40H" type="text" style="flex:1;padding:9px 13px;border:1.5px solid var(--gray200);border-radius:var(--radius-sm);font-family:var(--font-b);font-size:13.5px;color:var(--gray900);outline:none;transition:var(--tr);text-transform:uppercase" onkeydown="if(event.key==='Enter')showPricingPlan()"/>
+            <button onclick="showPricingPlan()" style="padding:9px 18px;background:var(--blue);color:#fff;border:none;border-radius:var(--radius-sm);font-family:var(--font-h);font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap">Show Plan →</button>
           </div>
-        </div>
-        <div class="plan-card">
-          <div class="plan-badge">SAT ULTIMATE · SGP 40H</div>
-          <div class="plan-name">SAT Ultimate</div>
-          <div class="plan-price-wrap">
-            <div class="plan-price" id="pp-SGP40H">AED 13,500</div>
-            <div class="plan-price-orig" id="po-SGP40H" style="display:none">AED 13,500</div>
-            <div class="plan-discount-badge" id="pd-SGP40H" style="display:none"></div>
-          </div>
-          <div class="plan-price-note">One-time payment · 1:1 Personalised Program</div>
-          <div class="plan-divider"></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div><span class="plan-feat-bold">1:1 Personalised Classes</span></div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div><span class="plan-feat-bold">Live Classes (40 hrs)</span></div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div><span class="plan-feat-bold">1500+ Score / 200+ Score Jump Guarantee</span></div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Expert Feedback on tests</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Personalised Refresher Sessions</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Dedicated Student Success Manager</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Profile Assessment with Ivy League Counsellor</div></div>
+          <p id="pricing-err" style="color:var(--red);font-size:12px;margin-top:6px;display:none">Program not found. Try: SGP 40H / SGP 50H / SGP 60H / REG 40H / REG 50H / REG 60H / REG 30H / REG 20H</p>
         </div>
       </div>
 
-      <!-- REG 40H -->
-      <div class="plan-display" id="plan-REG40H">
-        <div class="coupon-section">
-          <div class="coupon-title">🏷️ Apply Discount Coupons</div>
-          <div class="g2" style="margin-bottom:0">
-            <div class="coupon-row">
-              <label class="coupon-label">🎓 Scholarship Coupon</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c1-REG40H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c1-REG40H','cm1-REG40H','REG40H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm1-REG40H"></div>
-            </div>
-            <div class="coupon-row">
-              <label class="coupon-label">⚡ Special Discount for You</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c2-REG40H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c2-REG40H','cm2-REG40H','REG40H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm2-REG40H"></div>
-            </div>
-          </div>
-        </div>
-        <div class="plan-card">
-          <div class="plan-badge">REGULAR · REG 40H</div>
-          <div class="plan-name">Regular 40 Hours</div>
-          <div class="plan-price-wrap">
-            <div class="plan-price" id="pp-REG40H">AED 6,700</div>
-            <div class="plan-price-orig" id="po-REG40H" style="display:none">AED 6,700</div>
-            <div class="plan-discount-badge" id="pd-REG40H" style="display:none"></div>
-          </div>
-          <div class="plan-price-note">One-time payment · Group Program</div>
-          <div class="plan-divider"></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div><span class="plan-feat-bold">40+ hours of live classes</span></div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Expert feedback</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Live WhatsApp Group (Instant)</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>10+ Full Length Mock Tests</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Weekend Mocks + test analysis</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Comprehensive Study Material</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Profile Assessment with Ivy League Counselor</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Refresher session up to 5 hours</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Dedicated Student Success Manager</div></div>
-        </div>
-      </div>
+      <!-- Plan cards — all hidden by default, JS shows active one -->
+      <div id="active-plan-container"></div>
 
-      <!-- REG 30H -->
-      <div class="plan-display" id="plan-REG30H">
-        <div class="coupon-section">
-          <div class="coupon-title">🏷️ Apply Discount Coupons</div>
-          <div class="g2" style="margin-bottom:0">
-            <div class="coupon-row">
-              <label class="coupon-label">🎓 Scholarship Coupon</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c1-REG30H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c1-REG30H','cm1-REG30H','REG30H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm1-REG30H"></div>
-            </div>
-            <div class="coupon-row">
-              <label class="coupon-label">⚡ Special Discount for You</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c2-REG30H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c2-REG30H','cm2-REG30H','REG30H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm2-REG30H"></div>
-            </div>
-          </div>
-        </div>
-        <div class="plan-card">
-          <div class="plan-badge">REGULAR · REG 30H</div>
-          <div class="plan-name">Regular 30 Hours</div>
-          <div class="plan-price-wrap">
-            <div class="plan-price" id="pp-REG30H">AED 5,025</div>
-            <div class="plan-price-orig" id="po-REG30H" style="display:none">AED 5,025</div>
-            <div class="plan-discount-badge" id="pd-REG30H" style="display:none"></div>
-          </div>
-          <div class="plan-price-note">One-time payment · Group Program</div>
-          <div class="plan-divider"></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div><span class="plan-feat-bold">30+ hours of live classes</span></div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Expert feedback</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Live WhatsApp Group (Instant)</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>10+ Full Length Mock Tests</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Weekend Mocks + test analysis</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Comprehensive Study Material</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Profile Assessment with Ivy League Counselor</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Refresher session up to 5 hours</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Dedicated Student Success Manager</div></div>
-        </div>
-      </div>
-
-      <!-- REG 20H -->
-      <div class="plan-display" id="plan-REG20H">
-        <div class="coupon-section">
-          <div class="coupon-title">🏷️ Apply Discount Coupons</div>
-          <div class="g2" style="margin-bottom:0">
-            <div class="coupon-row">
-              <label class="coupon-label">🎓 Scholarship Coupon</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c1-REG20H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c1-REG20H','cm1-REG20H','REG20H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm1-REG20H"></div>
-            </div>
-            <div class="coupon-row">
-              <label class="coupon-label">⚡ Special Discount for You</label>
-              <div class="coupon-input-wrap">
-                <input class="coupon-input" id="c2-REG20H" placeholder="Enter code" type="text"/>
-                <button class="coupon-apply" onclick="applyCoupon('c2-REG20H','cm2-REG20H','REG20H')">Apply</button>
-              </div>
-              <div class="coupon-msg" id="cm2-REG20H"></div>
-            </div>
-          </div>
-        </div>
-        <div class="plan-card">
-          <div class="plan-badge">REGULAR · REG 20H</div>
-          <div class="plan-name">Regular 20 Hours</div>
-          <div class="plan-price-wrap">
-            <div class="plan-price" id="pp-REG20H">AED 3,350</div>
-            <div class="plan-price-orig" id="po-REG20H" style="display:none">AED 3,350</div>
-            <div class="plan-discount-badge" id="pd-REG20H" style="display:none"></div>
-          </div>
-          <div class="plan-price-note">One-time payment · Group Program</div>
-          <div class="plan-divider"></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div><span class="plan-feat-bold">20+ hours of live classes</span></div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Expert feedback</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Live WhatsApp Group (Instant)</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>10+ Full Length Mock Tests</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Weekend Mocks + test analysis</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Comprehensive Study Material</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Profile Assessment with Ivy League Counselor</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Refresher session up to 5 hours</div></div>
-          <div class="plan-feat"><div class="plan-chk">✓</div><div>Dedicated Student Success Manager</div></div>
-        </div>
-      </div>
-
-      <div class="pricing-fact" id="pricing-fact" style="display:none">
+      <div class="pricing-fact" id="pricing-fact">
         <div class="pf-fact-icon">💡</div>
         <div class="pf-fact-txt">
-          <span class="pf-fact-hl">Did you know?</span> Students spend an average of <span class="pf-fact-hl">AED 8,500 / ₹2,15,000 / USD 2,500</span> for 1:1 SAT prep — and still don't get a score guarantee. With LeapScholar, a score guarantee is built in.
+          <span class="pf-fact-hl">Did you know?</span> Students spend an average of <span class="pf-fact-hl">AED 8,500 / ₹2,15,000</span> for 1:1 SAT prep — and still don't get a score guarantee. With LeapScholar, a score guarantee is built in.
         </div>
       </div>
     </div>
   </div><!-- /ca -->
 
-  <!-- Speaker Notes Bar -->
-  <div class="notes-bar" id="notes-bar">
-    <span class="notes-bar-icon">📝</span>
-    <span class="notes-bar-label">Speaker Notes</span>
-    <span class="notes-bar-text" id="notes-text">Start with a warm greeting. Ask the student's name if not filled yet.</span>
-  </div>
 
   <!-- Nav footer -->
   <div class="navfoot">
@@ -1518,17 +1363,7 @@ body.pmode .slide-content-logo {
   <button class="pmn-btn" id="pmn-prev">←</button>
   <div class="pmn-counter" id="pmn-counter">1 / 15</div>
   <button class="pmn-btn" id="pmn-next">→</button>
-  <button class="pmn-notes" id="pmn-notes-btn">📝 Notes</button>
   <button class="pmn-exit" id="pmn-exit">✕ Exit</button>
-</div>
-
-<!-- Speaker Notes - Teleprompter Style (floating panel, not captured in screen share) -->
-<div class="notes-teleprompter" id="notes-teleprompter">
-  <div class="notes-teleprompter-header">
-    <div class="notes-teleprompter-title">🔒 Speaker Notes</div>
-    <button class="notes-teleprompter-close" id="notes-close">×</button>
-  </div>
-  <div class="notes-teleprompter-content" id="notes-content"></div>
 </div>
 
 <script>
@@ -1550,24 +1385,6 @@ const SLIDES=[
   {g:"Close",t:"Onboarding"},
   {g:"Close",t:"Pricing"},
 ];
-const BASE_PRICES={SGP40H:13500,REG40H:6700,REG30H:5025,REG20H:3350};
-
-// Scholarship coupons (only for c1 inputs)
-const SCHOLARSHIP_COUPONS={
-  "SCORE1400+":30,
-  "SCORE1200+":25,
-  "SCORE1000+":20,
-  "SCORE800+":15,
-  "SCORE<800":10
-};
-
-// Special discount coupons (only for c2 inputs)
-const SPECIAL_COUPONS={
-  "TUTOR10":10
-};
-
-// Track applied discounts per plan
-const appliedDiscounts={};
 let cur=0;
 const secs=document.querySelectorAll('.sec');
 const nis=document.querySelectorAll('.ni');
@@ -1596,11 +1413,6 @@ function goTo(i){
   if(btnPrev)btnPrev.disabled=i===0;
   if(btnNext)btnNext.textContent=i===SLIDES.length-1?'Finish ✓':'Next →';
   document.getElementById('ca').scrollTop=0;
-  const notesTxt=secs[i].dataset.notes||'';
-  const nb=document.getElementById('notes-text');
-  if(nb)nb.textContent=notesTxt;
-  const notesContent=document.getElementById('notes-content');
-  if(notesContent)notesContent.textContent=notesTxt||'No notes for this slide.';
   const pc=document.getElementById('pmn-counter');
   if(pc)pc.textContent=`${i+1} / ${SLIDES.length}`;
 }
@@ -1619,85 +1431,90 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(cur-1);
   }
   if(e.key==='Escape'){
-    if(document.fullscreenElement){
-      document.exitFullscreen();
-    }
+    if(document.fullscreenElement) document.exitFullscreen();
     document.body.classList.remove('pmode');
   }
 });
 
-// TRUE FULLSCREEN PRESENTATION MODE
+
 function enterFullscreenPresentation(){
   document.body.classList.add('pmode');
-  
-  // Request fullscreen on the entire document
   const elem=document.documentElement;
-  if(elem.requestFullscreen){
-    elem.requestFullscreen();
-  }else if(elem.webkitRequestFullscreen){
-    elem.webkitRequestFullscreen();
-  }else if(elem.msRequestFullscreen){
-    elem.msRequestFullscreen();
-  }
+  if(elem.requestFullscreen) elem.requestFullscreen();
+  else if(elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
+  else if(elem.msRequestFullscreen) elem.msRequestFullscreen();
 }
 
-// Exit fullscreen handler
 document.addEventListener('fullscreenchange',()=>{
-  if(!document.fullscreenElement){
-    document.body.classList.remove('pmode');
-    document.getElementById('notes-teleprompter').classList.remove('active');
-  }
+  if(!document.fullscreenElement) document.body.classList.remove('pmode');
 });
 
-// Presentation mode controls
 const pmodeBtn=document.getElementById('pmode-btn');
 if(pmodeBtn)pmodeBtn.addEventListener('click',enterFullscreenPresentation);
 
 document.getElementById('pmn-exit').addEventListener('click',()=>{
-  if(document.fullscreenElement){
-    document.exitFullscreen();
-  }
+  if(document.fullscreenElement) document.exitFullscreen();
   document.body.classList.remove('pmode');
-  document.getElementById('notes-teleprompter').classList.remove('active');
 });
 
 document.getElementById('pmn-prev').addEventListener('click',()=>goTo(cur-1));
 document.getElementById('pmn-next').addEventListener('click',()=>goTo(cur+1));
 
-// SPEAKER NOTES - Teleprompter Toggle
-document.getElementById('pmn-notes-btn').addEventListener('click',()=>{
-  const teleprompter=document.getElementById('notes-teleprompter');
-  teleprompter.classList.toggle('active');
-  
-  // Update notes content when opening
-  if(teleprompter.classList.contains('active')){
-    const currentNotes=secs[cur].dataset.notes||'No notes for this slide.';
-    document.getElementById('notes-content').textContent=currentNotes;
-  }
-});
-
-// Close button for teleprompter
-document.getElementById('notes-close').addEventListener('click',()=>{
-  document.getElementById('notes-teleprompter').classList.remove('active');
-});
-
-// Make enterFullscreenPresentation global for inline onclick
 window.enterFullscreenPresentation=enterFullscreenPresentation;
 
 
-// Personalise
-document.getElementById('start-btn').addEventListener('click',()=>{
-  const name=document.getElementById('inp-name').value.trim();
-  const score=document.getElementById('inp-score').value.trim();
-  const school=document.getElementById('inp-school').value.trim();
-  if(name){
-    document.getElementById('sb-name').textContent=name;
-    document.getElementById('sb-score').textContent='Target: '+(score||'—');
-    const sb=document.getElementById('sb-school');
-    if(school){sb.textContent=school;sb.style.display='inline-block';}else sb.style.display='none';
-    document.getElementById('sb-block').classList.add('vis');
-    document.getElementById('onboard-title').textContent='The Onboarding Process for '+name.split(' ')[0];
+
+// ── GOOGLE SHEETS LEAD CAPTURE ─────────────────────────────────────────────
+// SETUP: Replace this URL with your Google Apps Script Web App URL
+// See README comment below for setup instructions
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwHPPdi3ypyrOOLTDJ29MIuNjZ1P1baIWezaTjRJVGO28WPwvx-yk9n9QaXq7v2-MmStA/exec';
+
+async function submitLead(name, phone, email) {
+  if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === 'https://script.google.com/macros/s/AKfycbwHPPdi3ypyrOOLTDJ29MIuNjZ1P1baIWezaTjRJVGO28WPwvx-yk9n9QaXq7v2-MmStA/exec') return;
+  try {
+    await fetch(GOOGLE_SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors', // required for Apps Script
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name, phone, email,
+        timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
+        source: 'SAT Demo Platform'
+      })
+    });
+  } catch(e) { /* silently fail — don't block presentation */ }
+}
+
+// Personalise + lead capture
+document.getElementById('start-btn').addEventListener('click', async () => {
+  const name  = document.getElementById('inp-name').value.trim();
+  const phone = document.getElementById('inp-phone').value.trim();
+  const email = document.getElementById('inp-email').value.trim();
+  const status = document.getElementById('lead-status');
+
+  if (!name) {
+    document.getElementById('inp-name').focus();
+    return;
   }
+
+  // Update sidebar
+  document.getElementById('sb-name').textContent = name;
+  document.getElementById('sb-score').textContent = phone ? '📞 ' + phone : '';
+  const sb = document.getElementById('sb-school');
+  if (email) { sb.textContent = email; sb.style.display = 'inline-block'; } else sb.style.display = 'none';
+  document.getElementById('sb-block').classList.add('vis');
+  document.getElementById('onboard-title').textContent = 'The Onboarding Process for ' + name.split(' ')[0];
+
+  // Submit lead in background (non-blocking)
+  if (phone || email) {
+    submitLead(name, phone, email);
+    status.style.display = 'block';
+    status.style.background = 'var(--green-light)';
+    status.style.color = 'var(--green)';
+    status.textContent = '✓ Lead saved';
+    setTimeout(() => { status.style.display = 'none'; }, 2000);
+  }
+
   goTo(1);
 });
 
@@ -1708,169 +1525,408 @@ document.getElementById('cpspt').addEventListener('click',function(){
   setTimeout(()=>{this.textContent='Copy';this.classList.remove('copied');},2000);
 });
 
-// Flowchart
-document.getElementById('prog-submit-btn').addEventListener('click',()=>{
-  const val=parseFloat(document.getElementById('prog-hrs').value);
-  const err=document.getElementById('prog-err');
-  if(!val||val<=0||isNaN(val)){err.style.display='block';document.getElementById('flowchart').classList.remove('show');return;}
-  err.style.display='none';
-  const fmt=n=>Number.isInteger(n)?n+'':n.toFixed(1);
-  const half=val/2,rwt=half*.75,rwr=half*.25,mt=half*.75,mr=half*.25;
-  document.getElementById('fc-total').textContent=fmt(val)+' hrs';
-  document.getElementById('fc-rw').textContent=fmt(half)+' hrs';
-  document.getElementById('fc-math').textContent=fmt(half)+' hrs';
-  document.getElementById('fc-rw-teach').textContent=fmt(rwt)+' hrs (75%)';
-  document.getElementById('fc-rw-rev').textContent=fmt(rwr)+' hrs (25%)';
-  document.getElementById('fc-math-teach').textContent=fmt(mt)+' hrs (75%)';
-  document.getElementById('fc-math-rev').textContent=fmt(mr)+' hrs (25%)';
-  document.getElementById('fc-s-rw-t').textContent=fmt(rwt)+'h';
-  document.getElementById('fc-s-rw-r').textContent=fmt(rwr)+'h';
-  document.getElementById('fc-s-m-t').textContent=fmt(mt)+'h';
-  document.getElementById('fc-s-m-r').textContent=fmt(mr)+'h';
-  document.getElementById('flowchart').classList.add('show');
-});
-document.getElementById('prog-clear-btn').addEventListener('click',()=>{
-  document.getElementById('prog-hrs').value='';
+
+// ── PRICING DATA ────────────────────────────────────────────────────────────
+// AED/SAR/QAR share same prices. INR is separate (incl. GST).
+const PLAN_DATA = {
+  SGP40H: {
+    badge:'SAT ULTIMATE · SGP 40H', name:'SAT Ultimate 40H', type:'sgp',
+    validity:'1 year or 2 attempts',
+    feats:['1:1 Personalised Classes','Live Classes (40 hrs)','1500+ Score / 200+ Points Jump Guarantee','Expert Feedback on every test','Personalised Refresher Sessions','Dedicated Student Success Manager','Profile Assessment with Ivy League Counsellor'],
+    prices:{ AED:{mrp:13500,floor:8100}, SAR:{mrp:13500,floor:8100}, QAR:{mrp:13500,floor:8100}, INR:{mrp:220000,floor:150000,gst:true} }
+  },
+  SGP50H: {
+    badge:'SAT ULTIMATE · SGP 50H', name:'SAT Ultimate 50H', type:'sgp',
+    validity:'1 year or 2 attempts',
+    feats:['1:1 Personalised Classes','Live Classes (50 hrs)','1500+ Score / 200+ Points Jump Guarantee','Expert Feedback on every test','Personalised Refresher Sessions','Dedicated Student Success Manager','Profile Assessment with Ivy League Counsellor'],
+    prices:{ AED:{mrp:16875,floor:10125}, SAR:{mrp:16875,floor:10125}, QAR:{mrp:16875,floor:10125}, INR:{mrp:275000,floor:185000,gst:true} }
+  },
+  SGP60H: {
+    badge:'SAT ULTIMATE · SGP 60H', name:'SAT Ultimate 60H', type:'sgp',
+    validity:'1 year or 2 attempts',
+    feats:['1:1 Personalised Classes','Live Classes (60 hrs)','1500+ Score / 200+ Points Jump Guarantee','Expert Feedback on every test','Personalised Refresher Sessions','Dedicated Student Success Manager','Profile Assessment with Ivy League Counsellor'],
+    prices:{ AED:{mrp:20250,floor:12150}, SAR:{mrp:20250,floor:12150}, QAR:{mrp:20250,floor:12150}, INR:{mrp:330000,floor:220000,gst:true} }
+  },
+  REG40H: {
+    badge:'REGULAR · REG 40H', name:'Regular 40 Hours', type:'reg',
+    validity:'2.5–3 months',
+    feats:['40+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    prices:{ AED:{mrp:6700,floor:4300}, SAR:{mrp:6700,floor:4300}, QAR:{mrp:6700,floor:4300}, INR:{mrp:160000,floor:130000,gst:true} }
+  },
+  REG50H: {
+    badge:'REGULAR · REG 50H', name:'Regular 50 Hours', type:'reg',
+    validity:'3–3.5 months',
+    feats:['50+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    prices:{ AED:{mrp:8375,floor:5375}, SAR:{mrp:8375,floor:5375}, QAR:{mrp:8375,floor:5375}, INR:{mrp:200000,floor:162000,gst:true} }
+  },
+  REG60H: {
+    badge:'REGULAR · REG 60H', name:'Regular 60 Hours', type:'reg',
+    validity:'3.5–4 months',
+    feats:['60+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    prices:{ AED:{mrp:10050,floor:6450}, SAR:{mrp:10050,floor:6450}, QAR:{mrp:10050,floor:6450}, INR:{mrp:240000,floor:194000,gst:true} }
+  },
+  REG30H: {
+    badge:'REGULAR · REG 30H', name:'Regular 30 Hours', type:'reg',
+    validity:'~2 months',
+    feats:['30+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    prices:{ AED:{mrp:5025,floor:3300}, SAR:{mrp:5025,floor:3300}, QAR:{mrp:5025,floor:3300}, INR:{mrp:120000,floor:90000,gst:true} }
+  },
+  REG20H: {
+    badge:'REGULAR · REG 20H', name:'Regular 20 Hours', type:'reg',
+    validity:'1 month',
+    feats:['20+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    prices:{ AED:{mrp:4025,floor:2300}, SAR:{mrp:4025,floor:2300}, QAR:{mrp:4025,floor:2300}, INR:{mrp:100000,floor:70000,gst:true} }
+  }
+};
+
+const CURRENCY_SYMBOLS = { AED:'AED', SAR:'SAR', QAR:'QAR', INR:'₹' };
+
+const ALL_COUPONS = {
+  "SCORE1400": { pct:30, type:"scholarship" },
+  "SCORE1200": { pct:25, type:"scholarship" },
+  "SCORE1000": { pct:20, type:"scholarship" },
+  "SCORE800":  { pct:15, type:"scholarship" },
+  "SCORE600":  { pct:10, type:"scholarship" },
+  "TUTOR10":   { pct:10, type:"special" },
+  "LIVE5":     { pct:5,  type:"live" },
+};
+
+const appliedDiscounts = {};
+let activePlanKey = 'SGP40H';
+let activeCurrency = 'AED';
+
+function fmtPrice(currency, amount) {
+  const sym = CURRENCY_SYMBOLS[currency];
+  if (currency === 'INR') {
+    return sym + amount.toLocaleString('en-IN');
+  }
+  return sym + ' ' + amount.toLocaleString();
+}
+
+function renderPlanCard(planKey, currency) {
+  const plan = PLAN_DATA[planKey];
+  const priceData = plan.prices[currency];
+  const ad = appliedDiscounts[planKey] || { scholarship:0, special:0, live:0, codes:{} };
+  const totalPct = (ad.scholarship||0) + (ad.special||0) + (ad.live||0);
+  const discounted = Math.round(priceData.mrp * (1 - totalPct/100));
+  const final = Math.max(discounted, priceData.floor);
+  const effectivePct = totalPct > 0 ? Math.round((priceData.mrp - final) / priceData.mrp * 100) : 0;
+  const isInr = currency === 'INR';
+
+  const appliedTags = Object.entries(ad.codes).map(([type, code]) => {
+    const c = ALL_COUPONS[code];
+    return `<span style="display:inline-flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px;font-family:var(--font-h)">${code} −${c.pct}%<button onclick="removeCouponNew('${planKey}','${type}')" style="background:none;border:none;cursor:pointer;color:var(--green);font-size:12px;line-height:1;padding:0;margin-left:2px">×</button></span>`;
+  }).join('');
+
+  return `
+    <div class="coupon-section" style="max-width:520px">
+      <div class="coupon-title">🏷️ Apply Discount Code</div>
+      <div class="coupon-row">
+        <div class="coupon-input-wrap">
+          <input class="coupon-input" id="cc-${planKey}" placeholder="" type="text" onkeydown="if(event.key==='Enter')applyCouponNew('cc-${planKey}','ccm-${planKey}','${planKey}')"/>
+          <button class="coupon-apply" onclick="applyCouponNew('cc-${planKey}','ccm-${planKey}','${planKey}')">Apply</button>
+        </div>
+        <div class="coupon-msg" id="ccm-${planKey}"></div>
+      </div>
+      ${appliedTags ? `<div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:6px">${appliedTags}</div>` : ''}
+    </div>
+    <div class="plan-card" style="max-width:520px">
+      <div class="plan-badge">${plan.badge}</div>
+      <div class="plan-name">${plan.name}</div>
+      <div class="plan-price-wrap">
+        <div class="plan-price" id="pp-${planKey}">${fmtPrice(currency, final)}</div>
+        ${effectivePct > 0 ? `<div class="plan-price-orig" id="po-${planKey}">${fmtPrice(currency, priceData.mrp)}</div><div class="plan-discount-badge" id="pd-${planKey}">${effectivePct}% OFF</div>` : `<div class="plan-price-orig" id="po-${planKey}" style="display:none">${fmtPrice(currency, priceData.mrp)}</div><div class="plan-discount-badge" id="pd-${planKey}" style="display:none"></div>`}
+      </div>
+      <div class="plan-price-note">One-time payment · ${plan.type==='sgp'?'1:1 Personalised Program':'Group Program'} · Valid: ${plan.validity}${isInr ? ' · <span style="color:var(--green);font-weight:600">Prices inclusive of GST</span>' : ''}</div>
+      <div class="plan-divider"></div>
+      ${plan.feats.map(f => `<div class="plan-feat"><div class="plan-chk">✓</div><div>${f}</div></div>`).join('')}
+    </div>
+  `;
+}
+
+function refreshPlanDisplay() {
+  const container = document.getElementById('active-plan-container');
+  if (container) container.innerHTML = renderPlanCard(activePlanKey, activeCurrency);
+}
+
+// Init: render roadmaps into their grids
+window.applyCouponNew = function(inputId, msgId, planKey) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  const code = input.value.trim().toUpperCase().replace(/\s/g,'');
+  const msgEl = document.getElementById(msgId);
+  if (msgEl) { msgEl.className='coupon-msg'; msgEl.style.display='none'; }
+
+  if (!code) {
+    if(msgEl){msgEl.className='coupon-msg err';msgEl.textContent='Please enter a code.';msgEl.style.display='block';} return;
+  }
+  const coupon = ALL_COUPONS[code];
+  if (!coupon) {
+    if(msgEl){msgEl.className='coupon-msg err';msgEl.textContent='❌ Invalid code. Try: SCORE1400 / SCORE1200 / SCORE1000 / SCORE800 / SCORE600 / TUTOR10 / LIVE5';msgEl.style.display='block';} return;
+  }
+  if (!appliedDiscounts[planKey]) appliedDiscounts[planKey] = { scholarship:0, special:0, live:0, codes:{} };
+  const ad = appliedDiscounts[planKey];
+  if (ad.codes[coupon.type]) {
+    if(msgEl){msgEl.className='coupon-msg err';msgEl.textContent=`❌ A ${coupon.type} code (${ad.codes[coupon.type]}) is already applied.`;msgEl.style.display='block';} return;
+  }
+  const typeKey = coupon.type === 'scholarship' ? 'scholarship' : coupon.type === 'live' ? 'live' : 'special';
+  ad[typeKey] = coupon.pct;
+  ad.codes[coupon.type] = code;
+  input.value = '';
+  refreshPlanDisplay();
+  // Re-show success msg after re-render
+  const newMsg = document.getElementById(msgId);
+  if(newMsg){newMsg.className='coupon-msg ok';newMsg.textContent=`✅ ${code} applied — ${coupon.pct}% off`;newMsg.style.display='block';}
+};
+
+window.removeCouponNew = function(planKey, type) {
+  const ad = appliedDiscounts[planKey];
+  if (!ad) return;
+  const typeKey = type === 'scholarship' ? 'scholarship' : type === 'live' ? 'live' : 'special';
+  ad[typeKey] = 0;
+  delete ad.codes[type];
+  refreshPlanDisplay();
+};
+
+// ── ROADMAP RENDERER ────────────────────────────────────────────────────────
+const ROADMAPS = {
+  sgp40h: {
+    months: [
+      { title:'Month 1', sub:'Foundation + Core Skills', weeks:[
+        {num:'Week 1',title:'Diagnostic deep-dive & study plan setup',items:'SPT results review · Identify weak areas · Personalised plan created',locked:false},
+        {num:'Week 2',title:'Reading & Writing foundations',items:'Comprehension strategies · Grammar essentials · Practice drills',locked:false},
+        {num:'Week 3',title:'Math fundamentals',items:'Algebra · Problem-solving methods · Timed practice',locked:true},
+        {num:'Week 4',title:'First mock test + analysis',items:'Full-length mock · Score report · Targeted revision plan',locked:true},
+      ]},
+      { title:'Month 2', sub:'Advanced Topics + Mock Practice', weeks:[
+        {num:'Week 5–6',title:'Advanced R&W + Math topics',items:'Higher-order questions · Data interpretation · Advanced algebra',locked:true},
+        {num:'Week 7–8',title:'Mock tests + performance review',items:'2 full-length mocks · Detailed analysis · Doubt-clearing sessions',locked:true},
+      ]},
+      { title:'Ongoing (up to 1 Year / 2 Attempts)', sub:'Refreshers, Retakes & Score Guarantee', weeks:[
+        {num:'As needed',title:'Refresher sessions + exam prep',items:'Pre-exam revision · Last-mile tips · Score guarantee support',locked:true},
+      ]},
+    ]
+  },
+  sgp50h: {
+    months: [
+      { title:'Month 1', sub:'Foundation + Diagnostic', weeks:[
+        {num:'Week 1',title:'Diagnostic deep-dive & personalised plan',items:'SPT results review · Gap analysis · Customised 50H schedule',locked:false},
+        {num:'Week 2',title:'R&W foundations + Math basics',items:'Comprehension strategies · Grammar · Core algebra',locked:false},
+        {num:'Week 3',title:'Advanced R&W concepts',items:'Inference & evidence · Complex text types · Timed practice',locked:true},
+        {num:'Week 4',title:'Mock test 1 + detailed analysis',items:'Full mock · Score report · Revision focus areas',locked:true},
+      ]},
+      { title:'Month 2', sub:'Advanced Topics + Mock Cycle', weeks:[
+        {num:'Week 5–6',title:'Advanced Math + R&W modules',items:'Data analysis · Geometry · Advanced grammar · Complex passages',locked:true},
+        {num:'Week 7–8',title:'Mock tests 2 & 3 + analysis',items:'2 full mocks · Performance trends · Doubt sessions',locked:true},
+      ]},
+      { title:'Month 3', sub:'Polish + Exam Simulation', weeks:[
+        {num:'Week 9–10',title:'Final mock cycle + speed drills',items:'2 final mocks · Error pattern analysis · Pre-exam confidence session',locked:true},
+      ]},
+      { title:'Ongoing (up to 1 Year / 2 Attempts)', sub:'Score Guarantee Support', weeks:[
+        {num:'As needed',title:'Refresher + retake prep',items:'Re-attempt support · Score guarantee coverage',locked:true},
+      ]},
+    ]
+  },
+  sgp60h: {
+    months: [
+      { title:'Month 1', sub:'Foundation + Diagnostic', weeks:[
+        {num:'Week 1',title:'Diagnostic deep-dive & personalised plan',items:'SPT results review · Gap analysis · Customised 60H schedule',locked:false},
+        {num:'Week 2',title:'R&W foundations',items:'Comprehension strategies · Grammar essentials · Practice sets',locked:false},
+        {num:'Week 3',title:'Math core topics',items:'Algebra · Problem types · Calculator strategy',locked:true},
+        {num:'Week 4',title:'Mock test 1 + analysis',items:'Full mock · Score breakdown · Revision plan',locked:true},
+      ]},
+      { title:'Month 2', sub:'Depth + Mock Practice', weeks:[
+        {num:'Week 5–7',title:'Advanced R&W + Math deep dives',items:'Hard passage types · Advanced algebra · Data interpretation',locked:true},
+        {num:'Week 8',title:'Mock tests 2 & 3 + review',items:'2 mocks · Performance tracking · Doubt clearing',locked:true},
+      ]},
+      { title:'Month 3', sub:'Intensive Revision', weeks:[
+        {num:'Week 9–10',title:'Topic-wise revision sprints',items:'Targeted weak-area sessions · Speed & accuracy drills',locked:true},
+        {num:'Week 11–12',title:'Final mocks + exam simulation',items:'2 final mocks · Exam strategies · Confidence session',locked:true},
+      ]},
+      { title:'Ongoing (up to 1 Year / 2 Attempts)', sub:'Score Guarantee Support', weeks:[
+        {num:'As needed',title:'Refresher + retake prep',items:'Re-attempt support · Score guarantee coverage',locked:true},
+      ]},
+    ]
+  },
+  reg40h: {
+    months: [
+      { title:'Month 1', sub:'Foundation + Core Concepts', weeks:[
+        {num:'Week 1',title:'Diagnostic review & personalised roadmap',items:'SPT results walkthrough · Goal setting · Study schedule',locked:false},
+        {num:'Week 2',title:'R&W: Core comprehension + grammar',items:'Reading strategies · Error identification · Practice sets',locked:false},
+        {num:'Week 3',title:'Math: Algebra + problem solving',items:'Linear equations · Word problems · Calculator strategies',locked:true},
+        {num:'Week 4',title:'Mock test 1 + detailed analysis',items:'Full mock · Score breakdown · Revision focus areas',locked:true},
+      ]},
+      { title:'Month 2', sub:'Advanced Practice + Mock Cycle', weeks:[
+        {num:'Week 5–6',title:'Advanced R&W + Math modules',items:'Complex passages · Data analysis · Advanced math topics',locked:true},
+        {num:'Week 7–8',title:'Mock tests 2 & 3 + analysis',items:'2 full mocks · Performance trends · Doubt sessions',locked:true},
+      ]},
+      { title:'Month 3 (Final)', sub:'Exam Ready', weeks:[
+        {num:'Week 9–10',title:'Final revision + exam simulation',items:'Speed drills · Final mock · Pre-exam confidence session',locked:true},
+      ]},
+    ]
+  },
+  reg50h: {
+    months: [
+      { title:'Month 1', sub:'Foundation + Core Concepts', weeks:[
+        {num:'Week 1',title:'Diagnostic review & study plan',items:'SPT walkthrough · Personalised 50H schedule · Goal setting',locked:false},
+        {num:'Week 2',title:'R&W foundations + Math basics',items:'Comprehension strategies · Grammar · Algebra core',locked:false},
+        {num:'Week 3',title:'Advanced R&W + Math concepts',items:'Inference skills · Data analysis · Word problems',locked:true},
+        {num:'Week 4',title:'Mock test 1 + analysis',items:'Full mock · Score report · Revision focus',locked:true},
+      ]},
+      { title:'Month 2', sub:'Advanced Practice + Mock Cycle', weeks:[
+        {num:'Week 5–7',title:'Advanced modules + mock cycle',items:'Complex passages · Advanced math · 2 full mocks + analysis',locked:true},
+        {num:'Week 8',title:'Targeted revision',items:'Weak area focus · Speed drills',locked:true},
+      ]},
+      { title:'Month 3 (Final)', sub:'Exam Ready', weeks:[
+        {num:'Week 9–10',title:'Final mocks + exam simulation',items:'2 final mocks · Pre-exam session · Last-mile revision',locked:true},
+      ]},
+    ]
+  },
+  reg60h: {
+    months: [
+      { title:'Month 1', sub:'Foundation + Diagnostic', weeks:[
+        {num:'Week 1',title:'Diagnostic review & personalised plan',items:'SPT walkthrough · Gap analysis · 60H schedule',locked:false},
+        {num:'Week 2',title:'R&W + Math foundations',items:'Core comprehension · Grammar · Algebra basics',locked:false},
+        {num:'Week 3',title:'Intermediate topics',items:'Advanced reading · Data math · Word problems',locked:true},
+        {num:'Week 4',title:'Mock test 1 + analysis',items:'Full mock · Score breakdown · Revision focus',locked:true},
+      ]},
+      { title:'Month 2', sub:'Advanced Modules + Mock Cycle', weeks:[
+        {num:'Week 5–6',title:'Advanced R&W + Math deep dives',items:'Hard passage types · Advanced algebra · Geometry',locked:true},
+        {num:'Week 7–8',title:'Mock tests 2, 3 & 4 + review',items:'3 full mocks · Performance tracking · Doubt sessions',locked:true},
+      ]},
+      { title:'Month 3', sub:'Revision Sprints', weeks:[
+        {num:'Week 9–10',title:'Topic-wise revision + speed drills',items:'Targeted weak-area work · Accuracy training',locked:true},
+      ]},
+      { title:'Month 4 (Final)', sub:'Exam Ready', weeks:[
+        {num:'Week 11–12',title:'Final mocks + exam simulation',items:'2 final full mocks · Exam strategy · Confidence session',locked:true},
+      ]},
+    ]
+  },
+  reg30h: {
+    months: [
+      { title:'Month 1', sub:'Foundation + Core Skills', weeks:[
+        {num:'Week 1',title:'Diagnostic review & study plan',items:'SPT walkthrough · Identify gaps · Personalised schedule',locked:false},
+        {num:'Week 2',title:'R&W fundamentals + Math basics',items:'Core comprehension · Grammar rules · Algebra foundations',locked:false},
+        {num:'Week 3',title:'Advanced topics + first mock',items:'Higher-order R&W · Math problem-solving · Full mock test',locked:true},
+        {num:'Week 4',title:'Mock analysis + revision',items:'Score review · Targeted practice · Doubt clearing',locked:true},
+      ]},
+      { title:'Month 2 (Final stretch)', sub:'Polish & Exam Prep', weeks:[
+        {num:'Week 5–7',title:'Final mock cycle + exam simulation',items:'2 more full mocks · Speed & accuracy drills · Pre-exam session',locked:true},
+      ]},
+    ]
+  },
+  reg20h: {
+    months: [
+      { title:'Month 1 (Intensive)', sub:'Full program in 4 weeks', weeks:[
+        {num:'Week 1',title:'Diagnostic + R&W foundations',items:'SPT results · Comprehension strategies · Grammar quick-wins',locked:false},
+        {num:'Week 2',title:'Math core + first mock',items:'Key math topics · Full-length mock · Analysis session',locked:false},
+        {num:'Week 3',title:'Advanced practice + mock 2',items:'Higher-order questions · Data analysis · Second mock test',locked:true},
+        {num:'Week 4',title:'Final revision + exam simulation',items:'Speed drills · Final mock · Pre-exam confidence session',locked:true},
+      ]},
+    ]
+  }
+};
+
+// ── PROGRAM PLAN SLIDE — text input → flowchart + roadmap ──────────────────
+const PROG_HOURS = {
+  'SGP40H':40,'SGP50H':50,'SGP60H':60,
+  'REG40H':40,'REG50H':50,'REG60H':60,'REG30H':30,'REG20H':20
+};
+const PROG_TO_ROADMAP = {
+  'SGP40H':'sgp40h','SGP50H':'sgp50h','SGP60H':'sgp60h',
+  'REG40H':'reg40h','REG50H':'reg50h','REG60H':'reg60h','REG30H':'reg30h','REG20H':'reg20h'
+};
+
+document.getElementById('prog-submit-btn').addEventListener('click', generateProgramPlan);
+document.getElementById('prog-clear-btn').addEventListener('click', () => {
+  document.getElementById('prog-code').value='';
   document.getElementById('flowchart').classList.remove('show');
   document.getElementById('prog-err').style.display='none';
+  document.querySelectorAll('.plan-roadmap').forEach(r=>r.classList.remove('active'));
 });
-document.getElementById('prog-hrs').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('prog-submit-btn').click();});
+document.getElementById('prog-code').addEventListener('keydown', e => {
+  if(e.key==='Enter') generateProgramPlan();
+});
 
-// Pricing input
-document.getElementById('pf-submit-btn').addEventListener('click',showPlan);
-document.getElementById('pf-input').addEventListener('keydown',e=>{if(e.key==='Enter')showPlan();});
-function showPlan(){
-  const raw=document.getElementById('pf-input').value.trim().toUpperCase().replace(/\s+/g,'');
-  const err=document.getElementById('pf-err');
-  const hint=document.getElementById('pf-hint');
-  document.querySelectorAll('.plan-display').forEach(p=>p.classList.remove('show'));
-  const el=document.getElementById('plan-'+raw);
-  const fact=document.getElementById('pricing-fact');
-  if(el){
-    el.classList.add('show');
-    if(fact)fact.style.display='flex';
-    err.style.display='none';
-    hint.style.display='none';
-    document.getElementById('ca').scrollTo({top:document.getElementById('ca').scrollHeight,behavior:'smooth'});
-  }else{
-    err.style.display='block';
-    hint.style.display='block';
-    if(fact)fact.style.display='none';
-  }
+function generateProgramPlan() {
+  const raw = document.getElementById('prog-code').value.trim().toUpperCase().replace(/\s+/g,'');
+  const err = document.getElementById('prog-err');
+  const hours = PROG_HOURS[raw];
+  if (!hours) { err.style.display='block'; document.getElementById('flowchart').classList.remove('show'); return; }
+  err.style.display='none';
+
+  const fmt = n => Number.isInteger(n) ? n+'' : n.toFixed(1);
+  const half=hours/2, rwt=half*.75, rwr=half*.25, mt=half*.75, mr=half*.25;
+  document.getElementById('fc-total').textContent = fmt(hours)+' hrs';
+  document.getElementById('fc-rw').textContent = fmt(half)+' hrs';
+  document.getElementById('fc-math').textContent = fmt(half)+' hrs';
+  document.getElementById('fc-rw-teach').textContent = fmt(rwt)+' hrs (75%)';
+  document.getElementById('fc-rw-rev').textContent = fmt(rwr)+' hrs (25%)';
+  document.getElementById('fc-math-teach').textContent = fmt(mt)+' hrs (75%)';
+  document.getElementById('fc-math-rev').textContent = fmt(mr)+' hrs (25%)';
+  document.getElementById('fc-s-rw-t').textContent = fmt(rwt)+'h';
+  document.getElementById('fc-s-rw-r').textContent = fmt(rwr)+'h';
+  document.getElementById('fc-s-m-t').textContent = fmt(mt)+'h';
+  document.getElementById('fc-s-m-r').textContent = fmt(mr)+'h';
+
+  // Show roadmap for this plan
+  document.querySelectorAll('.plan-roadmap').forEach(r=>r.classList.remove('active'));
+  const roadmapId = PROG_TO_ROADMAP[raw];
+  if(roadmapId) document.getElementById('roadmap-'+roadmapId).classList.add('active');
+
+  document.getElementById('flowchart').classList.add('show');
+  setTimeout(()=>document.getElementById('ca').scrollTo({top:999,behavior:'smooth'}),100);
 }
 
-// Coupon — global for inline onclick
-// Coupon application function
-window.applyCoupon=function applyCoupon(inputId,msgId,planKey){
-  const input=document.getElementById(inputId);
-  const code=input.value.trim().toUpperCase();
-  const msg=document.getElementById(msgId);
-  const base=BASE_PRICES[planKey];
-  
-  // Determine if this is scholarship (c1) or special (c2) coupon
-  const isScholarship=inputId.includes('c1-');
-  const couponType=isScholarship?'scholarship':'special';
-  
-  // Clear any previous message
-  msg.textContent='';
-  msg.className='coupon-msg';
-  
-  if(!code){
-    msg.className='coupon-msg err';
-    msg.textContent='Please enter a coupon code.';
-    msg.style.display='block';
-    return;
-  }
-  
-  // Check if code exists in the correct coupon type
-  let discount;
-  if(isScholarship){
-    discount=SCHOLARSHIP_COUPONS[code];
-    if(discount===undefined){
-      msg.className='coupon-msg err';
-      msg.textContent='❌ Invalid scholarship coupon. Try: SCORE1400+, SCORE1200+, SCORE1000+, SCORE800+, or SCORE<800';
-      msg.style.display='block';
-      return;
-    }
-  }else{
-    discount=SPECIAL_COUPONS[code];
-    if(discount===undefined){
-      msg.className='coupon-msg err';
-      msg.textContent='❌ Invalid special discount code. Try: TUTOR10';
-      msg.style.display='block';
-      return;
-    }
-  }
-  
-  // Initialize discount tracking for this plan if needed
-  if(!appliedDiscounts[planKey]){
-    appliedDiscounts[planKey]={scholarship:0,special:0,codes:{}};
-  }
-  
-  // Apply the discount
-  appliedDiscounts[planKey][couponType]=discount;
-  appliedDiscounts[planKey].codes[couponType]=code;
-  
-  // Calculate total discount and final price
-  const totalDiscount=appliedDiscounts[planKey].scholarship+appliedDiscounts[planKey].special;
-  const discountAmount=Math.round(base*(totalDiscount/100));
-  const finalPrice=base-discountAmount;
-  
-  // Update display
-  document.getElementById('pp-'+planKey).textContent='AED '+finalPrice.toLocaleString();
-  const origEl=document.getElementById('po-'+planKey);
-  origEl.textContent='AED '+base.toLocaleString();
-  origEl.style.display='inline';
-  
-  const discBadge=document.getElementById('pd-'+planKey);
-  discBadge.textContent=totalDiscount+'% OFF';
-  discBadge.style.display='inline-flex';
-  
-  // Show success message with clear button
-  msg.className='coupon-msg ok';
-  msg.innerHTML=`✅ ${code} applied! ${discount}% off — AED ${Math.round(base*(discount/100)).toLocaleString()} saved. <button class="coupon-clear-btn" onclick="clearCoupon('${inputId}','${msgId}','${planKey}','${couponType}')">Clear</button>`;
-  msg.style.display='block';
-  
-  // Disable input after successful application
-  input.disabled=true;
-  input.style.opacity='0.6';
+// ── PRICING SLIDE — text input driven ──────────────────────────────────────
+window.showPricingPlan = function() {
+  const raw = document.getElementById('pricing-code-input').value.trim().toUpperCase().replace(/\s+/g,'');
+  const err = document.getElementById('pricing-err');
+  if (!PLAN_DATA[raw]) { err.style.display='block'; document.getElementById('active-plan-container').innerHTML=''; return; }
+  err.style.display='none';
+  activePlanKey = raw;
+  refreshPlanDisplay();
+  setTimeout(()=>document.getElementById('ca').scrollTo({top:999,behavior:'smooth'}),100);
+};
+
+window.onCurrencyChange = function() {
+  activeCurrency = document.getElementById('currency-select').value;
+  if(document.getElementById('active-plan-container').innerHTML) refreshPlanDisplay();
+};
+
+// ── PLAN CARD RENDERER ──────────────────────────────────────────────────────
+function switchPlan(planId, btn) {
+  // legacy — no longer used in UI but keep for safety
 }
 
-// Clear coupon function
-window.clearCoupon=function clearCoupon(inputId,msgId,planKey,couponType){
-  const input=document.getElementById(inputId);
-  const msg=document.getElementById(msgId);
-  const base=BASE_PRICES[planKey];
-  
-  // Remove the discount
-  if(appliedDiscounts[planKey]){
-    appliedDiscounts[planKey][couponType]=0;
-    delete appliedDiscounts[planKey].codes[couponType];
-  }
-  
-  // Recalculate total discount
-  const totalDiscount=(appliedDiscounts[planKey]?.scholarship||0)+(appliedDiscounts[planKey]?.special||0);
-  
-  if(totalDiscount>0){
-    const discountAmount=Math.round(base*(totalDiscount/100));
-    const finalPrice=base-discountAmount;
-    document.getElementById('pp-'+planKey).textContent='AED '+finalPrice.toLocaleString();
-    document.getElementById('pd-'+planKey).textContent=totalDiscount+'% OFF';
-  }else{
-    // No discounts applied, show original price
-    document.getElementById('pp-'+planKey).textContent='AED '+base.toLocaleString();
-    document.getElementById('po-'+planKey).style.display='none';
-    document.getElementById('pd-'+planKey).style.display='none';
-  }
-  
-  // Clear input and message
-  input.value='';
-  input.disabled=false;
-  input.style.opacity='1';
-  msg.textContent='';
-  msg.style.display='none';
-  msg.className='coupon-msg';
+function renderRoadmaps() {
+  Object.entries(ROADMAPS).forEach(([planId, data]) => {
+    const grid = document.getElementById('rg-'+planId);
+    if (!grid) return;
+    grid.innerHTML = data.months.map(month => `
+      <div class="rm-month">
+        <div class="rm-month-hdr">
+          <span class="rm-month-title">${month.title}</span>
+          <span class="rm-month-sub">${month.sub}</span>
+        </div>
+        <div class="rm-weeks">
+          ${month.weeks.map(week => `
+            <div class="rm-week${week.locked?' locked':''}">
+              <div class="rm-week-num">${week.num}</div>
+              <div class="rm-week-content">
+                <div class="rm-week-title">${week.title}</div>
+                <div class="rm-week-items">${week.items}</div>
+              </div>
+              ${week.locked ? `<div class="rm-lock-overlay"><span class="rm-lock-icon">🔒</span><span class="rm-lock-txt">Unlocked on enrollment</span></div>` : ''}
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  });
 }
+
+renderRoadmaps();
 
 }); // end DOMContentLoaded
 </script>

@@ -1467,22 +1467,53 @@ window.enterFullscreenPresentation=enterFullscreenPresentation;
 // ── GOOGLE SHEETS LEAD CAPTURE ─────────────────────────────────────────────
 // SETUP: Replace this URL with your Google Apps Script Web App URL
 // See README comment below for setup instructions
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyH6o0B4UGo2Q5LIem-asas2fkw1GoaYPlvPVVolSM5Pnjjv3-x_MPybH6YlweROk5hSA/exec';
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbywb0D5-n1qRjsoHgJqKsnwQPCuQvusZLNr0QMCNxXjZUF5rSuhZ4O3L7TzWTIUijq7dg/exec';
 
-async function submitLead(name, phone, email) {
-  if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === 'https://script.google.com/macros/s/AKfycbyH6o0B4UGo2Q5LIem-asas2fkw1GoaYPlvPVVolSM5Pnjjv3-x_MPybH6YlweROk5hSA/exec') return;
+// ── SESSION STATE (tracked throughout the demo) ─────────────────────────────
+const sessionData = {
+  name:'', phone:'', email:'',
+  programPlanCode:'', pricingPlan:'', pricingCurrency:'',
+  couponsApplied:'', finalPrice:''
+};
+
+async function postToSheet(payload) {
+  if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') return;
   try {
-    const params = new URLSearchParams({ name, phone, email,
-      timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
-      source: 'SAT Demo Platform'
-    });
     await fetch(GOOGLE_SHEET_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params.toString()
+      body: new URLSearchParams(payload).toString()
     });
-  } catch(e) { /* silently fail */ }
+  } catch(e) {}
+}
+
+function submitLead(name, phone, email) {
+  // prefix phone with apostrophe char so Sheets treats it as text, not formula
+  postToSheet({
+    action: 'lead',
+    timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
+    name,
+    phone: phone ? "'" + phone : '',   // ← fixes #ERROR for +91 numbers
+    email,
+    source: 'SAT Demo Platform'
+  });
+}
+
+function submitSessionSummary() {
+  // Called when a pricing plan is shown — sends full session snapshot
+  postToSheet({
+    action: 'session',
+    timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
+    name: sessionData.name,
+    phone: sessionData.phone ? "'" + sessionData.phone : '',
+    email: sessionData.email,
+    program_plan_code: sessionData.programPlanCode || '—',
+    pricing_plan: sessionData.pricingPlan || '—',
+    currency: sessionData.pricingCurrency || '—',
+    coupons_applied: sessionData.couponsApplied || 'None',
+    final_price: sessionData.finalPrice || '—'
+  });
 }
 
 // Personalise + lead capture
@@ -1492,10 +1523,12 @@ document.getElementById('start-btn').addEventListener('click', async () => {
   const email = document.getElementById('inp-email').value.trim();
   const status = document.getElementById('lead-status');
 
-  if (!name) {
-    document.getElementById('inp-name').focus();
-    return;
-  }
+  if (!name) { document.getElementById('inp-name').focus(); return; }
+
+  // Store in session
+  sessionData.name = name;
+  sessionData.phone = phone;
+  sessionData.email = email;
 
   // Update sidebar
   document.getElementById('sb-name').textContent = name;
@@ -1505,7 +1538,7 @@ document.getElementById('start-btn').addEventListener('click', async () => {
   document.getElementById('sb-block').classList.add('vis');
   document.getElementById('onboard-title').textContent = 'The Onboarding Process for ' + name.split(' ')[0];
 
-  // Submit lead in background (non-blocking)
+  // Submit lead
   if (phone || email) {
     submitLead(name, phone, email);
     status.style.display = 'block';
@@ -1874,6 +1907,9 @@ function generateProgramPlan() {
   const roadmapId = PROG_TO_ROADMAP[raw];
   if(roadmapId) document.getElementById('roadmap-'+roadmapId).classList.add('active');
 
+  // Track in session
+  sessionData.programPlanCode = raw;
+
   document.getElementById('flowchart').classList.add('show');
   setTimeout(()=>document.getElementById('ca').scrollTo({top:999,behavior:'smooth'}),100);
 }
@@ -1886,6 +1922,20 @@ window.showPricingPlan = function() {
   err.style.display='none';
   activePlanKey = raw;
   refreshPlanDisplay();
+
+  // Track in session
+  sessionData.pricingPlan = raw;
+  sessionData.pricingCurrency = activeCurrency;
+  // Coupons + final price captured after render — slight delay to let DOM settle
+  setTimeout(() => {
+    const ad = appliedDiscounts[raw] || {};
+    const codes = Object.values(ad.codes || {});
+    sessionData.couponsApplied = codes.length ? codes.join(' + ') : 'None';
+    const priceEl = document.getElementById('pp-' + raw);
+    sessionData.finalPrice = priceEl ? priceEl.textContent : '—';
+    submitSessionSummary();
+  }, 300);
+
   setTimeout(()=>document.getElementById('ca').scrollTo({top:999,behavior:'smooth'}),100);
 };
 

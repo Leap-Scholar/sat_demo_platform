@@ -1467,22 +1467,22 @@ window.enterFullscreenPresentation=enterFullscreenPresentation;
 // ── GOOGLE SHEETS LEAD CAPTURE ─────────────────────────────────────────────
 // SETUP: Replace this URL with your Google Apps Script Web App URL
 // See README comment below for setup instructions
-const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwHPPdi3ypyrOOLTDJ29MIuNjZ1P1baIWezaTjRJVGO28WPwvx-yk9n9QaXq7v2-MmStA/exec';
+const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyH6o0B4UGo2Q5LIem-asas2fkw1GoaYPlvPVVolSM5Pnjjv3-x_MPybH6YlweROk5hSA/exec';
 
 async function submitLead(name, phone, email) {
-  if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === 'https://script.google.com/macros/s/AKfycbwHPPdi3ypyrOOLTDJ29MIuNjZ1P1baIWezaTjRJVGO28WPwvx-yk9n9QaXq7v2-MmStA/exec') return;
+  if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === 'https://script.google.com/macros/s/AKfycbyH6o0B4UGo2Q5LIem-asas2fkw1GoaYPlvPVVolSM5Pnjjv3-x_MPybH6YlweROk5hSA/exec') return;
   try {
+    const params = new URLSearchParams({ name, phone, email,
+      timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
+      source: 'SAT Demo Platform'
+    });
     await fetch(GOOGLE_SHEET_URL, {
       method: 'POST',
-      mode: 'no-cors', // required for Apps Script
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        name, phone, email,
-        timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
-        source: 'SAT Demo Platform'
-      })
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: params.toString()
     });
-  } catch(e) { /* silently fail — don't block presentation */ }
+  } catch(e) { /* silently fail */ }
 }
 
 // Personalise + lead capture

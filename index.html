@@ -1434,10 +1434,7 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(cur-1);
   }
   if(e.key==='Escape'){
-    if(!document.fullscreenElement){
-      document.body.classList.remove('pmode');
-    }
-    // Don't close notes on Escape — counsellor may still want to read them
+    document.body.classList.remove('pmode');
   }
 });
 
@@ -1446,33 +1443,18 @@ let justEnteredFullscreen = false;
 
 function enterFullscreenPresentation(){
   document.body.classList.add('pmode');
-  justEnteredFullscreen = true;
-  const elem = document.documentElement;
-  if(elem.requestFullscreen) elem.requestFullscreen();
-  else if(elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
-  else if(elem.msRequestFullscreen) elem.msRequestFullscreen();
-  // Open notes after a safe delay so fullscreen settles first
-  setTimeout(()=>{
-    openNotesWindow();
-    justEnteredFullscreen = false;
-  }, 800);
+  // Open notes after short delay
+  setTimeout(() => openNotesWindow(), 400);
 }
 
 document.addEventListener('fullscreenchange',()=>{
-  // Ignore the event right after entering — some browsers fire it spuriously
-  if(justEnteredFullscreen) return;
-  if(!document.fullscreenElement){
-    document.body.classList.remove('pmode');
-    // Don't close notes here — let user close explicitly
-    // Notes window staying open is fine and useful
-  }
+  // No longer using requestFullscreen — this handler is intentionally empty
 });
 
 const pmodeBtn=document.getElementById('pmode-btn');
 if(pmodeBtn)pmodeBtn.addEventListener('click',enterFullscreenPresentation);
 
 document.getElementById('pmn-exit').addEventListener('click',()=>{
-  if(document.fullscreenElement) document.exitFullscreen();
   document.body.classList.remove('pmode');
   if(notesWindow && !notesWindow.closed) notesWindow.close();
 });

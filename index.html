@@ -1434,28 +1434,37 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(cur-1);
   }
   if(e.key==='Escape'){
-    // fullscreenchange event handles pmode removal when in fullscreen
     if(!document.fullscreenElement){
       document.body.classList.remove('pmode');
-      if(notesWindow&&!notesWindow.closed) notesWindow.close();
     }
+    // Don't close notes on Escape — counsellor may still want to read them
   }
 });
 
 
+let justEnteredFullscreen = false;
+
 function enterFullscreenPresentation(){
   document.body.classList.add('pmode');
+  justEnteredFullscreen = true;
   const elem = document.documentElement;
   if(elem.requestFullscreen) elem.requestFullscreen();
   else if(elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
   else if(elem.msRequestFullscreen) elem.msRequestFullscreen();
-  openNotesWindow();
+  // Open notes after a safe delay so fullscreen settles first
+  setTimeout(()=>{
+    openNotesWindow();
+    justEnteredFullscreen = false;
+  }, 800);
 }
 
 document.addEventListener('fullscreenchange',()=>{
+  // Ignore the event right after entering — some browsers fire it spuriously
+  if(justEnteredFullscreen) return;
   if(!document.fullscreenElement){
     document.body.classList.remove('pmode');
-    if(notesWindow && !notesWindow.closed) notesWindow.close();
+    // Don't close notes here — let user close explicitly
+    // Notes window staying open is fine and useful
   }
 });
 

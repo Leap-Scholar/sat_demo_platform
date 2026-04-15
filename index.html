@@ -990,7 +990,7 @@ body.pmode .slide-content-logo {
       <div class="ct" style="margin-bottom:11px">How we ensure students achieve the promised score</div>
       <div class="g4">
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">👤</div><div style="font-size:12px;color:var(--gray600)">Dedicated Student Success Manager</div></div>
-        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📅</div><div style="font-size:12px;color:var(--gray600)">Weekly P&T (Parents & Teachers) Meeting</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📅</div><div style="font-size:12px;color:var(--gray600)">Biweekly P&T (Parents & Teachers) Meeting</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📊</div><div style="font-size:12px;color:var(--gray600)">Progress Tracker</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">💬</div><div style="font-size:12px;color:var(--gray600)">Extended WhatsApp Support</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📚</div><div style="font-size:12px;color:var(--gray600)">Revision & Vocabulary Booster</div></div>
@@ -1147,7 +1147,7 @@ body.pmode .slide-content-logo {
           <div class="cmprow"><div class="chkico">✓</div>AI-personalised study plan</div>
           <div class="cmprow"><div class="chkico">✓</div>Diagnostic baseline test (SPT)</div>
           <div class="cmprow"><div class="chkico">✓</div>Dedicated Student Success Manager</div>
-          <div class="cmprow"><div class="chkico">✓</div>Weekly P&T (Parent-Teacher) meetings</div>
+          <div class="cmprow"><div class="chkico">✓</div>Biweekly P&T (Parent-Teacher) meetings</div>
           <div class="cmprow"><div class="chkico">✓</div>Live doubt-solving sessions</div>
           <div class="cmprow"><div class="chkico">✓</div>10+ full-length mock tests</div>
           <div class="cmprow"><div class="chkico">✓</div>University shortlisting & counselling</div>
@@ -1363,6 +1363,7 @@ body.pmode .slide-content-logo {
   <button class="pmn-btn" id="pmn-prev">←</button>
   <div class="pmn-counter" id="pmn-counter">1 / 15</div>
   <button class="pmn-btn" id="pmn-next">→</button>
+  <button class="pmn-exit" id="pmn-notes-btn" style="background:rgba(249,115,22,.25);border-color:rgba(249,115,22,.4);color:#FDBA74">📝 Notes</button>
   <button class="pmn-exit" id="pmn-exit">✕ Exit</button>
 </div>
 
@@ -1413,6 +1414,8 @@ function goTo(i){
   if(btnPrev)btnPrev.disabled=i===0;
   if(btnNext)btnNext.textContent=i===SLIDES.length-1?'Finish ✓':'Next →';
   document.getElementById('ca').scrollTop=0;
+  window.cur = i; // keep global in sync for notes window buttons
+  updateNotesWindow();
   const pc=document.getElementById('pmn-counter');
   if(pc)pc.textContent=`${i+1} / ${SLIDES.length}`;
 }
@@ -1431,22 +1434,29 @@ document.addEventListener('keydown',e=>{
     if(e.key==='ArrowLeft'||e.key==='ArrowUp')goTo(cur-1);
   }
   if(e.key==='Escape'){
-    if(document.fullscreenElement) document.exitFullscreen();
-    document.body.classList.remove('pmode');
+    // fullscreenchange event handles pmode removal when in fullscreen
+    if(!document.fullscreenElement){
+      document.body.classList.remove('pmode');
+      if(notesWindow&&!notesWindow.closed) notesWindow.close();
+    }
   }
 });
 
 
 function enterFullscreenPresentation(){
   document.body.classList.add('pmode');
-  const elem=document.documentElement;
+  const elem = document.documentElement;
   if(elem.requestFullscreen) elem.requestFullscreen();
   else if(elem.webkitRequestFullscreen) elem.webkitRequestFullscreen();
   else if(elem.msRequestFullscreen) elem.msRequestFullscreen();
+  openNotesWindow();
 }
 
 document.addEventListener('fullscreenchange',()=>{
-  if(!document.fullscreenElement) document.body.classList.remove('pmode');
+  if(!document.fullscreenElement){
+    document.body.classList.remove('pmode');
+    if(notesWindow && !notesWindow.closed) notesWindow.close();
+  }
 });
 
 const pmodeBtn=document.getElementById('pmode-btn');
@@ -1455,12 +1465,303 @@ if(pmodeBtn)pmodeBtn.addEventListener('click',enterFullscreenPresentation);
 document.getElementById('pmn-exit').addEventListener('click',()=>{
   if(document.fullscreenElement) document.exitFullscreen();
   document.body.classList.remove('pmode');
+  if(notesWindow && !notesWindow.closed) notesWindow.close();
 });
 
 document.getElementById('pmn-prev').addEventListener('click',()=>goTo(cur-1));
 document.getElementById('pmn-next').addEventListener('click',()=>goTo(cur+1));
 
-window.enterFullscreenPresentation=enterFullscreenPresentation;
+// ── SPEAKER NOTES (popup window — invisible when sharing a window in Meet) ──
+const SLIDE_NOTES = [
+  // Slide 1 — Welcome
+  `🎤 SELF INTRODUCTION
+"Hey [Name], I'm [Your Name], a senior academic counsellor here. I mainly work with students on their SAT prep and help them build a clear roadmap — from where they are right now to the score they actually need for their target universities."
+
+"I've worked with more than 500 students in a similar stage — with a structured plan, most improved to 1450+ and got into top-choice universities with good scholarships."
+
+"Today I'll keep this simple and practical — understand where you stand, what your target should be, and what plan would work for your schedule."
+
+💬 STUDENT INTRO QUESTIONS (ask only what you don't already know):
+• Which grade are you in?
+• Which country are you targeting?
+• Any universities in mind?
+• What course are you planning?
+• Have you taken the SAT before?
+• What does your weekly schedule look like?`,
+
+  // Slide 2 — Application Process
+  `📋 SLIDE 2 — APPLICATION PROCESS
+"Let me quickly give you a big-picture understanding of how SAT and UG admissions work."
+
+✅ Mandatory: Transcript, GPA, SAT, IELTS, SOP, LOR, Essay
+⭐ Optional (but add value): Extracurriculars, Social activities
+
+Key point: "Apart from extracurricular and social activities, everything else is mandatory."
+
+❓ Check for doubts before moving on.`,
+
+  // Slide 3 — Why SAT
+  `🎯 SLIDE 3 — WHY SAT MATTERS
+"Before today, what was your understanding of the SAT?"
+
+"SAT is one of the biggest factors in US admissions — it directly impacts both admissions AND scholarships."
+
+Explain 3 pillars:
+1. Standardised Comparison — 90% higher admission chance
+2. Self Assessment — know your strengths & weaknesses
+3. Scholarship Opportunities — up to AED 2,93,000
+
+"Are there any doubts so far?"
+
+"Now that you know how SAT influences admissions — what's your target score going to be?"
+"Have you registered for the SAT already, or yet to register?"
+
+If YES: "Great. We have [...] days left. Let's build a personalised roadmap."
+If NO: "That's totally fine — clarity before action is a sign of good decision-making."`,
+
+  // Slide 4 — Diagnostic (SPT)
+  `🧪 SLIDE 4 — DIAGNOSTIC TEST (SPT)
+"Now, can we have a quick test to see how close you are to your target score?"
+
+"I'll share a link via the chatbox. This is NOT an exam — just a quick way to understand your current level."
+
+📌 14 questions · 15 minutes · Don't rush
+
+── AFTER TEST RESULTS ──
+"First of all — good job completing the test. Let's break down your performance."
+
+"Based on your responses, you got [X/14 correct]."
+"If you took the SAT right now, you'd score roughly [Score]."
+
+Ask:
+• "Does this match what you expected?"
+• "Which section felt harder — Math or Verbal?"
+• "Why are you targeting this specific score?"
+• "How many attempts are you planning?"
+• "On a scale of 1–10, how serious are you right now?"
+
+Gap analysis:
+"From where you are today, there's a [X-point gap]."
+"This gap doesn't close automatically — this is exactly where most students struggle."`,
+
+  // Slide 5 — University Explorer
+  `🎓 SLIDE 5 — UNIVERSITY EXPLORER
+"Now let's connect your score to actual college opportunities."
+
+👉 Show colleges at CURRENT score first
+👉 Then show colleges at IMPROVED score
+
+"Which of these colleges excites you the most?"
+"Would scholarships be important for you?"
+
+"Just a 100-point jump can unlock ALL these universities — and scholarships are heavily score-dependent. The higher the score, the higher the opportunities."
+
+"This is why optimising your SAT score is one of the highest ROI efforts a student can make."`,
+
+  // Slide 6 — Program Plan
+  `📅 SLIDE 6 — PROGRAM STUDY PLAN
+"Based on your profile, you're at [X] points and we need to close a [X-point] gap in [...] days. Fixing this requires [X] hours of expert 1:1 class."
+
+"Planning the next [X hours] in a structured approach reduces stress and keeps you consistent."
+
+What they really need:
+✅ Structured prep
+✅ Consistency  
+✅ Expert feedback
+
+"That's exactly what this program is designed for."
+
+Explain the hour breakdown (R&W 50% / Math 50%, Teaching 75% / Revision 25%)
+
+"What do you think you'll need to stay consistent throughout this program?"`,
+
+  // Slide 7 — AI Dashboard
+  `💻 SLIDE 7 — AI DASHBOARD
+Give a quick walkthrough — mention features and how each helps the student.
+
+Key questions:
+• "How do you feel about the program — are we meeting your requirements?"
+• "How do you think these sessions could help you improve faster?"
+
+*If pitching SGP:*
+"Now that you're satisfied with the program — what if I told you there's more?"
+"Yes — our services don't just end here. Let me show you what else we have."`,
+
+  // Slide 8 — Score Guarantee
+  `🏆 SLIDE 8 — WHAT'S UNIQUE ABOUT LEAP
+Score Guarantee:
+• Score >1200 → 1500+ guaranteed
+• Score <1200 → 200+ point improvement guaranteed
+• If not achieved → FREE additional training, no questions asked
+
+Support system:
+👤 Dedicated Student Success Manager
+📅 Biweekly P&T meetings
+📊 Progress Tracker
+💬 WhatsApp support (instant doubt clearing)
+📚 Revision & Vocabulary programs
+📖 Reading Workshops
+🧩 Customised learning plan
+🎯 Extra focus on grey areas
+
+"For parents — visibility and assurance. For students — clarity, support, and confidence on test day."`,
+
+  // Slide 9 — Teachers
+  `👩‍🏫 SLIDE 9 — MEET YOUR TEACHERS
+"These are your master tutors — they carry [X] years of experience and have worked with [X] students struggling with SAT prep."
+
+"They are NOT random Math or English tutors — they are certified SAT trainers."
+
+Personalise: highlight English OR Math teacher based on student's weak area.`,
+
+  // Slide 10 — Our Students
+  `📊 SLIDE 10 — OUR STUDENTS
+"Here is a list of students who began their journey just like you are doing right now — and achieved their target score with guided prep."
+
+"Every one of them is now in their dream universities, most with good scholarships."
+
+"Can I expect YOUR name at the top of this list very soon?"
+"I would proudly brag about you to my upcoming students! 😄"
+
+👉 Find a student from a similar school or background to make it personal.`,
+
+  // Slide 11 — Comparison
+  `⚖️ SLIDE 11 — COMPARISON
+"Not all SAT prep is the same. Here's why thousands of families choose Leap over local coaching and self-study."
+
+Read out the key differences clearly.
+
+Closing questions:
+• "Am I making sense to you?"
+• "Have we covered everything so far?"
+• "How confident are you right now — confident enough to achieve your target score?"`,
+
+  // Slide 12 — Reviews
+  `⭐ SLIDE 12 — REVIEWS
+"Here are a few reviews from our students and parents."
+
+Pick the review most relevant to this student's profile and read it aloud.
+
+752 Google reviews · 4.7★ — very strong social proof.`,
+
+  // Slide 13 — Leap Universe
+  `🌐 SLIDE 13 — LEAP UNIVERSE
+"Apart from SAT, here are a few other services we provide to our students."
+
+Brief walkthrough — position as long-term study abroad partner, not just a coaching centre.`,
+
+  // Slide 14 — Onboarding
+  `🚀 SLIDE 14 — ONBOARDING PROCESS
+"Here's exactly what happens after you enrol — a clear 5-step journey to get started within 24–48 hours."
+
+Walk through each step clearly and confidently.
+
+"Classes start within 48 hours of enrollment."
+"Would you like to take the diagnostic today?"`,
+
+  // Slide 15 — Pricing
+  `💰 SLIDE 15 — PRICING
+"The best program for you today is [X]. This comes with [read features] at just [MRP]."
+
+SCHOLARSHIP SEQUENCE:
+1️⃣ "As appreciation for your Score Predictor performance, we're happy to provide a scholarship of [X%]." → Apply SCORE coupon
+
+2️⃣ If needed: "The tutor has also given an additional 10% discount for you today." → Apply TUTOR10
+
+3️⃣ Only if still hesitant: "If you're enrolling live with us today, I can offer an extra 5% live coupon — only for today." → Apply LIVE5
+
+"Let me go ahead and get this deal locked in for you today." 🤝
+
+⚠️ REMINDER: Never go below the rock bottom price.`,
+];
+
+let notesWindow = null;
+
+function openNotesWindow() {
+  if (notesWindow && !notesWindow.closed) { notesWindow.close(); }
+  const w = 460, h = 580;
+  const left = window.screen.width - w - 16;
+  const top = 60;
+  try {
+    notesWindow = window.open('', 'SpeakerNotes',
+      `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes,location=no,menubar=no,toolbar=no,status=no`);
+    if (!notesWindow || notesWindow.closed || typeof notesWindow.closed === 'undefined') {
+      alert('⚠️ Popup blocked!\n\nAllow popups for this site:\n1. Click the popup icon in the address bar\n2. Allow popups\n3. Click Present again');
+      return;
+    }
+    notesWindow.document.write(buildNotesPopupHTML(cur));
+    notesWindow.document.close();
+    notesWindow.focus();
+  } catch(e) { console.error(e); }
+}
+
+function buildNotesPopupHTML(idx) {
+  const notes = SLIDE_NOTES[idx] || 'No notes for this slide.';
+  const title = SLIDES[idx]?.t || '';
+  const total = SLIDES.length;
+  const formatted = notes
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/\n/g,'<br>');
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<title>Speaker Notes</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f1535;color:#fff;display:flex;flex-direction:column;height:100vh;overflow:hidden}
+  .hdr{background:#1a2460;padding:12px 18px;border-bottom:1px solid rgba(255,255,255,.1);flex-shrink:0}
+  .hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+  .badge{font-size:9px;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.35);font-weight:700}
+  .priv{background:rgba(239,68,68,.25);color:#FCA5A5;padding:2px 8px;border-radius:20px;font-size:9px;font-weight:700;letter-spacing:.5px}
+  .slide-title{font-size:14px;font-weight:700;color:#a5b4fc}
+  .counter{font-size:11px;color:rgba(255,255,255,.4);white-space:nowrap}
+  .content{flex:1;overflow-y:auto;padding:16px 20px;font-size:13.5px;line-height:1.85;color:rgba(255,255,255,.92)}
+  .content::-webkit-scrollbar{width:4px}
+  .content::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2);border-radius:4px}
+  .tip{padding:10px 20px;background:#1a2460;border-top:1px solid rgba(255,255,255,.08);font-size:10px;color:rgba(255,255,255,.3);flex-shrink:0;text-align:center}
+</style>
+</head><body>
+<div class="hdr">
+  <div class="hdr-top">
+    <span class="badge">📝 Speaker Notes &nbsp;<span class="priv">PRIVATE</span></span>
+    <span class="counter" id="ctr">Slide ${idx+1} / ${total}</span>
+  </div>
+  <div class="slide-title" id="stitle">${title}</div>
+</div>
+<div class="content" id="ncontent">${formatted}</div>
+<div class="tip">💡 In Google Meet → Share Screen → A Window → select the platform. This popup stays private.</div>
+</body></html>`;
+}
+
+function updateNotesWindow() {
+  if (notesWindow && !notesWindow.closed) {
+    try {
+      const d = notesWindow.document;
+      if (d.getElementById('ncontent')) {
+        const notes = SLIDE_NOTES[cur] || 'No notes for this slide.';
+        const formatted = notes
+          .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+          .replace(/\n/g,'<br>');
+        d.getElementById('ncontent').innerHTML = formatted;
+        d.getElementById('stitle').textContent = SLIDES[cur]?.t || '';
+        d.getElementById('ctr').textContent = `Slide ${cur+1} / ${SLIDES.length}`;
+        d.getElementById('ncontent').scrollTop = 0;
+      }
+    } catch(e) {}
+  }
+}
+
+function toggleNotes() {
+  if (notesWindow && !notesWindow.closed) {
+    notesWindow.close(); notesWindow = null;
+  } else {
+    openNotesWindow();
+  }
+}
+
+document.getElementById('pmn-notes-btn').addEventListener('click', toggleNotes);
+
+// Also expose goTo globally so notes window prev/next buttons work
+window.goTo = goTo;
+window.cur = 0;
 
 
 
@@ -1583,31 +1884,31 @@ const PLAN_DATA = {
   REG40H: {
     badge:'REGULAR · REG 40H', name:'Regular 40 Hours', type:'reg',
     validity:'2.5–3 months',
-    feats:['40+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    feats:['40+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
     prices:{ AED:{mrp:6700,floor:4300}, SAR:{mrp:6700,floor:4300}, QAR:{mrp:6700,floor:4300}, INR:{mrp:160000,floor:100000,gst:true} }
   },
   REG50H: {
     badge:'REGULAR · REG 50H', name:'Regular 50 Hours', type:'reg',
     validity:'3–3.5 months',
-    feats:['50+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    feats:['50+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
     prices:{ AED:{mrp:8375,floor:5375}, SAR:{mrp:8375,floor:5375}, QAR:{mrp:8375,floor:5375}, INR:{mrp:200000,floor:162000,gst:true} }
   },
   REG60H: {
     badge:'REGULAR · REG 60H', name:'Regular 60 Hours', type:'reg',
     validity:'3.5–4 months',
-    feats:['60+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    feats:['60+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
     prices:{ AED:{mrp:10050,floor:6450}, SAR:{mrp:10050,floor:6450}, QAR:{mrp:10050,floor:6450}, INR:{mrp:240000,floor:194000,gst:true} }
   },
   REG30H: {
     badge:'REGULAR · REG 30H', name:'Regular 30 Hours', type:'reg',
     validity:'~2 months',
-    feats:['30+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    feats:['30+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
     prices:{ AED:{mrp:5025,floor:3300}, SAR:{mrp:5025,floor:3300}, QAR:{mrp:5025,floor:3300}, INR:{mrp:120000,floor:90000,gst:true} }
   },
   REG20H: {
     badge:'REGULAR · REG 20H', name:'Regular 20 Hours', type:'reg',
     validity:'1 month',
-    feats:['20+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Profile Assessment with Ivy League Counsellor','Refresher session up to 5 hours','Dedicated Student Success Manager'],
+    feats:['20+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
     prices:{ AED:{mrp:4025,floor:2300}, SAR:{mrp:4025,floor:2300}, QAR:{mrp:4025,floor:2300}, INR:{mrp:100000,floor:70000,gst:true} }
   }
 };
@@ -1710,6 +2011,8 @@ window.applyCouponNew = function(inputId, msgId, planKey) {
   // Re-show success msg after re-render
   const newMsg = document.getElementById(msgId);
   if(newMsg){newMsg.className='coupon-msg ok';newMsg.textContent=`✅ ${code} applied — ${coupon.pct}% off`;newMsg.style.display='block';}
+  // Update session summary with latest coupon + price
+  setTimeout(() => updateSessionPricing(planKey), 200);
 };
 
 window.removeCouponNew = function(planKey, type) {
@@ -1719,6 +2022,7 @@ window.removeCouponNew = function(planKey, type) {
   ad[typeKey] = 0;
   delete ad.codes[type];
   refreshPlanDisplay();
+  setTimeout(() => updateSessionPricing(planKey), 200);
 };
 
 // ── ROADMAP RENDERER ────────────────────────────────────────────────────────
@@ -1914,6 +2218,17 @@ function generateProgramPlan() {
   setTimeout(()=>document.getElementById('ca').scrollTo({top:999,behavior:'smooth'}),100);
 }
 
+function updateSessionPricing(planKey) {
+  const ad = appliedDiscounts[planKey] || {};
+  const codes = Object.values(ad.codes || {});
+  sessionData.pricingPlan = planKey;
+  sessionData.pricingCurrency = activeCurrency;
+  sessionData.couponsApplied = codes.length ? codes.join(' + ') : 'None';
+  const priceEl = document.getElementById('pp-' + planKey);
+  sessionData.finalPrice = priceEl ? priceEl.textContent : '—';
+  submitSessionSummary();
+}
+
 // ── PRICING SLIDE — text input driven ──────────────────────────────────────
 window.showPricingPlan = function() {
   const raw = document.getElementById('pricing-code-input').value.trim().toUpperCase().replace(/\s+/g,'');
@@ -1922,20 +2237,7 @@ window.showPricingPlan = function() {
   err.style.display='none';
   activePlanKey = raw;
   refreshPlanDisplay();
-
-  // Track in session
-  sessionData.pricingPlan = raw;
-  sessionData.pricingCurrency = activeCurrency;
-  // Coupons + final price captured after render — slight delay to let DOM settle
-  setTimeout(() => {
-    const ad = appliedDiscounts[raw] || {};
-    const codes = Object.values(ad.codes || {});
-    sessionData.couponsApplied = codes.length ? codes.join(' + ') : 'None';
-    const priceEl = document.getElementById('pp-' + raw);
-    sessionData.finalPrice = priceEl ? priceEl.textContent : '—';
-    submitSessionSummary();
-  }, 300);
-
+  setTimeout(() => updateSessionPricing(raw), 300);
   setTimeout(()=>document.getElementById('ca').scrollTo({top:999,behavior:'smooth'}),100);
 };
 

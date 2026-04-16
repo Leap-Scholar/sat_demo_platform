@@ -328,7 +328,19 @@ body.pmode .pmode-nav{display:flex!important}
 .coupon-msg.err{background:#FEF2F2;color:var(--red);display:block}
 .coupon-clear-btn{background:rgba(0,0,0,0.1);border:none;color:var(--green);padding:2px 8px;border-radius:4px;font-size:10px;font-weight:600;cursor:pointer;margin-left:6px;transition:var(--tr);font-family:var(--font-h)}
 .coupon-clear-btn:hover{background:rgba(0,0,0,0.15);transform:translateY(-1px)}
-/* ══ PLAN SELECT BTNS ══ */
+/* ══ ROADMAP CHECKLIST ══ */
+.rm-check-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border:1.5px solid var(--gray200);border-radius:var(--radius-sm);background:#fff;cursor:pointer;font-size:13.5px;color:var(--gray900);transition:var(--tr);font-family:var(--font-b);user-select:none}
+.rm-check-item:hover{border-color:var(--blue);background:var(--blue-light)}
+.rm-check-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--blue);cursor:pointer;flex-shrink:0}
+.rm-check-item:has(input:checked){border-color:var(--blue);background:var(--blue-light);color:var(--navy);font-weight:500}
+/* ══ ROADMAP STEPS ══ */
+.rm-step{display:flex;align-items:flex-start;gap:14px;padding:14px 18px;background:#fff;border:1px solid var(--gray200);border-radius:var(--radius);margin-bottom:10px;position:relative}
+.rm-step-num{width:30px;height:30px;border-radius:50%;background:var(--blue);color:#fff;font-family:var(--font-h);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.rm-step-content{flex:1}
+.rm-step-title{font-family:var(--font-h);font-size:14px;font-weight:700;color:var(--navy);margin-bottom:3px}
+.rm-step-time{font-size:12px;color:var(--gray600);display:flex;align-items:center;gap:5px}
+.rm-step-time::before{content:'⏱';font-size:11px}
+.rm-connector{width:2px;height:14px;background:var(--blue-mid);margin-left:28px;margin-bottom:0}
 .psel-btn{padding:7px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--gray200);background:#fff;font-family:var(--font-h);font-size:12px;font-weight:600;cursor:pointer;transition:var(--tr);color:var(--gray600);white-space:nowrap}
 .psel-btn:hover{border-color:var(--blue);color:var(--blue)}
 .psel-btn.active{border-color:var(--blue);background:var(--blue);color:#fff}
@@ -515,28 +527,29 @@ body.pmode .slide-content-logo {
     <div class="ni active" data-i="0"><span class="nnum">1</span>Welcome</div>
 
     <div class="sb-grp">About SAT</div>
-    <div class="ni" data-i="1"><span class="nnum">2</span>Application Process</div>
-    <div class="ni" data-i="2"><span class="nnum">3</span>Why SAT Matters</div>
+    <div class="ni" data-i="1"><span class="nnum">2</span>Why SAT Matters</div>
 
     <div class="sb-grp">Our Approach</div>
-    <div class="ni" data-i="3"><span class="nnum">4</span>Diagnostic Test</div>
-    <div class="ni" data-i="4"><span class="nnum">5</span>University Explorer</div>
-    <div class="ni" data-i="5"><span class="nnum">6</span>Program Plan <span class="ni-badge"></span></div>
-    <div class="ni" data-i="6"><span class="nnum">7</span>AI Dashboard</div>
+    <div class="ni" data-i="2"><span class="nnum">3</span>Diagnostic Test</div>
+    <div class="ni" data-i="3"><span class="nnum">4</span>University Explorer</div>
+    <div class="ni" data-i="4"><span class="nnum">5</span>Program Plan <span class="ni-badge"></span></div>
+    <div class="ni" data-i="5"><span class="nnum">6</span>AI Dashboard</div>
 
     <div class="sb-grp">Our Program</div>
-    <div class="ni" data-i="7"><span class="nnum">8</span>Score Guarantee</div>
-    <div class="ni" data-i="8"><span class="nnum">9</span>Expert Teachers</div>
+    <div class="ni" data-i="6"><span class="nnum">7</span>Score Guarantee</div>
+    <div class="ni" data-i="7"><span class="nnum">8</span>Expert Teachers</div>
 
     <div class="sb-grp">Proof</div>
-    <div class="ni" data-i="9"><span class="nnum">10</span>Our Students</div>
-    <div class="ni" data-i="10"><span class="nnum">11</span>Comparison</div>
-    <div class="ni" data-i="11"><span class="nnum">12</span>Reviews</div>
+    <div class="ni" data-i="8"><span class="nnum">9</span>Our Students</div>
+    <div class="ni" data-i="9"><span class="nnum">10</span>Comparison</div>
+    <div class="ni" data-i="10"><span class="nnum">11</span>Reviews</div>
 
     <div class="sb-grp">Close</div>
-    <div class="ni" data-i="12"><span class="nnum">13</span>Leap Universe</div>
-    <div class="ni" data-i="13"><span class="nnum">14</span>Onboarding</div>
-    <div class="ni" data-i="14"><span class="nnum">15</span>Pricing <span class="ni-badge"></span></div>
+    <div class="ni" data-i="11"><span class="nnum">12</span>Leap Universe</div>
+    <div class="ni" data-i="12"><span class="nnum">13</span>Application Process</div>
+    <div class="ni" data-i="13"><span class="nnum">14</span>Personalised Roadmap</div>
+    <div class="ni" data-i="14"><span class="nnum">15</span>Onboarding</div>
+    <div class="ni" data-i="15"><span class="nnum">16</span>Pricing <span class="ni-badge"></span></div>
   </nav>
 
   <div class="sb-foot">
@@ -651,6 +664,19 @@ body.pmode .slide-content-logo {
             <div><label class="fl">Phone Number</label><input class="fi" id="inp-phone" placeholder="e.g. +971 50 123 4567" type="tel"/></div>
             <div><label class="fl">Email ID</label><input class="fi" id="inp-email" placeholder="e.g. aarav@gmail.com" type="email"/></div>
           </div>
+          <div class="frow">
+            <div>
+              <label class="fl">Student Grade</label>
+              <select class="fi" id="inp-grade" style="cursor:pointer">
+                <option value="">Select grade</option>
+                <option value="9">Grade 9</option>
+                <option value="10">Grade 10</option>
+                <option value="11">Grade 11</option>
+                <option value="12">Grade 12</option>
+              </select>
+            </div>
+            <div style="display:flex;align-items:flex-end"><div style="height:42px"></div></div>
+          </div>
           <div id="lead-status" style="display:none;font-size:11.5px;margin-bottom:8px;padding:6px 10px;border-radius:6px"></div>
           <button class="btn btn-n" id="start-btn" style="width:100%;justify-content:center;font-size:14px;padding:11px">Begin Presentation →</button>
         </div>
@@ -665,49 +691,8 @@ body.pmode .slide-content-logo {
         <strong>Office:</strong> Office 504, Al Moosa Tower, Sheikh Zayed Road, Media City Dubai – 3087 &nbsp;·&nbsp; Next to Emirates Tower Metro Station &nbsp;·&nbsp; KHDA Permit: 631133 &nbsp;·&nbsp; License No: 1165294
       </div>
     </div>
-
-    <!-- ══ 1 · APPLICATION PROCESS ══ -->
-    <div class="sec" data-i="1" data-notes="Walk through the 3 pillars. SAT is the most controllable variable — it can compensate for an average GPA. Let this land before moving on.">
-      
-      <div class="eyebrow"><span class="epip">2</span>About SAT</div>
-      <h1 class="ptitle">The University Application Process</h1>
-      <p class="pdesc">Understanding what top US universities look for helps students prepare strategically from day one.</p>
-      <div class="g3" style="margin-bottom:18px">
-        <div class="card">
-          <div style="font-size:26px;margin-bottom:9px">🎓</div>
-          <div class="ct">Academic Qualifications</div>
-          <ul class="iconlist">
-            <li>Transcript from 9th to 12th grade</li>
-            <li>Minimum GPA / Percentage required</li>
-            <li>90% and above for Ivy League universities</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div style="font-size:26px;margin-bottom:9px">📝</div>
-          <div class="ct">Standardised Tests</div>
-          <ul class="iconlist">
-            <li>SAT — Scholastic Assessment Test</li>
-            <li>IELTS — English Language Proficiency</li>
-            <li>Both required for most US universities</li>
-          </ul>
-        </div>
-        <div class="card">
-          <div style="font-size:26px;margin-bottom:9px">👤</div>
-          <div class="ct">Student Profiling</div>
-          <ul class="iconlist">
-            <li>SOP — Statement of Purpose</li>
-            <li>LOR — Letter of Recommendation</li>
-            <li>Essay writing</li>
-            <li>Extracurricular activities</li>
-            <li>Social activities if required</li>
-          </ul>
-        </div>
-      </div>
-      <div class="hl">The SAT sits at the heart of every application. A strong score gives universities a standardised way to compare students from different education boards worldwide — giving you a significant competitive edge.</div>
-    </div>
-
     <!-- ══ 2 · WHY SAT ══ -->
-    <div class="sec" data-i="2" data-notes="Lead with the scholarship angle — 'up to AED 2.93 lakh' gets parent attention. The 90% admission stat is a great opener.">
+    <div class="sec" data-i="1" data-notes="Lead with the scholarship angle — 'up to AED 2.93 lakh' gets parent attention. The 90% admission stat is a great opener.">
       
       <div class="eyebrow"><span class="epip">3</span>About SAT</div>
       <h1 class="ptitle">Why is the SAT Important?</h1>
@@ -748,7 +733,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 3 · DIAGNOSTIC ══ -->
-    <div class="sec" data-i="3" data-notes="Share the SPT link and have the student copy it or open it now. Frame it: '30 minutes tells us exactly where you are today — and the fastest path to your goal.'">
+    <div class="sec" data-i="2" data-notes="Share the SPT link and have the student copy it or open it now. Frame it: '30 minutes tells us exactly where you are today — and the fastest path to your goal.'">
       
       <div class="eyebrow"><span class="epip">4</span>Our Approach</div>
       <h1 class="ptitle">Aren't you excited to know how close you are to your desired score?</h1>
@@ -792,7 +777,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 4 · UNIVERSITY EXPLORER ══ -->
-    <div class="sec" data-i="4" data-notes="Open the University Explorer live. Enter the student's target score — this is an engagement moment. Let them interact with it.">
+    <div class="sec" data-i="3" data-notes="Open the University Explorer live. Enter the student's target score — this is an engagement moment. Let them interact with it.">
       
       <div class="eyebrow"><span class="epip">5</span>Our Approach</div>
       <h1 class="ptitle">University Explorer</h1>
@@ -816,7 +801,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 5 · PROGRAM PLAN ══ -->
-    <div class="sec" data-i="5" data-notes="Type the program code, generate the hour split, then scroll down to show the monthly roadmap. Week 1 & 2 are unlocked as preview — use this to create FOMO.">
+    <div class="sec" data-i="4" data-notes="Type the program code, generate the hour split, then scroll down to show the monthly roadmap. Week 1 & 2 are unlocked as preview — use this to create FOMO.">
       
       <div class="eyebrow"><span class="epip">6</span>Our Approach</div>
       <h1 class="ptitle">Your Program Roadmap</h1>
@@ -933,9 +918,9 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 6 · AI DASHBOARD ══ -->
-    <div class="sec" data-i="6" data-notes="Open the dashboard if possible. Key message: parents can track progress anytime. AI adapts daily. 10+ mocks are tracked automatically.">
+    <div class="sec" data-i="5" data-notes="Open the dashboard if possible. Key message: parents can track progress anytime. AI adapts daily. 10+ mocks are tracked automatically.">
       
-      <div class="eyebrow"><span class="epip">7</span>Our Program</div>
+      <div class="eyebrow"><span class="epip">7</span>Our Approach</div>
       <h1 class="ptitle">AI-Integrated Student Dashboard</h1>
       <p class="pdesc">A technology-powered learning platform — your student's classroom, progress tracker, and study companion in one place.</p>
       <div class="g2" style="margin-bottom:18px">
@@ -960,7 +945,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 7 · SCORE GUARANTEE ══ -->
-    <div class="sec" data-i="7" data-notes="This is the #1 differentiator. No other SAT provider in UAE offers a score guarantee. Remind parents: they are protected either way.">
+    <div class="sec" data-i="6" data-notes="This is the #1 differentiator. No other SAT provider in UAE offers a score guarantee. Remind parents: they are protected either way.">
       
       <div class="eyebrow"><span class="epip">8</span>Our Program</div>
       <h1 class="ptitle">What's Unique About Leap?</h1>
@@ -1001,7 +986,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 8 · TEACHERS ══ -->
-    <div class="sec" data-i="8" data-notes="Humanise the team. Use Asha Nayar's 30 years + 15,000 students stat. Personalise to student weakness — highlight English or Math teachers accordingly.">
+    <div class="sec" data-i="7" data-notes="Humanise the team. Use Asha Nayar's 30 years + 15,000 students stat. Personalise to student weakness — highlight English or Math teachers accordingly.">
       
       <div class="eyebrow"><span class="epip">9</span>Our Program</div>
       <h1 class="ptitle">Meet your Teachers</h1>
@@ -1077,7 +1062,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 9 · STUDENTS ══ -->
-    <div class="sec" data-i="9" data-notes="Lead with the improvement story — before vs after. The prep duration shows even 1–2 months is enough. Find a student from a similar school to make it personal.">
+    <div class="sec" data-i="8" data-notes="Lead with the improvement story — before vs after. The prep duration shows even 1–2 months is enough. Find a student from a similar school to make it personal.">
       
       <div class="eyebrow"><span class="epip">10</span>Proof</div>
       <h1 class="ptitle">Our Students This Year</h1>
@@ -1086,55 +1071,70 @@ body.pmode .slide-content-logo {
         <div class="statpill"><div class="spn" style="color:var(--blue)">1590</div><div class="spl">Top score this year</div></div>
         <div class="statpill"><div class="spn" style="color:var(--green)">1500+</div><div class="spl">Scores by multiple students</div></div>
         <div class="statpill"><div class="spn">UAE+</div><div class="spl">India · Doha · Qatar · KSA</div></div>
-        <div class="statpill"><div class="spn" style="color:var(--orange)">25+</div><div class="spl">Featured achievers</div></div>
+        <div class="statpill"><div class="spn" style="color:var(--orange)">40+</div><div class="spl">Featured achievers</div></div>
       </div>
       <div style="border:1px solid var(--gray200);border-radius:var(--radius);overflow:hidden">
-        <table class="dtable">
+        <table class="dtable" id="students-table">
           <thead>
             <tr>
               <th>Student Name</th>
               <th>School</th>
-              <th class="tc" style="color:var(--orange)">Before</th>
-              <th class="tc" style="color:var(--green)">After ✓</th>
-              <th class="tc" style="color:var(--blue)">Jump</th>
-              <th class="tc">Prep Time</th>
+              <th class="tc sort-th" onclick="sortStudents(2)" style="cursor:pointer;user-select:none;color:var(--orange)">Before <span id="sort-icon-2">⇅</span></th>
+              <th class="tc sort-th" onclick="sortStudents(3)" style="cursor:pointer;user-select:none;color:var(--green)">After ✓ <span id="sort-icon-3">⇅</span></th>
+              <th class="tc sort-th" onclick="sortStudents(4)" style="cursor:pointer;user-select:none;color:var(--blue)">Jump <span id="sort-icon-4">⇅</span></th>
+              <th class="tc sort-th" onclick="sortStudents(5)" style="cursor:pointer;user-select:none">Prep Time <span id="sort-icon-5">⇅</span></th>
             </tr>
           </thead>
-          <tbody>
-            <tr><td>Kashyap Jalali</td><td>Edify School</td><td class="tc"><span class="tag to">1160</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+350</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
-            <tr><td>Vedika Vijay Anand</td><td>Harvest International Sarjapur</td><td class="tc"><span class="tag to">1460</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+50</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
-            <tr><td>Ansh Jain</td><td>Ajyal Almaarefah International</td><td class="tc"><span class="tag to">1310</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+190</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Naya Houmsie</td><td>ISC Dubai – Al Suffouh</td><td class="tc"><span class="tag to">1370</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+150</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Yasmin</td><td>British International School, Tabuk, KSA</td><td class="tc"><span class="tag to">1260</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+280</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
-            <tr><td>Ishant Datta</td><td>DPS Modern Indian School Doha</td><td class="tc"><span class="tag to">1420</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+120</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
-            <tr><td>Arun Karthikeya</td><td>International Indian School Jubail</td><td class="tc"><span class="tag to">1560</span></td><td class="tc"><span class="tag tg">1560</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">—</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
-            <tr><td>Jana</td><td>The Modern American School</td><td class="tc"><span class="tag to">1170</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+330</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
-            <tr><td>Mahimaa Gigy Karunan</td><td>Gems Modern Academy</td><td class="tc"><span class="tag to">1350</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+170</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Prajit</td><td>Doha College</td><td class="tc"><span class="tag to">1450</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+70</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+          <tbody id="students-tbody">
             <tr><td>Keshav Harish Anand</td><td>DIA, Emirates Hills</td><td class="tc"><span class="tag to">1440</span></td><td class="tc"><span class="tag tg">1550</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+110</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Zaara</td><td>Indian School Muscat</td><td class="tc"><span class="tag to">1160</span></td><td class="tc"><span class="tag tg">1590</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+430</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Pratyush Sisodia</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1180</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+330</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Sneh Kashyap</td><td>DPS Greater Faridabad</td><td class="tc"><span class="tag to">1410</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+90</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Sadhil Aggarwal</td><td>Repton School Abu Dhabi</td><td class="tc"><span class="tag to">1320</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+180</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Srinivasa Adithya Basan</td><td>The Peepal Grove School</td><td class="tc"><span class="tag to">1240</span></td><td class="tc"><span class="tag tg">1590</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+350</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
-            <tr><td>Nikkil Dcruz</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1330</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+180</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Kauthik Basangi</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1250</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+250</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Shaanvi Verma</td><td>Bhavans Abu Dhabi</td><td class="tc"><span class="tag to">1390</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+120</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Ishant Datta</td><td>DPS Modern Indian School Doha</td><td class="tc"><span class="tag to">1420</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+120</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
             <tr><td>Mukul Agarwal</td><td>GEMS Modern Academy</td><td class="tc"><span class="tag to">1400</span></td><td class="tc"><span class="tag tg">1530</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+130</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
-            <tr><td>Prisha Agarwal</td><td>Chirec International School</td><td class="tc"><span class="tag to">1530</span></td><td class="tc"><span class="tag tg">1530</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">—</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
-            <tr><td>Aanya Kumar</td><td>Sishya Adyar</td><td class="tc"><span class="tag to">1490</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+30</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Shaanvi Verma</td><td>Bhavans Abu Dhabi</td><td class="tc"><span class="tag to">1390</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+120</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Naya Houmsie</td><td>ISC Dubai – Al Suffouh</td><td class="tc"><span class="tag to">1370</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+150</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Mahimaa Gigy Karunan</td><td>Gems Modern Academy</td><td class="tc"><span class="tag to">1350</span></td><td class="tc"><span class="tag tg">1520</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+170</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Nikkil Dcruz</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1330</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+180</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Sadhil Aggarwal</td><td>Repton School Abu Dhabi</td><td class="tc"><span class="tag to">1320</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+180</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Ansh Jain</td><td>Ajyal Almaarefah International</td><td class="tc"><span class="tag to">1310</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+190</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Yasmin</td><td>British International School, Tabuk, KSA</td><td class="tc"><span class="tag to">1260</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+280</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Kauthik Basangi</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1250</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+250</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Srinivasa Adithya Basan</td><td>The Peepal Grove School</td><td class="tc"><span class="tag to">1240</span></td><td class="tc"><span class="tag tg">1590</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+350</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Pratyush Sisodia</td><td>DPS Modern Indian School</td><td class="tc"><span class="tag to">1180</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+330</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Jana</td><td>The Modern American School</td><td class="tc"><span class="tag to">1170</span></td><td class="tc"><span class="tag tg">1500</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+330</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
             <tr><td>Shaurrya</td><td>DIA Emirates Hills</td><td class="tc"><span class="tag to">1170</span></td><td class="tc"><span class="tag tg">1480</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+310</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Kashyap Jalali</td><td>Edify School</td><td class="tc"><span class="tag to">1160</span></td><td class="tc"><span class="tag tg">1510</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+350</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Zaara</td><td>Indian School Muscat</td><td class="tc"><span class="tag to">1160</span></td><td class="tc"><span class="tag tg">1590</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+430</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
             <tr><td>Pratishtha</td><td>Birla Public School, Doha, Qatar</td><td class="tc"><span class="tag to">1120</span></td><td class="tc"><span class="tag tg">1540</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+420</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
-            <tr><td>Fahid</td><td>ADNOC Schools</td><td class="tc"><span class="tag to">810</span></td><td class="tc"><span class="tag tg">1410</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+600</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
             <tr><td>Madhav</td><td>Star International School</td><td class="tc"><span class="tag to">900</span></td><td class="tc"><span class="tag tg">1490</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+590</td><td class="tc" style="font-size:12px;color:var(--gray600)">5 mo</td></tr>
+            <tr><td>Fahid</td><td>ADNOC Schools</td><td class="tc"><span class="tag to">810</span></td><td class="tc"><span class="tag tg">1410</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+600</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
+            <tr><td>Abdullah Alshafai</td><td>Altatheen Secondary Private School, Saudi</td><td class="tc"><span class="tag to">800</span></td><td class="tc"><span class="tag tg">1290</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+490</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Mohid Ali Moghal</td><td>Al Majd International School</td><td class="tc"><span class="tag to">800</span></td><td class="tc"><span class="tag tg">1020</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+220</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Judson Sathiamoorthy</td><td>DSP MIS Qatar</td><td class="tc"><span class="tag to">790</span></td><td class="tc"><span class="tag tg">1210</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+420</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
+            <tr><td>Ayesha Qadir</td><td>Alpha Girls School, Karachi</td><td class="tc"><span class="tag to">790</span></td><td class="tc"><span class="tag tg">1120</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+330</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Mohammed Faris Al Jefri</td><td>Al Nassr Private School Jeddah</td><td class="tc"><span class="tag to">780</span></td><td class="tc"><span class="tag tg">1190</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+410</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Aarav Sharma</td><td>Birla Public School Pilani</td><td class="tc"><span class="tag to">780</span></td><td class="tc"><span class="tag tg">1100</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+320</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Hamad Adel</td><td>Resalet Alhuda International School</td><td class="tc"><span class="tag to">780</span></td><td class="tc"><span class="tag tg">1020</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+240</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Abdulla Alshamsi</td><td>ADNOC School</td><td class="tc"><span class="tag to">770</span></td><td class="tc"><span class="tag tg">1220</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+450</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Ayyaan Tambawala</td><td>Dubai International Academy</td><td class="tc"><span class="tag to">730</span></td><td class="tc"><span class="tag tg">1240</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+510</td><td class="tc" style="font-size:12px;color:var(--gray600)">6 mo</td></tr>
+            <tr><td>Saif Al-Deen Kazbar</td><td>Rowad Al-Farabi International School</td><td class="tc"><span class="tag to">730</span></td><td class="tc"><span class="tag tg">1100</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+370</td><td class="tc" style="font-size:12px;color:var(--gray600)">2 mo</td></tr>
+            <tr><td>Arham Mohammed</td><td>American Community School, Abu Dhabi</td><td class="tc"><span class="tag to">720</span></td><td class="tc"><span class="tag tg">1360</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+640</td><td class="tc" style="font-size:12px;color:var(--gray600)">5 mo</td></tr>
+            <tr><td>Ali Shaltoni</td><td>International School of Chouifat Sharjah</td><td class="tc"><span class="tag to">720</span></td><td class="tc"><span class="tag tg">1030</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+310</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
+            <tr><td>Hasan</td><td>Yara International School</td><td class="tc"><span class="tag to">710</span></td><td class="tc"><span class="tag tg">1010</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+300</td><td class="tc" style="font-size:12px;color:var(--gray600)">4 mo</td></tr>
+            <tr><td>Mohammed Mounir</td><td>Reslat Alhuda International School</td><td class="tc"><span class="tag to">700</span></td><td class="tc"><span class="tag tg">1010</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+310</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Hannah Maria Finny</td><td>Birla Public School, Doha, Qatar</td><td class="tc"><span class="tag to">690</span></td><td class="tc"><span class="tag tg">1230</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+540</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Omar Abdelkader</td><td>GEMS American Academy Qatar</td><td class="tc"><span class="tag to">660</span></td><td class="tc"><span class="tag tg">1190</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+530</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Syed Khizar Ali</td><td>Olive International School</td><td class="tc"><span class="tag to">650</span></td><td class="tc"><span class="tag tg">1130</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+480</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Sreemaan GBV</td><td>Manthan International School</td><td class="tc"><span class="tag to">630</span></td><td class="tc"><span class="tag tg">1140</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+510</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Ahmad Jawhar</td><td>Al Farish International School, Riyadh</td><td class="tc"><span class="tag to">610</span></td><td class="tc"><span class="tag tg">1140</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+530</td><td class="tc" style="font-size:12px;color:var(--gray600)">3 mo</td></tr>
+            <tr><td>Alwed Ayman Ali Alhammadi</td><td>American School of Creative Science, Sharjah</td><td class="tc"><span class="tag to">550</span></td><td class="tc"><span class="tag tg">1220</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+670</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
+            <tr><td>Jabr</td><td>ACS School Doha</td><td class="tc"><span class="tag to">540</span></td><td class="tc"><span class="tag tg">1050</span></td><td class="tc" style="font-size:12px;font-weight:700;color:var(--blue)">+510</td><td class="tc" style="font-size:12px;color:var(--gray600)">1 mo</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="hl gr" style="margin-top:14px">⚡ <strong>Average improvement: 250+ points</strong> — achieved in just 1–5 months of focused prep with LeapScholar.</div>
+      <div class="hl gr" style="margin-top:14px">⚡ <strong>Average improvement: 380+ points</strong> — achieved in just 1–6 months of focused prep with LeapScholar.</div>
     </div>
 
     <!-- ══ 10 · COMPARISON ══ -->
-    <div class="sec" data-i="10" data-notes="Let parents read this slide first — it's self-explanatory. Then ask: 'Can you point to any other coaching that offers all 10 of these together?'">
+    <div class="sec" data-i="9" data-notes="Let parents read this slide first — it's self-explanatory. Then ask: 'Can you point to any other coaching that offers all 10 of these together?'">
       
       <div class="eyebrow"><span class="epip">11</span>Proof</div>
       <h1 class="ptitle">LeapScholar vs The Alternatives</h1>
@@ -1200,7 +1200,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 11 · REVIEWS ══ -->
-    <div class="sec" data-i="11" data-notes="752 Google reviews at 4.7★ is very strong social proof. Read a review aloud — pick the one most relevant to the student's profile.">
+    <div class="sec" data-i="10" data-notes="752 Google reviews at 4.7★ is very strong social proof. Read a review aloud — pick the one most relevant to the student's profile.">
       
       <div class="eyebrow"><span class="epip">12</span>Proof</div>
       <h1 class="ptitle">What Students & Parents Say</h1>
@@ -1231,7 +1231,7 @@ body.pmode .slide-content-logo {
     </div>
 
     <!-- ══ 12 · LEAP UNIVERSE ══ -->
-    <div class="sec" data-i="12" data-notes="Plant the seed for future engagement. Position as: 'We're not just a coaching centre — we're your long-term study abroad partner.'">
+    <div class="sec" data-i="11" data-notes="Plant the seed for future engagement. Position as: 'We're not just a coaching centre — we're your long-term study abroad partner.'">
       
       <div class="eyebrow"><span class="epip">13</span>Close</div>
       <h1 class="ptitle">Leap Universe</h1>
@@ -1267,10 +1267,93 @@ body.pmode .slide-content-logo {
       </div>
     </div>
 
-    <!-- ══ 13 · ONBOARDING ══ -->
-    <div class="sec" data-i="13" data-notes="Make it feel simple: 5 steps, first step is free. Classes start within 48 hours. Ask: 'Would you like to take the diagnostic today?'">
+    <!-- ══ 13 · APPLICATION PROCESS (CLOSE) ══ -->
+    <div class="sec" data-i="12" data-notes="Revisit the application process now that the student has seen everything. Walk through the full checklist — this is where you tie everything together before the roadmap.">
       
       <div class="eyebrow"><span class="epip">14</span>Close</div>
+      <h1 class="ptitle">The University Application Process</h1>
+      <p class="pdesc">Understanding what top US universities look for helps students prepare strategically from day one.</p>
+      <div class="g3" style="margin-bottom:18px">
+        <div class="card">
+          <div style="font-size:26px;margin-bottom:9px">🎓</div>
+          <div class="ct">Academic Qualifications</div>
+          <ul class="iconlist">
+            <li>Transcript from 9th to 12th grade</li>
+            <li>Minimum GPA / Percentage required</li>
+            <li>90% and above for Ivy League universities</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div style="font-size:26px;margin-bottom:9px">📝</div>
+          <div class="ct">Standardised Tests</div>
+          <ul class="iconlist">
+            <li>SAT — Scholastic Assessment Test</li>
+            <li>IELTS — English Language Proficiency</li>
+            <li>Both required for most US universities</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div style="font-size:26px;margin-bottom:9px">👤</div>
+          <div class="ct">Student Profiling</div>
+          <ul class="iconlist">
+            <li>SOP — Statement of Purpose</li>
+            <li>LOR — Letter of Recommendation</li>
+            <li>Essay writing</li>
+            <li>Extracurricular activities</li>
+            <li>Social activities if required</li>
+          </ul>
+        </div>
+      </div>
+      <div class="hl">The SAT sits at the heart of every application. A strong score gives universities a standardised way to compare students from different education boards worldwide — giving you a significant competitive edge.</div>
+    </div>
+
+    <!-- ══ 14 · PERSONALISED ROADMAP ══ -->
+    <div class="sec" data-i="13" data-notes="Select the items that apply to this student, then click Generate Roadmap. Walk through it with them — this is a powerful personalisation moment. If 'Other competitive exam' is selected, highlight the delay note.">
+      
+      <div class="eyebrow"><span class="epip">15</span>Close</div>
+      <h1 class="ptitle">Personalised Roadmap</h1>
+      <p class="pdesc">Select everything this student needs — we'll build a custom roadmap with timelines.</p>
+
+      <!-- Checklist -->
+      <div id="roadmap-form" style="max-width:640px">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px" id="roadmap-checklist">
+          <label class="rm-check-item"><input type="checkbox" value="university"> University Shortlist</label>
+          <label class="rm-check-item"><input type="checkbox" value="course"> Course Shortlist</label>
+          <label class="rm-check-item"><input type="checkbox" value="sat"> SAT</label>
+          <label class="rm-check-item"><input type="checkbox" value="ielts"> IELTS</label>
+          <label class="rm-check-item"><input type="checkbox" value="sop"> SOP</label>
+          <label class="rm-check-item"><input type="checkbox" value="lor"> LOR</label>
+          <label class="rm-check-item"><input type="checkbox" value="essay"> Essay</label>
+          <label class="rm-check-item"><input type="checkbox" value="competitive"> Other Competitive Exam</label>
+          <label class="rm-check-item"><input type="checkbox" value="extracurricular"> Extracurricular Activity</label>
+          <label class="rm-check-item"><input type="checkbox" value="social"> Social Activity</label>
+        </div>
+        <button onclick="generateRoadmap()" class="btn btn-n" style="padding:10px 28px;font-size:14px">Generate Roadmap →</button>
+        <p id="rm-err" style="color:var(--red);font-size:12.5px;margin-top:8px;display:none">Please select at least one item.</p>
+      </div>
+
+      <!-- Generated Roadmap -->
+      <div id="roadmap-result" style="display:none;margin-top:28px;max-width:820px">
+        <h2 id="roadmap-title" style="font-family:var(--font-h);font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px"></h2>
+        <div id="roadmap-steps"></div>
+        <div id="roadmap-competitive-note" style="display:none;margin-top:18px" class="hl or">
+          ⚠️ <strong>Note:</strong> Preparation for the other competitive exam could significantly slow down the overall process by <strong>1–3 months</strong>. Plan accordingly.
+        </div>
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-top:18px;flex-wrap:wrap">
+          <button onclick="resetRoadmap()" class="btn btn-o" style="font-size:13px">← Change Selections</button>
+          <div id="roadmap-intake-box" style="display:none;background:var(--navy-dark);border-radius:var(--radius-sm);padding:12px 18px;color:#fff;font-size:13px;line-height:1.7;min-width:220px">
+            <div style="font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:rgba(255,255,255,.45);margin-bottom:6px">Application Intakes</div>
+            <div>🍂 <strong>Fall:</strong> September – December</div>
+            <div>🌸 <strong>Spring:</strong> January – March</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ 15 · ONBOARDING ══ -->
+    <div class="sec" data-i="14" data-notes="Make it feel simple: 5 steps, first step is free. Classes start within 48 hours. Ask: 'Would you like to take the diagnostic today?'">
+      
+      <div class="eyebrow"><span class="epip">16</span>Close</div>
       <h1 class="ptitle" id="onboard-title">The Onboarding Process</h1>
       <p class="pdesc">Here's exactly what happens after you enrol — a clear, structured 5-step journey to get your student started within 24–48 hours.</p>
       <div class="obs" style="margin-bottom:30px">
@@ -1306,10 +1389,10 @@ body.pmode .slide-content-logo {
       <div class="hl gr"><strong>Ready to begin?</strong> The first step is the free SPT Diagnostic Test. It takes 30–40 minutes and gives us everything we need to design a programme specifically for your student.</div>
     </div>
 
-    <!-- ══ 14 · PRICING ══ -->
-    <div class="sec" data-i="14">
+    <!-- ══ 16 · PRICING ══ -->
+    <div class="sec" data-i="15">
       
-      <div class="eyebrow"><span class="epip">15</span>Close</div>
+      <div class="eyebrow"><span class="epip">16</span>Close</div>
       <h1 class="ptitle">Program Pricing</h1>
       <p class="pdesc">Select your currency and program to view the full pricing and benefits.</p>
 
@@ -1371,7 +1454,6 @@ body.pmode .slide-content-logo {
 document.addEventListener('DOMContentLoaded', function() {
 const SLIDES=[
   {g:"Getting Started",t:"Welcome"},
-  {g:"About SAT",t:"Application Process"},
   {g:"About SAT",t:"Why SAT Matters"},
   {g:"Our Approach",t:"Diagnostic Test"},
   {g:"Our Approach",t:"University Explorer"},
@@ -1383,6 +1465,8 @@ const SLIDES=[
   {g:"Proof",t:"Comparison"},
   {g:"Proof",t:"Reviews"},
   {g:"Close",t:"Leap Universe"},
+  {g:"Close",t:"Application Process"},
+  {g:"Close",t:"Personalised Roadmap"},
   {g:"Close",t:"Onboarding"},
   {g:"Close",t:"Pricing"},
 ];
@@ -1480,18 +1564,7 @@ const SLIDE_NOTES = [
 • Have you taken the SAT before?
 • What does your weekly schedule look like?`,
 
-  // Slide 2 — Application Process
-  `📋 SLIDE 2 — APPLICATION PROCESS
-"Let me quickly give you a big-picture understanding of how SAT and UG admissions work."
-
-✅ Mandatory: Transcript, GPA, SAT, IELTS, SOP, LOR, Essay
-⭐ Optional (but add value): Extracurriculars, Social activities
-
-Key point: "Apart from extracurricular and social activities, everything else is mandatory."
-
-❓ Check for doubts before moving on.`,
-
-  // Slide 3 — Why SAT
+  // Slide 2 — Why SAT
   `🎯 SLIDE 3 — WHY SAT MATTERS
 "Before today, what was your understanding of the SAT?"
 
@@ -1510,7 +1583,7 @@ Explain 3 pillars:
 If YES: "Great. We have [...] days left. Let's build a personalised roadmap."
 If NO: "That's totally fine — clarity before action is a sign of good decision-making."`,
 
-  // Slide 4 — Diagnostic (SPT)
+  // Slide 4 — Diagnostic
   `🧪 SLIDE 4 — DIAGNOSTIC TEST (SPT)
 "Now, can we have a quick test to see how close you are to your target score?"
 
@@ -1641,8 +1714,32 @@ Pick the review most relevant to this student's profile and read it aloud.
 
 Brief walkthrough — position as long-term study abroad partner, not just a coaching centre.`,
 
-  // Slide 14 — Onboarding
-  `🚀 SLIDE 14 — ONBOARDING PROCESS
+  // Slide 14 — Application Process (Close)
+  `📋 SLIDE 14 — APPLICATION PROCESS
+"Now that you've seen everything we offer, let me quickly walk you through the full application journey so you can see exactly where SAT prep fits in."
+
+✅ Mandatory: Transcript, GPA, SAT, IELTS, SOP, LOR, Essay
+⭐ Optional (but add value): Extracurriculars, Social activities
+
+"Every one of these — except extracurriculars and social activities — is mandatory. This is the complete roadmap to a successful application."
+
+Use this to set up the Personalised Roadmap on the next slide.`,
+
+  // Slide 15 — Personalised Roadmap
+  `🗺️ SLIDE 15 — PERSONALISED ROADMAP
+Select the items that apply to this student, then click Generate Roadmap.
+
+Walk through the roadmap with them — this is a high-impact personalisation moment.
+
+Key talking points:
+• "This is YOUR specific journey — not a generic plan."
+• Point out the timeline for each step
+• "Notice how everything builds on each other — SAT and IELTS first, then profile building, then applications."
+
+⚠️ If "Other Competitive Exam" is selected — highlight the delay note at the bottom. Use it to create urgency around starting early.`,
+
+  // Slide 16 — Onboarding
+  `🚀 SLIDE 16 — ONBOARDING PROCESS
 "Here's exactly what happens after you enrol — a clear 5-step journey to get started within 24–48 hours."
 
 Walk through each step clearly and confidently.
@@ -1650,8 +1747,8 @@ Walk through each step clearly and confidently.
 "Classes start within 48 hours of enrollment."
 "Would you like to take the diagnostic today?"`,
 
-  // Slide 15 — Pricing
-  `💰 SLIDE 15 — PRICING
+  // Slide 17 — Pricing
+  `💰 SLIDE 17 — PRICING
 "The best program for you today is [X]. This comes with [read features] at just [MRP]."
 
 SCHOLARSHIP SEQUENCE:
@@ -1763,7 +1860,7 @@ const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbywb0D5-n1qRjs
 
 // ── SESSION STATE (tracked throughout the demo) ─────────────────────────────
 const sessionData = {
-  name:'', phone:'', email:'',
+  name:'', phone:'', email:'', grade:'',
   programPlanCode:'', pricingPlan:'', pricingCurrency:'',
   couponsApplied:'', finalPrice:''
 };
@@ -1780,26 +1877,26 @@ async function postToSheet(payload) {
   } catch(e) {}
 }
 
-function submitLead(name, phone, email) {
-  // prefix phone with apostrophe char so Sheets treats it as text, not formula
+function submitLead(name, phone, email, grade) {
   postToSheet({
     action: 'lead',
     timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
     name,
-    phone: phone ? "'" + phone : '',   // ← fixes #ERROR for +91 numbers
+    phone: phone ? "'" + phone : '',
     email,
+    grade: grade ? 'Grade ' + grade : '',
     source: 'SAT Demo Platform'
   });
 }
 
 function submitSessionSummary() {
-  // Called when a pricing plan is shown — sends full session snapshot
   postToSheet({
     action: 'session',
     timestamp: new Date().toLocaleString('en-GB', { timeZone: 'Asia/Dubai' }),
     name: sessionData.name,
     phone: sessionData.phone ? "'" + sessionData.phone : '',
     email: sessionData.email,
+    grade: sessionData.grade ? 'Grade ' + sessionData.grade : '',
     program_plan_code: sessionData.programPlanCode || '—',
     pricing_plan: sessionData.pricingPlan || '—',
     currency: sessionData.pricingCurrency || '—',
@@ -1813,26 +1910,25 @@ document.getElementById('start-btn').addEventListener('click', async () => {
   const name  = document.getElementById('inp-name').value.trim();
   const phone = document.getElementById('inp-phone').value.trim();
   const email = document.getElementById('inp-email').value.trim();
+  const grade = document.getElementById('inp-grade').value;
   const status = document.getElementById('lead-status');
 
   if (!name) { document.getElementById('inp-name').focus(); return; }
 
-  // Store in session
   sessionData.name = name;
   sessionData.phone = phone;
   sessionData.email = email;
+  sessionData.grade = grade;
 
-  // Update sidebar
   document.getElementById('sb-name').textContent = name;
-  document.getElementById('sb-score').textContent = phone ? '📞 ' + phone : '';
+  document.getElementById('sb-score').textContent = grade ? 'Grade ' + grade : (phone ? '📞 ' + phone : '');
   const sb = document.getElementById('sb-school');
   if (email) { sb.textContent = email; sb.style.display = 'inline-block'; } else sb.style.display = 'none';
   document.getElementById('sb-block').classList.add('vis');
   document.getElementById('onboard-title').textContent = 'The Onboarding Process for ' + name.split(' ')[0];
 
-  // Submit lead
   if (phone || email) {
-    submitLead(name, phone, email);
+    submitLead(name, phone, email, grade);
     status.style.display = 'block';
     status.style.background = 'var(--green-light)';
     status.style.color = 'var(--green)';
@@ -2270,6 +2366,161 @@ function renderRoadmaps() {
 }
 
 renderRoadmaps();
+
+// ── PERSONALISED ROADMAP GENERATOR ─────────────────────────────────────────
+const ROADMAP_ITEMS = {
+  sat:           { label:'SAT Preparation',                    time:'2–3 months',   order:1 },
+  ielts:         { label:'IELTS Preparation',                  time:'1 month',      order:2 },
+  lor:           { label:'Letter of Recommendation (LOR)',     time:'4–6 weeks',    order:3 },
+  essay:         { label:'Essay Writing',                      time:'1 week',       order:4 },
+  course:        { label:'Course Shortlist',                   time:'2–4 months',   order:5 },
+  university:    { label:'University Shortlist',               time:'2–4 months',   order:5 },
+  sop:           { label:'Statement of Purpose (SOP)',         time:'2–4 weeks',    order:6 },
+  extracurricular:{ label:'Extracurricular Activities',        time:'Ongoing',      order:7 },
+  social:        { label:'Social Activities',                  time:'Ongoing',      order:7 },
+  competitive:   { label:'Other Competitive Exam',             time:'Varies',       order:8 },
+};
+
+// Course + University shortlist merged when both selected
+window.generateRoadmap = function() {
+  const checkboxes = document.querySelectorAll('#roadmap-checklist input[type=checkbox]:checked');
+  const err = document.getElementById('rm-err');
+  if (checkboxes.length === 0) { err.style.display='block'; return; }
+  err.style.display='none';
+
+  const selected = Array.from(checkboxes).map(cb => cb.value);
+  const hasCompetitive = selected.includes('competitive');
+  const hasCourse = selected.includes('course');
+  const hasUniversity = selected.includes('university');
+  const hasSOP = selected.includes('sop');
+  const hasLOR = selected.includes('lor');
+  const hasEssay = selected.includes('essay');
+  const hasSAT = selected.includes('sat');
+  const hasIELTS = selected.includes('ielts');
+  const hasExtra = selected.includes('extracurricular');
+  const hasSocial = selected.includes('social');
+
+  const grade = parseInt(sessionData.grade) || 0;
+  const isGrade12 = grade >= 12;
+
+  const studentName = sessionData.name || document.getElementById('inp-name')?.value?.trim() || 'the student';
+  const firstName = studentName.split(' ')[0];
+
+  document.getElementById('roadmap-title').textContent = `Here's a personalised roadmap for ${firstName} 🎯`;
+
+  const colors = ['#5B6EFF','#10B981','#FF8551','#3B4DB8','#F59E0B','#8B5CF6','#EC4899','#06B6D4','#14B8A6'];
+
+  // Build left column (sequential steps)
+  let leftSteps = [];
+  if (hasSAT) leftSteps.push({ label:'SAT Preparation', time:'2–3 months' });
+  if (hasIELTS) leftSteps.push({ label:'IELTS Preparation', time:'1 month' });
+  if (hasEssay) leftSteps.push({ label:'Essay Writing', time:'1 week' });
+
+  // Right column items
+  let rightItems = [];
+
+  if (!isGrade12) {
+    // Grade ≤11: Uni & Course → SOP → LOR on left; Extra + Social on right
+    if (hasCourse || hasUniversity) {
+      const label = hasCourse && hasUniversity ? 'Course & University Shortlist' : hasCourse ? 'Course Shortlist' : 'University Shortlist';
+      leftSteps.push({ label, time:'2–4 months' });
+    }
+    if (hasSOP) leftSteps.push({ label:'Statement of Purpose (SOP)', time:'2–4 weeks' });
+    if (hasLOR) leftSteps.push({ label:'Letter of Recommendation (LOR)', time:'4–6 weeks' });
+    if (hasExtra) rightItems.push({ label:'Extracurricular Activity', time:'Ongoing' });
+    if (hasSocial) rightItems.push({ label:'Social Activity', time:'Ongoing' });
+  } else {
+    // Grade 12: SOP + LOR simultaneously on left; Uni & Course + Extra + Social on right
+    const sopLor = [];
+    if (hasSOP) sopLor.push('SOP');
+    if (hasLOR) sopLor.push('LOR');
+    if (sopLor.length) leftSteps.push({ label: sopLor.join(' + ') + (sopLor.length > 1 ? ' (simultaneously)' : ''), time:'4–6 weeks' });
+    // Right: Uni & Course at top, then Extra, Social
+    if (hasCourse || hasUniversity) {
+      const label = hasCourse && hasUniversity ? 'Course & University Shortlist' : hasCourse ? 'Course Shortlist' : 'University Shortlist';
+      rightItems.push({ label, time:'2–4 months' });
+    }
+    if (hasExtra) rightItems.push({ label:'Extracurricular Activity', time:'Ongoing' });
+    if (hasSocial) rightItems.push({ label:'Social Activity', time:'Ongoing' });
+  }
+
+  // Render two-column layout
+  const leftHTML = leftSteps.length ? `
+    <div>
+      <div style="font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--gray400);margin-bottom:10px">Your Journey</div>
+      ${leftSteps.map((step, i) => `
+        ${i > 0 ? '<div class="rm-connector"></div>' : ''}
+        <div class="rm-step">
+          <div class="rm-step-num" style="background:${colors[i % colors.length]}">${i+1}</div>
+          <div class="rm-step-content">
+            <div class="rm-step-title">${step.label}</div>
+            <div class="rm-step-time">${step.time}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>` : '';
+
+  const rightHTML = rightItems.length ? `
+    <div>
+      <div style="font-family:var(--font-h);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--gray400);margin-bottom:10px">Simultaneously</div>
+      ${rightItems.map((item, i) => `
+        ${i > 0 ? '<div class="rm-connector"></div>' : ''}
+        <div class="rm-step">
+          <div class="rm-step-num" style="background:${colors[(i+5) % colors.length]}">${String.fromCharCode(65+i)}</div>
+          <div class="rm-step-content">
+            <div class="rm-step-title">${item.label}</div>
+            <div class="rm-step-time">${item.time}</div>
+          </div>
+        </div>
+      `).join('')}
+    </div>` : '';
+
+  document.getElementById('roadmap-steps').innerHTML = `
+    <div style="display:grid;grid-template-columns:${rightHTML ? '1fr 1fr' : '1fr'};gap:24px;align-items:start">
+      ${leftHTML}
+      ${rightHTML}
+    </div>`;
+
+  document.getElementById('roadmap-competitive-note').style.display = hasCompetitive ? 'block' : 'none';
+
+  // Intake info box
+  document.getElementById('roadmap-intake-box').style.display = 'flex';
+
+  document.getElementById('roadmap-form').style.display = 'none';
+  document.getElementById('roadmap-result').style.display = 'block';
+};
+
+window.resetRoadmap = function() {
+  document.getElementById('roadmap-form').style.display = 'block';
+  document.getElementById('roadmap-result').style.display = 'none';
+  document.getElementById('roadmap-intake-box').style.display = 'none';
+  document.querySelectorAll('#roadmap-checklist input[type=checkbox]').forEach(cb => cb.checked = false);
+};
+
+// ── STUDENTS TABLE SORT ────────────────────────────────────────────────────
+let sortCol = 2, sortAsc = false;
+window.sortStudents = function(col) {
+  if (sortCol === col) { sortAsc = !sortAsc; } else { sortCol = col; sortAsc = false; }
+  [2,3,4,5].forEach(c => {
+    const el = document.getElementById('sort-icon-'+c);
+    if(el) el.textContent = '⇅';
+  });
+  const icon = document.getElementById('sort-icon-'+col);
+  if(icon) icon.textContent = sortAsc ? '↑' : '↓';
+
+  const tbody = document.getElementById('students-tbody');
+  if(!tbody) return;
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort((a, b) => {
+    const parse = cell => {
+      const txt = cell.textContent.replace(/[+,]/g,'').replace('mo','').replace('—','0').trim();
+      const n = parseFloat(txt);
+      return isNaN(n) ? 0 : n;
+    };
+    return sortAsc ? parse(a.cells[col]) - parse(b.cells[col]) : parse(b.cells[col]) - parse(a.cells[col]);
+  });
+  rows.forEach(r => tbody.appendChild(r));
+};
 
 }); // end DOMContentLoaded
 </script>

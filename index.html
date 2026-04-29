@@ -934,7 +934,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
       <button class="cpbtn" id="cpspt-plus">Copy</button>
     </div>
     <div class="brow">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform" target="_blank" class="btn btn-p">Open Plus Test ↗</a>
+      <a href="https://docs.google.com/forms/d/1xTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform?ts=698c6e3f&edit_requested=true#responses" target="_blank" class="btn btn-p">Open Plus Test ↗</a>
     </div>
   </div>
 
@@ -947,7 +947,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
       <button class="cpbtn" id="cpspt-std">Copy</button>
     </div>
     <div class="brow">
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSexTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform" target="_blank" class="btn btn-p">Open Standard Test ↗</a>
+      <a href="https://docs.google.com/forms/d/1oDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform?ts=698c6dba&edit_requested=true" target="_blank" class="btn btn-p">Open Standard Test ↗</a>
     </div>
   </div>
 
@@ -2897,14 +2897,14 @@ document.getElementById('start-btn').addEventListener('click', async () => {
 
 // Copy SPT Plus
 document.getElementById('cpspt-plus').addEventListener('click',function(){
-  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/e/1FAIpQLSfJg8h51gwHrIickSEHtWCnQ8drTh7Wq2ceX4KAJGUR9sdZAQ/viewform').catch(()=>{});
+  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/1xTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform?ts=698c6e3f&edit_requested=true#responses').catch(()=>{});
   this.textContent='Copied!';this.classList.add('copied');
   setTimeout(()=>{this.textContent='Copy';this.classList.remove('copied');},2000);
 });
 
 // Copy SPT Standard
 document.getElementById('cpspt-std').addEventListener('click',function(){
-  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/e/1FAIpQLSexTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform').catch(()=>{});
+  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/1oDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform?ts=698c6dba&edit_requested=true').catch(()=>{});
   this.textContent='Copied!';this.classList.add('copied');
   setTimeout(()=>{this.textContent='Copy';this.classList.remove('copied');},2000);
 });

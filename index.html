@@ -923,60 +923,89 @@ body:not(.pmode) .ls-scale-6 { animation: none }
      <div class="eyebrow"><span class="epip">3</span>Our Approach</div>
 <h1 class="ptitle">Aren't you excited to know how close you are to your desired score?</h1>
 <p class="pdesc">Take the Score Predictor Test (SPT) — a free diagnostic that benchmarks your current level and maps your exact improvement path.</p>
-<div style="margin-bottom:18px">
+<!-- SIDE BY SIDE TEST CARDS -->
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px">
 
-  <!-- PLUS TEST -->
-  <div class="card" style="margin-bottom:14px;max-width:560px">
-    <div class="ct">📋 Score Predictor Test — Plus</div>
-    <p style="font-size:13px;color:var(--gray400);margin-bottom:12px">For students targeting <b>1300+</b>. Harder questions, more challenging passages.</p>
-    <div class="lkcard">
-      <div class="lkurl">https://docs.google.com/forms/d/e/1FAIpQLSdoDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform</div>
-      <button class="cpbtn" id="cpspt-plus">Copy</button>
+  <!-- PLUS CARD -->
+  <div style="border-radius:16px;border:2px solid rgba(91,110,255,.35);background:linear-gradient(160deg,#0E1B5C,#1B2B8A);padding:22px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(91,110,255,.3),transparent 70%)"></div>
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(91,110,255,.25);border:1px solid rgba(91,110,255,.4);border-radius:20px;padding:4px 10px;margin-bottom:10px">
+        <div style="width:6px;height:6px;border-radius:50%;background:#6B6FFF"></div>
+        <span style="font-size:10px;font-weight:800;color:#A5B4FC;letter-spacing:.5px;text-transform:uppercase">Advanced</span>
+      </div>
+      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:6px">Plus Test</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.5">7 English · 7 Math<br>Higher difficulty · Challenging passages</div>
     </div>
-    <div class="brow">
-      <a href="https://docs.google.com/forms/d/1xTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform?ts=698c6e3f&edit_requested=true#responses" target="_blank" class="btn btn-p">Open Plus Test ↗</a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:10px;text-align:center">
+        <div style="font-size:18px;font-weight:800;color:#fff">14</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.45);margin-top:2px">Questions</div>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:10px;text-align:center">
+        <div style="font-size:18px;font-weight:800;color:#fff">14m</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.45);margin-top:2px">Duration</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:auto">
+      <button id="cpspt-plus" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:700;cursor:pointer">Copy Link</button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform" target="_blank" style="flex:2;padding:10px;border-radius:10px;background:linear-gradient(135deg,#5B6EFF,#3B4DB8);color:#fff;font-size:12px;font-weight:800;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">Open Plus Test ↗</a>
     </div>
   </div>
 
-  <!-- STANDARD TEST -->
-  <div class="card" style="margin-bottom:14px;max-width:560px">
-    <div class="ct">📋 Score Predictor Test — Standard</div>
-    <p style="font-size:13px;color:var(--gray400);margin-bottom:12px">For students targeting <b>below 1300</b>. Foundational questions, accessible passages.</p>
-    <div class="lkcard">
-      <div class="lkurl">https://docs.google.com/forms/d/e/1FAIpQLSexTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform</div>
-      <button class="cpbtn" id="cpspt-std">Copy</button>
+  <!-- STANDARD CARD -->
+  <div style="border-radius:16px;border:2px solid rgba(16,185,129,.25);background:linear-gradient(160deg,#052e16,#064e3b);padding:22px;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-20px;right:-20px;width:100px;height:100px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,.25),transparent 70%)"></div>
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.15);border:1px solid rgba(16,185,129,.35);border-radius:20px;padding:4px 10px;margin-bottom:10px">
+        <div style="width:6px;height:6px;border-radius:50%;background:#10B981"></div>
+        <span style="font-size:10px;font-weight:800;color:#6EE7B7;letter-spacing:.5px;text-transform:uppercase">Foundation</span>
+      </div>
+      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:6px">Standard Test</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.5);line-height:1.5">7 English · 7 Math<br>Accessible difficulty · Clear passages</div>
     </div>
-    <div class="brow">
-      <a href="https://docs.google.com/forms/d/1oDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform?ts=698c6dba&edit_requested=true" target="_blank" class="btn btn-p">Open Standard Test ↗</a>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+      <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:10px;text-align:center">
+        <div style="font-size:18px;font-weight:800;color:#fff">14</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.45);margin-top:2px">Questions</div>
+      </div>
+      <div style="background:rgba(255,255,255,.07);border-radius:10px;padding:10px;text-align:center">
+        <div style="font-size:18px;font-weight:800;color:#fff">14m</div>
+        <div style="font-size:10px;color:rgba(255,255,255,.45);margin-top:2px">Duration</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:auto">
+      <button id="cpspt-std" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:700;cursor:pointer">Copy Link</button>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSexTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform" target="_blank" style="flex:2;padding:10px;border-radius:10px;background:linear-gradient(135deg,#10B981,#059669);color:#fff;font-size:12px;font-weight:800;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">Open Standard Test ↗</a>
     </div>
   </div>
 
-  <!-- STATS ROW (unchanged) -->
-  <div class="g3" style="max-width:560px">
-    <div class="csm" style="text-align:center;padding:18px 14px">
-      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(16,185,129,.3)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="white"/></svg>
-      </div>
-      <div style="font-size:13px;font-weight:700;color:var(--navy)">100% Free</div>
-      <div style="font-size:11px;color:var(--gray600);margin-top:2px">No cost, ever</div>
-    </div>
-    <div class="csm" style="text-align:center;padding:18px 14px">
-      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#5B6EFF,#3B4DB8);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(91,110,255,.3)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin:auto"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/><path d="M12 7v5l3 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
-      </div>
-      <div style="font-size:13px;font-weight:700;color:var(--navy)">14 Qs · 14 Min</div>
-      <div style="font-size:11px;color:var(--gray600);margin-top:2px">Quick & focused</div>
-    </div>
-    <div class="csm" style="text-align:center;padding:18px 14px">
-      <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FF8551,#e06208);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(255,133,81,.3)">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M7 16l4-4 4 4 4-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <div style="font-size:13px;font-weight:700;color:var(--navy)">95% Accuracy</div>
-     <div style="font-size:11px;color:var(--gray600);margin-top:2px">Reflects your real SAT score</div>
-    </div>
-  </div>  <!-- closes g3 -->
+</div>
 
-</div>    <!-- closes margin-bottom:18px -->
+<!-- STATS ROW -->
+<div class="g3" style="max-width:100%">
+  <div class="csm" style="text-align:center;padding:18px 14px">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#10B981,#059669);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(16,185,129,.3)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" fill="white"/></svg>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--navy)">100% Free</div>
+    <div style="font-size:11px;color:var(--gray600);margin-top:2px">No cost, ever</div>
+  </div>
+  <div class="csm" style="text-align:center;padding:18px 14px">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#5B6EFF,#3B4DB8);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(91,110,255,.3)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin:auto"><circle cx="12" cy="12" r="9" stroke="white" stroke-width="2"/><path d="M12 7v5l3 3" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--navy)">14 Qs · 14 Min</div>
+    <div style="font-size:11px;color:var(--gray600);margin-top:2px">Quick & focused</div>
+  </div>
+  <div class="csm" style="text-align:center;padding:18px 14px">
+    <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FF8551,#e06208);display:flex;align-items:center;justify-content:center;margin:0 auto 10px;box-shadow:0 4px 12px rgba(255,133,81,.3)">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="white" stroke-width="2" stroke-linecap="round"/><path d="M7 16l4-4 4 4 4-6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div style="font-size:13px;font-weight:700;color:var(--navy)">95% Accuracy</div>
+    <div style="font-size:11px;color:var(--gray600);margin-top:2px">Reflects your real SAT score</div>
+  </div>
+</div>   <!-- closes margin-bottom:18px -->
 </div>    <!-- closes sec — ADD THIS LINE -->
 
 <!-- ══ 5 · PROGRAM PLAN ══ -->
@@ -2897,18 +2926,15 @@ document.getElementById('start-btn').addEventListener('click', async () => {
 
 // Copy SPT Plus
 document.getElementById('cpspt-plus').addEventListener('click',function(){
-  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/1xTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform?ts=698c6e3f&edit_requested=true#responses').catch(()=>{});
+  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/e/1FAIpQLSdoDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform').catch(()=>{});
   this.textContent='Copied!';this.classList.add('copied');
-  setTimeout(()=>{this.textContent='Copy';this.classList.remove('copied');},2000);
+  setTimeout(()=>{this.textContent='Copy Link';this.classList.remove('copied');},2000);
 });
-
-// Copy SPT Standard
 document.getElementById('cpspt-std').addEventListener('click',function(){
-  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/1oDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform?ts=698c6dba&edit_requested=true').catch(()=>{});
+  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/e/1FAIpQLSexTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform').catch(()=>{});
   this.textContent='Copied!';this.classList.add('copied');
-  setTimeout(()=>{this.textContent='Copy';this.classList.remove('copied');},2000);
+  setTimeout(()=>{this.textContent='Copy Link';this.classList.remove('copied');},2000);
 });
-
 
 // ── PRICING DATA ────────────────────────────────────────────────────────────
 // AED/SAR/QAR share same prices. INR is separate (incl. GST).

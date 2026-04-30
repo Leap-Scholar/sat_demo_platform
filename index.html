@@ -949,7 +949,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
     </div>
     <div style="display:flex;gap:8px;margin-top:auto">
       <button id="cpspt-plus" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:700;cursor:pointer">Copy Link</button>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdoDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform" target="_blank" style="flex:2;padding:10px;border-radius:10px;background:linear-gradient(135deg,#5B6EFF,#3B4DB8);color:#fff;font-size:12px;font-weight:800;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">Open Plus Test ↗</a>
+      <a href="https://docs.google.com/forms/d/1xTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform?ts=698c6e3f&edit_requested=true#responses" target="_blank" style="flex:2;padding:10px;border-radius:10px;background:linear-gradient(135deg,#5B6EFF,#3B4DB8);color:#fff;font-size:12px;font-weight:800;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">Open Plus Test ↗</a>
     </div>
   </div>
 
@@ -976,7 +976,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
     </div>
     <div style="display:flex;gap:8px;margin-top:auto">
       <button id="cpspt-std" style="flex:1;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.08);color:#fff;font-size:12px;font-weight:700;cursor:pointer">Copy Link</button>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSexTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform" target="_blank" style="flex:2;padding:10px;border-radius:10px;background:linear-gradient(135deg,#10B981,#059669);color:#fff;font-size:12px;font-weight:800;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">Open Standard Test ↗</a>
+      <a href="https://docs.google.com/forms/d/1oDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform?ts=698c6dba&edit_requested=true" target="_blank" style="flex:2;padding:10px;border-radius:10px;background:linear-gradient(135deg,#10B981,#059669);color:#fff;font-size:12px;font-weight:800;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center">Open Standard Test ↗</a>
     </div>
   </div>
 
@@ -2926,12 +2926,12 @@ document.getElementById('start-btn').addEventListener('click', async () => {
 
 // Copy SPT Plus
 document.getElementById('cpspt-plus').addEventListener('click',function(){
-  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/e/1FAIpQLSdoDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform').catch(()=>{});
+  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/1xTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform?ts=698c6e3f&edit_requested=true#responses').catch(()=>{});
   this.textContent='Copied!';this.classList.add('copied');
   setTimeout(()=>{this.textContent='Copy Link';this.classList.remove('copied');},2000);
 });
 document.getElementById('cpspt-std').addEventListener('click',function(){
-  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/e/1FAIpQLSexTTZO4bUiWjltFZoBxhWLQmWqA9hGC1KPsHoj5f6emk/viewform').catch(()=>{});
+  navigator.clipboard&&navigator.clipboard.writeText('https://docs.google.com/forms/d/1oDAh-hJ02dauX-0ZpMu-imFi1qXPqb_ZfTWQCkrMoEY/viewform?ts=698c6dba&edit_requested=true').catch(()=>{});
   this.textContent='Copied!';this.classList.add('copied');
   setTimeout(()=>{this.textContent='Copy Link';this.classList.remove('copied');},2000);
 });

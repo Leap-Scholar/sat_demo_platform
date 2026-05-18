@@ -3725,7 +3725,6 @@ function animateCounter(el, target, duration) {
 const _origGoTo = window.goTo;
 window.goTo = function(i) {
   if (typeof _origGoTo === 'function') _origGoTo(i);
-  if (window._sptShowOnDiag) window._sptShowOnDiag(i);
   // trigger stat animations on students slide (index 7)
   if (i === 7) {
     setTimeout(() => {
@@ -3856,25 +3855,22 @@ document.addEventListener('DOMContentLoaded', () => {
 window._sptFetched = false;
 window._sptData = null;
 
-window._sptShowOnDiag = function(i) {
-  if (i !== 2) return;
+function _sptShowBanner() {
   var d = window._sptData;
   if (!d || !d.link) return;
-  setTimeout(function() {
-    var banner = document.getElementById('spt-report-banner');
-    var nm = document.getElementById('spt-banner-name');
-    var sc = document.getElementById('spt-banner-score');
-    var lk = document.getElementById('spt-report-link');
-    if (!banner) return;
-    nm.textContent = (d.name || 'Student') + "'s SPT Report is Ready";
-    var parts = [];
-    if (d.score) parts.push('Score: ' + d.score);
-    parts.push(d.source === '1:1' ? '1:1 Session' : 'Masterclass');
-    sc.textContent = parts.join(' - ');
-    lk.href = d.link;
-    banner.style.display = 'block';
-  }, 150);
-};
+  var banner = document.getElementById('spt-report-banner');
+  var nm = document.getElementById('spt-banner-name');
+  var sc = document.getElementById('spt-banner-score');
+  var lk = document.getElementById('spt-report-link');
+  if (!banner) return;
+  nm.textContent = (d.name || 'Student') + "'s SPT Report is Ready";
+  var parts = [];
+  if (d.score) parts.push('Score: ' + d.score);
+  parts.push(d.source === '1:1' ? '1:1 Session' : 'Masterclass');
+  sc.textContent = parts.join(' - ');
+  lk.href = d.link;
+  banner.style.display = 'block';
+}
 
 window._sptFetch = async function(phone, email) {
   if (window._sptFetched) return;
@@ -3891,12 +3887,36 @@ window._sptFetch = async function(phone, email) {
       if (data && !data.error && data.link) {
         window._sptFetched = true;
         window._sptData = data;
-        if (window.cur === 2) window._sptShowOnDiag(2);
+        // Show banner immediately if diagnostic slide is active
+        var diagSlide = document.querySelector('.sec[data-i="2"]');
+        if (diagSlide && diagSlide.classList.contains('active')) _sptShowBanner();
         return;
       }
     } catch(e) {}
   }
 };
+
+// Watch for diagnostic slide becoming active via MutationObserver
+(function() {
+  var diagSlide = document.querySelector('.sec[data-i="2"]');
+  if (!diagSlide) return;
+  var obs = new MutationObserver(function(mutations) {
+    mutations.forEach(function(m) {
+      if (m.type === 'attributes' && m.attributeName === 'class') {
+        if (diagSlide.classList.contains('active') && window._sptData && window._sptData.link) {
+          setTimeout(_sptShowBanner, 150);
+        }
+        // If active but no data yet, try fetching
+        if (diagSlide.classList.contains('active') && !window._sptFetched) {
+          var ph = document.getElementById('inp-phone') ? document.getElementById('inp-phone').value : '';
+          var em = document.getElementById('inp-email') ? document.getElementById('inp-email').value : '';
+          if (ph || em) window._sptFetch(ph, em);
+        }
+      }
+    });
+  });
+  obs.observe(diagSlide, { attributes: true, attributeFilter: ['class'] });
+})();
 </script>
 </body>
 </html>

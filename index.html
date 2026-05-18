@@ -3022,10 +3022,7 @@ document.getElementById('start-btn').addEventListener('click', async () => {
   sessionData.email = email;
   sessionData.grade = grade;
 
-  // Fetch SPT report in background using phone + email
-  sptFetchReport(phone, email);
-
-  // Kick off SPT fetch now that we have phone/email
+  // Fetch SPT report silently in background
   sptFetchReport(phone, email);
 
   document.getElementById('sb-name').textContent = name;
@@ -3785,23 +3782,7 @@ function animateCounter(el, target, duration) {
 }
 
 // Fire counters when slides become active
-const _origGoTo = window.goTo;
-window.goTo = function(i) {
-  if (typeof _origGoTo === 'function') _origGoTo(i);
-  // trigger stat animations on students slide (index 7)
-  if (i === 7) {
-    setTimeout(() => {
-      document.querySelectorAll('.sec[data-i="7"] .spn').forEach(el => {
-        const txt = el.textContent.replace(/[^0-9.]/g,'');
-        const num = parseFloat(txt);
-        if (!isNaN(num) && num > 0) {
-          el.dataset.suffix = el.textContent.replace(String(Math.round(num)),'').replace(txt,'');
-          animateCounter(el, num, 900);
-        }
-      });
-    }, 100);
-  }
-};
+;
 
 // ── SLIDE BACKGROUND VISUALS per section ─────────────────────────────────────
 // Subtle ambient gradient that shifts per slide

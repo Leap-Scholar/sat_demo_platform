@@ -2114,7 +2114,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
             Show Plan →
           </button>
         </div>
-        <p id="pricing-err" style="color:var(--red);font-size:11px;margin-top:5px;display:none">Try: SGP 40H / SGP 50H / SGP 60H / REG 40H / REG 50H / REG 60H / REG 30H / REG 20H</p>
+        <p id="pricing-err" style="color:var(--red);font-size:11px;margin-top:5px;display:none">Try: SGP 40H / SGP 50H / SGP 60H / REG 40H / REG 50H / REG 60H / REG 30H / REG 20H / GRP 40H</p>
       </div>
 
       <!-- Coupon section removed — coupon appears inside the plan card below -->
@@ -3046,6 +3046,12 @@ const PLAN_DATA = {
     validity:'1 month',
     feats:['20+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
     prices:{ AED:{mrp:4025,floor:2300}, SAR:{mrp:4025,floor:2300}, QAR:{mrp:4025,floor:2300}, INR:{mrp:100000,floor:70000,gst:true} }
+  },
+  GRP40H: {
+    badge:'GROUP CLASS · GRP 40H', name:'SAT Group Class 40H', type:'grp',
+    validity:'~3 months',
+    feats:['40 hrs live classroom training (20 Eng + 20 Maths)','Small batch — max 3 students per batch','Fixed schedule for structured learning','6 months access to materials & recordings','Student manual + supplementary manual','10 full-length mock tests with AI feedback','66 sectional tests for practice & tracking','Dedicated WhatsApp group support','Up to 5 hrs doubt-solving sessions','Up to 10 hrs Vocabulary Booster Sessions','5 hrs refresher sessions before SAT exam'],
+    prices:{ AED:{mrp:4500,floor:2000}, SAR:{mrp:4500,floor:2000}, QAR:{mrp:4500,floor:2000}, INR:{mrp:80000,floor:49999,gst:true} }
   }
 };
 
@@ -3313,12 +3319,12 @@ const ROADMAPS = {
 
 // ── PROGRAM PLAN SLIDE — text input → flowchart + roadmap ──────────────────
 const PROG_HOURS = {
-  'SGP40H':40,'SGP50H':50,'SGP60H':60,
-  'REG40H':40,'REG50H':50,'REG60H':60,'REG30H':30,'REG20H':20
+  'SGP40H':40,'SGP50H':50,'SGP60H':60,'GRP40H':40,
+  'REG40H':40,'REG50H':50,'REG60H':60,'REG30H':30,'REG20H':20,'GRP40H':40
 };
 const PROG_TO_ROADMAP = {
-  'SGP40H':'sgp40h','SGP50H':'sgp50h','SGP60H':'sgp60h',
-  'REG40H':'reg40h','REG50H':'reg50h','REG60H':'reg60h','REG30H':'reg30h','REG20H':'reg20h'
+  'SGP40H':'sgp40h','SGP50H':'sgp50h','SGP60H':'sgp60h','GRP40H':'grp40h',
+  'REG40H':'reg40h','REG50H':'reg50h','REG60H':'reg60h','REG30H':'reg30h','REG20H':'reg20h','GRP40H':'grp40h'
 };
 
 document.getElementById('prog-submit-btn').addEventListener('click', generateProgramPlan);

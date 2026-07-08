@@ -646,7 +646,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
     <div class="ni" data-i="4"><span class="nnum">5</span>AI Dashboard</div>
 
     <div class="sb-grp">Our Program</div>
-    <div class="ni" data-i="5"><span class="nnum">6</span>SAT Premium</div>
+    <div class="ni" data-i="5"><span class="nnum">6</span><span id="nav-s6-label">SAT Premium</span></div>
     <div class="ni" data-i="6"><span class="nnum">7</span>Expert Teachers</div>
 
     <div class="sb-grp">Proof</div>
@@ -1362,9 +1362,9 @@ body:not(.pmode) .ls-scale-6 { animation: none }
         <!-- Premium diamond icon -->
         <div style="width:72px;height:72px;border-radius:20px;background:linear-gradient(135deg,var(--brand-blue),#6B6FFF);display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;box-shadow:0 8px 24px rgba(71,71,246,.3)">💎</div>
         <div style="flex:1;position:relative;z-index:1">
-          <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--brand-orange);letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px">The SAT Premium Difference</div>
+          <div style="font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--brand-orange);letter-spacing:.8px;text-transform:uppercase;margin-bottom:4px" id="s6-hero-tag">The SAT Premium Difference</div>
           <div style="font-family:var(--font-h);font-size:22px;font-weight:700;color:var(--navy);margin-bottom:4px">Outcomes Backed by a Complete Support System</div>
-          <div style="font-size:13px;color:var(--gray600);line-height:1.6">Our SAT Premium program comes with committed score targets — backed by dedicated Student Success Managers, structured mock planning, and support all the way through the student's journey.</div>
+          <div style="font-size:13px;color:var(--gray600);line-height:1.6" id="s6-hero-desc">Our SAT Premium program comes with committed score targets — backed by dedicated Student Success Managers, structured mock planning, and support all the way through the student's journey.</div>
           <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
             <div style="background:#fff;border:1px solid #BFDBFE;border-radius:20px;padding:4px 12px;font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--brand-blue)">✓ 1:1 Personalised</div>
             <div style="background:#fff;border:1px solid #A7F3D0;border-radius:20px;padding:4px 12px;font-family:var(--font-h);font-size:11px;font-weight:700;color:var(--green)">✓ Dedicated SSM</div>
@@ -1374,11 +1374,11 @@ body:not(.pmode) .ls-scale-6 { animation: none }
       </div>
 
       <div class="eyebrow"><span class="epip">6</span>Our Program</div>
-      <h1 class="ptitle">What Makes SAT Premium Different</h1>
+      <h1 class="ptitle" id="s6-title">What Makes SAT Premium Different</h1>
       <p class="pdesc">A complete program designed to support every student's SAT journey — from diagnostic to admission.</p>
 
-      <!-- Target Commitment Cards -->
-      <div class="g2" style="margin-bottom:18px">
+      <!-- Target Commitment Cards (SGP only — hidden for REG) -->
+      <div class="g2" style="margin-bottom:18px" id="s6-target-cards">
         <div class="card" style="border-color:#BFDBFE;background:#EEF1FE">
           <div style="font-size:26px;margin-bottom:8px">🏆</div>
           <div class="ct">For students with diagnostic &gt;1200</div>
@@ -1393,16 +1393,30 @@ body:not(.pmode) .ls-scale-6 { animation: none }
         </div>
       </div>
 
-      <div class="ct" style="margin-bottom:11px">How SAT Premium supports every student's success</div>
-      <div class="g4">
+      <div class="ct" style="margin-bottom:11px" id="benefits-heading">How SAT Premium supports every student's success</div>
+      <!-- SGP benefits grid (default) -->
+      <div class="g4" id="csm-grid-sgp">
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">👤</div><div style="font-size:12px;color:var(--gray600)">Dedicated Student Success Manager</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📅</div><div style="font-size:12px;color:var(--gray600)">Biweekly P&T (Parents & Teachers) Meeting</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📊</div><div style="font-size:12px;color:var(--gray600)">Progress Tracker</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">💬</div><div style="font-size:12px;color:var(--gray600)">Extended WhatsApp Support</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📚</div><div style="font-size:12px;color:var(--gray600)">Revision & Vocabulary Booster</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📖</div><div style="font-size:12px;color:var(--gray600)">Reading Workshops</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">🧩</div><div style="font-size:12px;color:var(--gray600)">Personalised Learning</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">🎯</div><div style="font-size:12px;color:var(--gray600)">Additional Focus on Grey Areas</div></div>
+      </div>
+      <!-- REG benefits grid (shown only when a REG plan code is entered) -->
+      <div class="g4" id="csm-grid-reg" style="display:none">
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">👤</div><div style="font-size:12px;color:var(--gray600)">Student Success Manager</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📅</div><div style="font-size:12px;color:var(--gray600)">Monthly P&Ts</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📊</div><div style="font-size:12px;color:var(--gray600)">Progress Tracker</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">💬</div><div style="font-size:12px;color:var(--gray600)">Extended WhatsApp Support</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📚</div><div style="font-size:12px;color:var(--gray600)">Student Support Sessions (Group Class) — 16 hrs</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📖</div><div style="font-size:12px;color:var(--gray600)">Revision Classes (Group Class) — 4 hrs</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">🧩</div><div style="font-size:12px;color:var(--gray600)">Customised Learning</div></div>
         <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">🎯</div><div style="font-size:12px;color:var(--gray600)">Additional Focus on Grey Areas</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📗</div><div style="font-size:12px;color:var(--gray600)">Revision & Vocabulary Booster</div></div>
+        <div class="csm" style="text-align:center"><div style="font-size:20px;margin-bottom:5px">📘</div><div style="font-size:12px;color:var(--gray600)">Reading Workshops</div></div>
       </div>
     </div>
 
@@ -1537,11 +1551,11 @@ body:not(.pmode) .ls-scale-6 { animation: none }
           <div style="color:rgba(255,255,255,.85);line-height:1.6">Our students achieve <strong style="color:#fff">1500+ at 10–13%</strong> — nearly <strong style="color:var(--gold)">double</strong> the industry average of 7–8%.</div>
         </div>
       </div>
-      <!-- Score filter -->
+      <!-- Search: name, school, or score -->
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-        <label style="font-size:12.5px;font-weight:600;color:var(--gray400);white-space:nowrap">Filter by current score:</label>
-        <input type="number" id="score-filter" placeholder="e.g. 800" min="400" max="1600" style="width:110px;padding:6px 10px;border:1.5px solid var(--gray200);border-radius:7px;font-size:13px;outline:none;background:#fff" oninput="filterStudents(this.value)"/>
-        <button onclick="filterStudents('');document.getElementById('score-filter').value=''" style="font-size:12px;padding:6px 12px;border:1px solid var(--glass-border);border-radius:7px;background:var(--bg-card);cursor:pointer;color:var(--gray400)">Clear</button>
+        <label style="font-size:12.5px;font-weight:600;color:var(--gray400);white-space:nowrap">🔍 Search students:</label>
+        <input type="text" id="student-search" placeholder="Search by name, school, or score..." style="width:280px;padding:6px 10px;border:1.5px solid var(--gray200);border-radius:7px;font-size:13px;outline:none;background:#fff" oninput="searchStudents(this.value)"/>
+        <button onclick="searchStudents('');document.getElementById('student-search').value=''" style="font-size:12px;padding:6px 12px;border:1px solid var(--glass-border);border-radius:7px;background:var(--bg-card);cursor:pointer;color:var(--gray400)">Clear</button>
         <span id="filter-note" style="font-size:11.5px;color:var(--gray400)"></span>
       </div>
       <div style="border:1px solid var(--glass-border);border-radius:var(--radius);overflow:hidden">
@@ -1807,7 +1821,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
         <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--green),#059669);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0;box-shadow:0 4px 14px rgba(16,185,129,.3)">🚀</div>
         <div>
           <div style="font-family:var(--font-h);font-size:16px;font-weight:700;color:var(--navy)">Classes Begin Within 24–72 Hours</div>
-          <div style="font-size:12.5px;color:var(--gray600);margin-top:3px">5 simple steps · First step is <strong>free</strong> · SAT Premium commitment signed before anything else</div>
+          <div style="font-size:12.5px;color:var(--gray600);margin-top:3px" id="onboard-banner-sub">5 simple steps · First step is <strong>free</strong> · SAT Premium commitment signed before anything else</div>
         </div>
         <div style="margin-left:auto;text-align:center;flex-shrink:0;background:#fff;border:1.5px solid var(--green);border-radius:12px;padding:8px 18px;box-shadow:0 4px 12px rgba(16,185,129,.15)">
           <div style="font-family:var(--font-h);font-size:22px;font-weight:700;color:var(--green);line-height:1">24-72h</div>
@@ -1817,21 +1831,35 @@ body:not(.pmode) .ls-scale-6 { animation: none }
 
       <div class="eyebrow"><span class="epip">12</span>Onboarding</div>
       <h1 class="ptitle" id="onboard-title">The Onboarding Process</h1>
-      <p class="pdesc">Here's exactly what happens after you enrol — a clear, structured 5-step journey to get your student started within 24–72 hours.</p>
-      <div class="obs" style="margin-bottom:30px">
+      <p class="pdesc" id="onboard-pdesc">Here's exactly what happens after you enrol — a clear, structured 5-step journey to get your student started within 24–72 hours.</p>
+      <div class="obs" style="margin-bottom:30px" id="obs-sgp">
         <div class="obst"><div class="obnum" style="font-size:18px">✍️</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Commitment Agreement</div><div class="oblbl">SAT Premium program commitment signed by parent</div></div>
         <div class="obst"><div class="obnum" style="font-size:18px">📋</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Onboarding Form</div><div class="oblbl">Onboarding form + diagnostic test taken by student</div></div>
         <div class="obst"><div class="obnum" style="font-size:18px">🖥️</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Dashboard Access</div><div class="oblbl">Dashboard access provided to student</div></div>
         <div class="obst"><div class="obnum" style="font-size:18px">🤝</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">PTM Scheduled</div><div class="oblbl">Meeting with parent, student, SSM & assigned tutor</div></div>
         <div class="obst"><div class="obnum" style="font-size:18px">▶️</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Classes Start</div><div class="oblbl">Within 24–72h of diagnostic completion</div></div>
       </div>
+      <!-- REG onboarding steps (shown only when a REG plan code is entered) -->
+      <div class="obs" style="margin-bottom:30px;display:none" id="obs-reg">
+        <div class="obst"><div class="obnum" style="font-size:18px">📋</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Onboarding Form</div><div class="oblbl">Onboarding form + diagnostic test taken by student</div></div>
+        <div class="obst"><div class="obnum" style="font-size:18px">🖥️</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Dashboard Access</div><div class="oblbl">Dashboard access provided to student</div></div>
+        <div class="obst"><div class="obnum" style="font-size:18px">🗓️</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Slot Picking</div><div class="oblbl">Fixed days & time slots selected for classes</div></div>
+        <div class="obst"><div class="obnum" style="font-size:18px">▶️</div><div style="font-family:var(--font-h);font-size:12px;font-weight:600;color:var(--navy);margin-bottom:3px">Classes Start</div><div class="oblbl">Within 24–72h of diagnostic completion</div></div>
+      </div>
       <div class="g2" style="margin-bottom:16px">
         <div class="card">
           <div class="ct">What you can expect</div>
-          <ul class="iconlist">
+          <ul class="iconlist" id="obs-expect-sgp">
             <li>SAT Premium commitment signed before classes begin</li>
             <li>Personalised programme designed based on diagnostic results</li>
             <li>PTM within the first week — parents always in the loop</li>
+            <li>Classes begin within 24-72 hours of diagnostic completion</li>
+            <li>WhatsApp group for student, parent & success manager</li>
+          </ul>
+          <ul class="iconlist" id="obs-expect-reg" style="display:none">
+            <li>Onboarding form + diagnostic test completed by student</li>
+            <li>Personalised programme designed based on diagnostic results</li>
+            <li>Fixed days & time slots picked for classes</li>
             <li>Classes begin within 24-72 hours of diagnostic completion</li>
             <li>WhatsApp group for student, parent & success manager</li>
           </ul>
@@ -2119,7 +2147,7 @@ body:not(.pmode) .ls-scale-6 { animation: none }
         <div>
           <div style="font-family:var(--font-h);font-size:12px;font-weight:700;color:#F17E3A;margin-bottom:4px">Did you know?</div>
           <div style="font-size:11.5px;color:rgba(255,255,255,.82);line-height:1.55">
-            Students spend an average of <strong style="color:#F17E3A">AED 8,500 / ₹2,15,000</strong> for 1:1 SAT prep — with LeapScholar, you get a complete SAT Premium program with structured targets and dedicated support.
+            Students spend an average of <strong style="color:#F17E3A">AED 8,500 / ₹2,08,250</strong> for 1:1 SAT prep — with LeapScholar, you get a complete SAT Premium program with structured targets and dedicated support.
           </div>
         </div>
       </div>
@@ -2910,55 +2938,55 @@ const PLAN_DATA = {
     badge:'SAT ULTIMATE · SGP 40H', name:'SAT Ultimate 40H', type:'sgp',
     validity:'1 year or 2 attempts',
     feats:['1:1 Personalised Classes','Live Classes (40 hrs)','1500+ Score Target / 200+ Points Jump','Expert Feedback on every test','Personalised Refresher Sessions','Dedicated Student Success Manager','Profile Assessment with Ivy League Counsellor'],
-    prices:{ AED:{mrp:13500,floor:8100}, SAR:{mrp:13500,floor:8100}, QAR:{mrp:13500,floor:8100}, INR:{mrp:220000,floor:150000,gst:true} }
+    prices:{ AED:{mrp:13500,floor:8100}, SAR:{mrp:13500,floor:8100}, QAR:{mrp:13500,floor:8100}, INR:{mrp:330750,floor:198450,gst:true} }
   },
   SGP50H: {
     badge:'SAT ULTIMATE · SGP 50H', name:'SAT Ultimate 50H', type:'sgp',
     validity:'1 year or 2 attempts',
     feats:['1:1 Personalised Classes','Live Classes (50 hrs)','1500+ Score Target / 200+ Points Jump','Expert Feedback on every test','Personalised Refresher Sessions','Dedicated Student Success Manager','Profile Assessment with Ivy League Counsellor'],
-    prices:{ AED:{mrp:16875,floor:10125}, SAR:{mrp:16875,floor:10125}, QAR:{mrp:16875,floor:10125}, INR:{mrp:275000,floor:185000,gst:true} }
+    prices:{ AED:{mrp:16875,floor:10125}, SAR:{mrp:16875,floor:10125}, QAR:{mrp:16875,floor:10125}, INR:{mrp:413438,floor:248063,gst:true} }
   },
   SGP60H: {
     badge:'SAT ULTIMATE · SGP 60H', name:'SAT Ultimate 60H', type:'sgp',
     validity:'1 year or 2 attempts',
     feats:['1:1 Personalised Classes','Live Classes (60 hrs)','1500+ Score Target / 200+ Points Jump','Expert Feedback on every test','Personalised Refresher Sessions','Dedicated Student Success Manager','Profile Assessment with Ivy League Counsellor'],
-    prices:{ AED:{mrp:20250,floor:12150}, SAR:{mrp:20250,floor:12150}, QAR:{mrp:20250,floor:12150}, INR:{mrp:330000,floor:220000,gst:true} }
+    prices:{ AED:{mrp:20250,floor:12150}, SAR:{mrp:20250,floor:12150}, QAR:{mrp:20250,floor:12150}, INR:{mrp:496125,floor:297675,gst:true} }
   },
   REG40H: {
     badge:'REGULAR · REG 40H', name:'Regular 40 Hours', type:'reg',
     validity:'2.5–3 months',
     feats:['40+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
-    prices:{ AED:{mrp:6700,floor:4300}, SAR:{mrp:6700,floor:4300}, QAR:{mrp:6700,floor:4300}, INR:{mrp:160000,floor:100000,gst:true} }
+    prices:{ AED:{mrp:6700,floor:4300}, SAR:{mrp:6700,floor:4300}, QAR:{mrp:6700,floor:4300}, INR:{mrp:164150,floor:105350,gst:true} }
   },
   REG50H: {
     badge:'REGULAR · REG 50H', name:'Regular 50 Hours', type:'reg',
     validity:'3–3.5 months',
     feats:['50+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
-    prices:{ AED:{mrp:8375,floor:5375}, SAR:{mrp:8375,floor:5375}, QAR:{mrp:8375,floor:5375}, INR:{mrp:200000,floor:162000,gst:true} }
+    prices:{ AED:{mrp:8375,floor:5375}, SAR:{mrp:8375,floor:5375}, QAR:{mrp:8375,floor:5375}, INR:{mrp:205188,floor:131688,gst:true} }
   },
   REG60H: {
     badge:'REGULAR · REG 60H', name:'Regular 60 Hours', type:'reg',
     validity:'3.5–4 months',
     feats:['60+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
-    prices:{ AED:{mrp:10050,floor:6450}, SAR:{mrp:10050,floor:6450}, QAR:{mrp:10050,floor:6450}, INR:{mrp:240000,floor:194000,gst:true} }
+    prices:{ AED:{mrp:10050,floor:6450}, SAR:{mrp:10050,floor:6450}, QAR:{mrp:10050,floor:6450}, INR:{mrp:246225,floor:158025,gst:true} }
   },
   REG30H: {
     badge:'REGULAR · REG 30H', name:'Regular 30 Hours', type:'reg',
     validity:'~2 months',
     feats:['30+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
-    prices:{ AED:{mrp:5025,floor:3300}, SAR:{mrp:5025,floor:3300}, QAR:{mrp:5025,floor:3300}, INR:{mrp:120000,floor:90000,gst:true} }
+    prices:{ AED:{mrp:5025,floor:3300}, SAR:{mrp:5025,floor:3300}, QAR:{mrp:5025,floor:3300}, INR:{mrp:123113,floor:80850,gst:true} }
   },
   REG20H: {
     badge:'REGULAR · REG 20H', name:'Regular 20 Hours', type:'reg',
     validity:'1 month',
     feats:['20+ hours of live classes','Expert feedback on all tests','Live WhatsApp Group support','10+ Full Length Mock Tests','Weekend Mocks + test analysis','Comprehensive Study Material','Reading Workshops','Vocabulary Booster Sessions'],
-    prices:{ AED:{mrp:4025,floor:2300}, SAR:{mrp:4025,floor:2300}, QAR:{mrp:4025,floor:2300}, INR:{mrp:100000,floor:70000,gst:true} }
+    prices:{ AED:{mrp:4025,floor:2300}, SAR:{mrp:4025,floor:2300}, QAR:{mrp:4025,floor:2300}, INR:{mrp:98613,floor:56350,gst:true} }
   },
   GRP40H: {
     badge:'GROUP CLASS · GRP 40H', name:'SAT Group Class 40H', type:'grp',
     validity:'~3 months',
     feats:['40 hrs live classroom training (20 Eng + 20 Maths)','Small batch — max 3 students per batch','Fixed schedule for structured learning','6 months access to materials & recordings','Student manual + supplementary manual','10 full-length mock tests with AI feedback','66 sectional tests for practice & tracking','Dedicated WhatsApp group support','Up to 5 hrs doubt-solving sessions','Up to 10 hrs Vocabulary Booster Sessions','5 hrs refresher sessions before SAT exam'],
-    prices:{ AED:{mrp:4500,floor:2000}, SAR:{mrp:4500,floor:2000}, QAR:{mrp:4500,floor:2000}, INR:{mrp:80000,floor:49999,gst:true} }
+    prices:{ AED:{mrp:4500,floor:2000}, SAR:{mrp:4500,floor:2000}, QAR:{mrp:4500,floor:2000}, INR:{mrp:110250,floor:49000,gst:true} }
   }
 };
 
@@ -3285,11 +3313,54 @@ function generateProgramPlan() {
     compareSlide.style.flexDirection = 'column';
   }
 
-  // Onboarding slide — show only for SGP
-  const onboardingSlide = document.querySelector('.sec[data-i="11"]');
-  const onboardingNav = document.querySelector('.ni[data-i="11"]');
-  if(onboardingSlide) onboardingSlide.style.display = isSGP ? '' : 'none';
-  if(onboardingNav) onboardingNav.style.display = isSGP ? '' : 'none';
+  // Onboarding slide — always visible now; toggle step content by program type
+  const obsSgp = document.getElementById('obs-sgp');
+  const obsReg = document.getElementById('obs-reg');
+  if (obsSgp) obsSgp.style.display = isSGP ? '' : 'none';
+  if (obsReg) obsReg.style.display = isSGP ? 'none' : '';
+
+  const obsExpectSgp = document.getElementById('obs-expect-sgp');
+  const obsExpectReg = document.getElementById('obs-expect-reg');
+  if (obsExpectSgp) obsExpectSgp.style.display = isSGP ? '' : 'none';
+  if (obsExpectReg) obsExpectReg.style.display = isSGP ? 'none' : '';
+
+  const onboardBannerSub = document.getElementById('onboard-banner-sub');
+  if (onboardBannerSub) onboardBannerSub.innerHTML = isSGP
+    ? '5 simple steps · First step is <strong>free</strong> · SAT Premium commitment signed before anything else'
+    : '4 simple steps · First step is <strong>free</strong>';
+
+  const onboardPdesc = document.getElementById('onboard-pdesc');
+  if (onboardPdesc) onboardPdesc.textContent = isSGP
+    ? "Here's exactly what happens after you enrol — a clear, structured 5-step journey to get your student started within 24–72 hours."
+    : "Here's exactly what happens after you enrol — a clear, structured 4-step journey to get your student started within 24–72 hours.";
+
+  // "Our Program" slide (6) — toggle SGP vs REG wording, boxes & nav label
+  const csmSgp = document.getElementById('csm-grid-sgp');
+  const csmReg = document.getElementById('csm-grid-reg');
+  const benefitsHeading = document.getElementById('benefits-heading');
+  if (csmSgp) csmSgp.style.display = isSGP ? '' : 'none';
+  if (csmReg) csmReg.style.display = isSGP ? 'none' : '';
+  if (benefitsHeading) benefitsHeading.textContent = isSGP
+    ? "How SAT Premium supports every student's success"
+    : "How our program supports every student's success";
+
+  const navS6Label = document.getElementById('nav-s6-label');
+  if (navS6Label) navS6Label.textContent = isSGP ? 'SAT Premium' : 'Our Program';
+
+  const s6Title = document.getElementById('s6-title');
+  if (s6Title) s6Title.textContent = isSGP ? 'What Makes SAT Premium Different' : 'What Makes Leap Different';
+
+  const s6HeroTag = document.getElementById('s6-hero-tag');
+  if (s6HeroTag) s6HeroTag.textContent = isSGP ? 'The SAT Premium Difference' : 'The Leap Difference';
+
+  const s6HeroDesc = document.getElementById('s6-hero-desc');
+  if (s6HeroDesc) s6HeroDesc.textContent = isSGP
+    ? "Our SAT Premium program comes with committed score targets — backed by dedicated Student Success Managers, structured mock planning, and support all the way through the student's journey."
+    : "Our program comes with structured score improvement goals — backed by a dedicated Student Success Manager, structured planning, and support all the way through the student's journey.";
+
+  // Target commitment cards (1500+ / 200+ points) — SGP only
+  const s6TargetCards = document.getElementById('s6-target-cards');
+  if (s6TargetCards) s6TargetCards.style.display = isSGP ? '' : 'none';
 
   document.getElementById('flowchart').classList.add('show');
   setTimeout(()=>document.getElementById('ca').scrollTo({top:999,behavior:'smooth'}),100);
@@ -3492,35 +3563,58 @@ window.resetRoadmap = function() {
   document.querySelectorAll('#roadmap-checklist input[type=checkbox]').forEach(cb => cb.checked = false);
 };
 
-// ── STUDENTS SCORE FILTER ──────────────────────────────────────────────────
-window.filterStudents = function(scoreStr) {
+// ── STUDENTS SEARCH (name, school, or score) ────────────────────────────────
+window.searchStudents = function(query) {
   const tbody = document.getElementById('students-tbody');
   if (!tbody) return;
-  const score = parseInt(scoreStr);
   const note = document.getElementById('filter-note');
-  if (!scoreStr || isNaN(score)) {
-    // Show all, reset order
-    Array.from(tbody.querySelectorAll('tr')).forEach(r => { r.style.display=''; r.style.opacity='1'; });
-    if(note) note.textContent = '';
+  const q = (query || '').trim();
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+
+  if (!q) {
+    // Reset — show all rows, original order
+    rows.forEach(r => { r.style.display=''; r.style.opacity='1'; });
+    if (note) note.textContent = '';
     return;
   }
-  const rows = Array.from(tbody.querySelectorAll('tr'));
-  // Calculate distance from entered score for each row
-  const rowsWithDistance = rows.map(r => {
-    const before = parseInt(r.cells[2]?.textContent) || 0;
-    return { row: r, distance: Math.abs(before - score), before };
+
+  const asNumber = parseInt(q);
+  const isNumericSearch = /^\d+$/.test(q) && !isNaN(asNumber);
+
+  if (isNumericSearch) {
+    // Score search — sort by closeness to the entered score (before or after)
+    const score = asNumber;
+    const rowsWithDistance = rows.map(r => {
+      const before = parseInt(r.cells[2]?.textContent) || 0;
+      const after = parseInt(r.cells[3]?.textContent) || 0;
+      const distance = Math.min(Math.abs(before - score), Math.abs(after - score));
+      return { row: r, distance };
+    });
+    rowsWithDistance.sort((a, b) => a.distance - b.distance);
+    const nearCount = rowsWithDistance.filter(r => r.distance <= 100).length;
+    rowsWithDistance.forEach(({row, distance}) => {
+      tbody.appendChild(row);
+      row.style.display = '';
+      row.style.opacity = distance <= 100 ? '1' : (distance <= 200 ? '0.7' : '0.4');
+    });
+    if (note) note.textContent = `Showing ${nearCount} students near score ${score} first`;
+    return;
+  }
+
+  // Text search — match against name (col 0) or school (col 1)
+  const needle = q.toLowerCase();
+  let matchCount = 0;
+  rows.forEach(r => {
+    const name = (r.cells[0]?.textContent || '').toLowerCase();
+    const school = (r.cells[1]?.textContent || '').toLowerCase();
+    const isMatch = name.includes(needle) || school.includes(needle);
+    r.style.display = isMatch ? '' : 'none';
+    r.style.opacity = '1';
+    if (isMatch) matchCount++;
   });
-  // Sort by distance (closest first)
-  rowsWithDistance.sort((a, b) => a.distance - b.distance);
-  // Find count within ±100 range for the note
-  const nearCount = rowsWithDistance.filter(r => r.distance <= 100).length;
-  // Reorder: closest first (full opacity), farther ones dimmed
-  rowsWithDistance.forEach(({row, distance}) => {
-    tbody.appendChild(row);
-    row.style.display = '';
-    row.style.opacity = distance <= 100 ? '1' : (distance <= 200 ? '0.7' : '0.4');
-  });
-  if(note) note.textContent = `Showing ${nearCount} students near score ${score} first`;
+  if (note) note.textContent = matchCount
+    ? `Showing ${matchCount} student${matchCount===1?'':'s'} matching "${query}"`
+    : `No students found matching "${query}"`;
 };
 
 // ── STUDENTS TABLE SORT ────────────────────────────────────────────────────

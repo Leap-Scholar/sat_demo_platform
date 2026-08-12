@@ -3846,10 +3846,26 @@ window.sortStudents = function(col) {
         }
       }
     }
-    requestAnimationFrame(draw);
+    rafId = isVisible ? requestAnimationFrame(draw) : null;
   }
 
+  // Only run the particle loop while its slide is actually on screen.
+  // Inactive slides are display:none, so IntersectionObserver reliably
+  // reports isIntersecting:false the instant we navigate away — this
+  // stops the per-frame O(n^2) particle-distance loop from burning
+  // CPU/GPU for the rest of the call, which is what was compounding
+  // with screen-share encoding on weaker/software-rendered GPUs.
+  let isVisible = true;
+  let rafId = null;
+  const observer = new IntersectionObserver(function(entries) {
+    isVisible = entries[0].isIntersecting;
+    if (isVisible && rafId === null) {
+      rafId = requestAnimationFrame(draw);
+    }
+  }, { threshold: 0 });
+
   init();
+  observer.observe(canvas);
   draw();
   window.addEventListener('resize', init);
 })();

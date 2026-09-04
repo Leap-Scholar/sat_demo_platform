@@ -3183,7 +3183,7 @@ function renderPlanCard(planKey, currency) {
             <div class="plan-price" id="pp-${planKey}">${fmtPrice(currency, final)}</div>
             ${effectivePct > 0 ? `<div class="plan-price-orig" id="po-${planKey}">${fmtPrice(currency, priceData.mrp)}</div><div class="plan-discount-badge" id="pd-${planKey}">${effectivePct}% OFF</div>` : `<div class="plan-price-orig" id="po-${planKey}" style="display:none">${fmtPrice(currency, priceData.mrp)}</div><div class="plan-discount-badge" id="pd-${planKey}" style="display:none"></div>`}
           </div>
-          <div class="plan-price-note" style="margin-bottom:20px">One-time payment · ${plan.type==='sgp'?'1:1 Personalised Program':'Group Program'} · Valid: ${plan.validity}${isInr ? ' · <span style="color:var(--green);font-weight:600">Prices inclusive of GST</span>' : ''}</div>
+          <div class="plan-price-note" style="margin-bottom:20px">One-time payment · ${plan.type==='grp'?'Group Program':'1:1 Personalised Program'} · Valid: ${plan.validity}${isInr ? ' · <span style="color:var(--green);font-weight:600">Prices inclusive of GST</span>' : ''}</div>
           <div style="border-top:1px solid var(--glass-border);padding-top:16px">
             <div style="font-size:12px;font-weight:600;color:var(--navy);margin-bottom:10px;display:flex;align-items:center;gap:6px">🏷️ Apply Discount Code</div>
             <div class="coupon-input-wrap" style="margin-bottom:6px">
